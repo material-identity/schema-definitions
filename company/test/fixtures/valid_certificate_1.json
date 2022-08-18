@@ -6,6 +6,8 @@
     "City": "Linz",
     "Country": "AT",
     "Email": "sbs.steelfactory@gmail.com",
-    "DUNS": "123456789"
+    "Identifiers": {
+      "DUNS": "123456789"
+    }
   }
 }

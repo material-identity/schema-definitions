@@ -6,7 +6,7 @@
     "City": "Berlin",
     "Country": "DE",
     "Email": "s1seven.certificates@gmail.com",
-    "Identifier": {
+    "Identifiers": {
       "VAT": "AT123456789"
     }
   }
