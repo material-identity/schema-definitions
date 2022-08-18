@@ -1,8 +1,9 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "https://schemas.s1seven.com/company",
+	"$id": "company.json",
 	"definitions": {
 		"CompanyBase": {
+			"type": "object",
 			"properties": {
 				"ZipCode": {
 					"type": "string"
@@ -56,6 +57,7 @@
 		"CompanyAddress": {
 			"oneOf": [
 				{
+					"type": "object",
 					"properties": {
 						"Street": {
 							"anyOf": [
@@ -70,12 +72,13 @@
 								{
 									"type": "string"
 								}
-							],
-							"required": ["Street"]
+							]
 						}
-					}
+					},
+					"required": ["Street"]
 				},
 				{
+					"type": "object",
 					"properties": {
 						"AddressLine1": {
 							"type": "string"
