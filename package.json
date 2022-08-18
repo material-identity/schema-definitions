@@ -1,0 +1,27 @@
+{
+	"name": "schema-definitions",
+	"version": "1.0.0",
+	"description": "A repository containing schema definitions that can be shared across multiple schemas.",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest --runInBand"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/thematerials-network/schema-definitions.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/thematerials-network/schema-definitions/issues"
+	},
+	"homepage": "https://github.com/thematerials-network/schema-definitions#readme",
+	"devDependencies": {
+		"@s1seven/schema-tools-utils": "^0.1.2",
+		"ajv": "^8.11.0",
+		"ajv-formats": "^2.1.1",
+		"eslint": "^8.22.0",
+		"jest": "^28.1.3"
+	}
+}
