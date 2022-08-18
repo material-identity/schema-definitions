@@ -8,7 +8,14 @@
 		<li>{{Name}}</li>
 	{{/if}}
 	{{#if Street}}
-		<li>{{Street}}</li>
+		{{#typeOf Street "string"}}
+			<li>{{Street}}</li>
+		{{/typeOf}}
+		{{#typeOf Street "object"}}
+			{{#each Street}}
+				<li>{{this}}</li>
+			{{/each}}
+		{{/typeOf}}
 	{{/if}}
 	{{#if AddressLine1}}
 		<li>{{AddressLine1}}</li>
