@@ -8,12 +8,12 @@ const validCertTestSuitesMap = [
 	{
 		certificateName: `valid_certificate_3`,
 	},
-	// {
-	// 	certificateName: `valid_certificate_4`,
-	// },
-	// {
-	// 	certificateName: `valid_certificate_5`,
-	// },
+	{
+		certificateName: `valid_certificate_4`,
+	},
+	{
+		certificateName: `valid_certificate_5`,
+	},
 ];
 
 const invalidCertTestSuitesMap = [
@@ -125,6 +125,140 @@ const invalidCertTestSuitesMap = [
 				keyword: "required",
 				params: { missingProperty: "Identifier" },
 				message: "must have required property 'Identifier'",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/allOf/2/oneOf",
+				keyword: "oneOf",
+				params: { passingSchemas: null },
+				message: "must match exactly one schema in oneOf",
+			},
+		],
+	},
+	{
+		certificateName: `invalid_certificate_5`,
+		expectedErrors: [
+			{
+				instancePath: "/A01/VAT",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/0/properties/VAT/maxLength",
+				keyword: "maxLength",
+				params: { limit: 15 },
+				message: "must NOT have more than 15 characters",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/1/required",
+				keyword: "required",
+				params: { missingProperty: "DUNS" },
+				message: "must have required property 'DUNS'",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf",
+				keyword: "anyOf",
+				params: {},
+				message: "must match a schema in anyOf",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/allOf/2/oneOf/1/required",
+				keyword: "required",
+				params: { missingProperty: "Identifier" },
+				message: "must have required property 'Identifier'",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/allOf/2/oneOf",
+				keyword: "oneOf",
+				params: { passingSchemas: null },
+				message: "must match exactly one schema in oneOf",
+			},
+		],
+	},
+	{
+		certificateName: `invalid_certificate_6`,
+		expectedErrors: [
+			{
+				instancePath: "/A01/VAT",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/0/properties/VAT/minLength",
+				keyword: "minLength",
+				params: { limit: 8 },
+				message: "must NOT have fewer than 8 characters",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/1/required",
+				keyword: "required",
+				params: { missingProperty: "DUNS" },
+				message: "must have required property 'DUNS'",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf",
+				keyword: "anyOf",
+				params: {},
+				message: "must match a schema in anyOf",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/allOf/2/oneOf/1/required",
+				keyword: "required",
+				params: { missingProperty: "Identifier" },
+				message: "must have required property 'Identifier'",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/allOf/2/oneOf",
+				keyword: "oneOf",
+				params: { passingSchemas: null },
+				message: "must match exactly one schema in oneOf",
+			},
+		],
+	},
+	{
+		certificateName: `invalid_certificate_7`,
+		expectedErrors: [
+			{
+				instancePath: "/A01",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/0/required",
+				keyword: "required",
+				params: { missingProperty: "VAT" },
+				message: "must have required property 'VAT'",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/1/required",
+				keyword: "required",
+				params: { missingProperty: "DUNS" },
+				message: "must have required property 'DUNS'",
+			},
+			{
+				instancePath: "/A01",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf",
+				keyword: "anyOf",
+				params: {},
+				message: "must match a schema in anyOf",
+			},
+			{
+				instancePath: "/A01/Identifier",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/0/required",
+				keyword: "required",
+				params: { missingProperty: "VAT" },
+				message: "must have required property 'VAT'",
+			},
+			{
+				instancePath: "/A01/Identifier",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf/1/required",
+				keyword: "required",
+				params: { missingProperty: "DUNS" },
+				message: "must have required property 'DUNS'",
+			},
+			{
+				instancePath: "/A01/Identifier",
+				schemaPath: "#/definitions/CompanyIdentifiers/anyOf",
+				keyword: "anyOf",
+				params: {},
+				message: "must match a schema in anyOf",
 			},
 			{
 				instancePath: "/A01",
