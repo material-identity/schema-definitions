@@ -93,6 +93,13 @@
 		},
 		"CompanyIdentifiers": {
 			"type": "object",
+			"properties": {
+				"CageCode": {
+					"description": "The Commercial and Government Entity Code (short CAG), is a unique identifier assigned to suppliers to various government or defense agencies, https://en.wikipedia.org/wiki/Commercial_and_Government_Entity_code",
+					"type": "string",
+					"examples": ["N1950#"]
+				}
+			},
 			"anyOf": [
 				{
 					"properties": {
@@ -114,14 +121,7 @@
 					},
 					"required": ["DUNS"]
 				}
-			],
-			"properties": {
-				"CageCode": {
-					"description": "The Commercial and Government Entity Code (short CAG), is a unique identifier assigned to suppliers to various government or defense agencies, https://en.wikipedia.org/wiki/Commercial_and_Government_Entity_code",
-					"type": "string",
-					"examples": ["N1950#"]
-				}
-			}
+			]
 		},
 		"Company": {
 			"title": "Company",
@@ -134,9 +134,15 @@
 					"$ref": "#/definitions/CompanyAddress"
 				},
 				{
-					"properties": {
-						"Identifiers": { "$ref": "#/definitions/CompanyIdentifiers" }
-					}
+					"oneOf": [
+						{ "$ref": "#/definitions/CompanyIdentifiers" },
+						{
+							"properties": {
+								"Identifier": { "$ref": "#/definitions/CompanyIdentifiers" }
+							},
+							"required": ["Identifier"]
+						}
+					]
 				}
 			]
 		}
