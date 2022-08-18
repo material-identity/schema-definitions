@@ -1,3 +1,24 @@
 # schema-definitions
 
 A repository containing schema definitions that can be shared across multiple schemas.
+
+Each definition along with its handlebars partial and tests is stored in its own folder.
+
+## Company definition
+
+The company definition is used by the EN10168 schema under the `CommercialTransaction` property at `A01`, `A06`, `A06.1`, `A06.2`, and `A06.3` It is also used in the CoA schema under the `Parties` property at `Manufacturer`, `Customer` and `Receiver`.
+For more information, please look at the CoA [documentation](https://github.com/thematerials-network/CoA-documentation/blob/main/README.md) or EN10168 [documentation](https://s1seven.github.io/SEP/EN10168/#json-definitions).
+
+| Attribute             | Description                                                                                                                                                                                                                                            | Mandatory | Visible |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------: | :-----: |
+| Name                  | The name of the company in CoA                                                                                                                                                                                                                         |    Yes    |   Yes   |
+| CompanyName           | The name of the company in EN10168                                                                                                                                                                                                                     |    Yes    |   Yes   |
+| Street                | The address in EN10168                                                                                                                                                                                                                                 |    Yes    |   Yes   |
+| AddressLine1          | The first address line in CoA                                                                                                                                                                                                                          |    Yes    |   Yes   |
+| AddressLine2          | A second address line                                                                                                                                                                                                                                  |    No     |   Yes   |
+| ZipCode               | The ZIP code                                                                                                                                                                                                                                           |    Yes    |   Yes   |
+| City                  | The city                                                                                                                                                                                                                                               |    Yes    |   Yes   |
+| Country               | The two-letter ISO country code according to https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.                                                                                                                                                         |    Yes    |   Yes   |
+| Email                 | The email address to be used to send certificates to the company.                                                                                                                                                                                      |    No     |   Yes   |
+| Identifier            | One or more unique company identifiers. Currently, [VAT](https://ec.europa.eu/taxation_customs/vat-identification-numbers_en), [DUNS](https://www.dnb.com/duns-number.html), and [Cage Codes](https://cage.dla.mil/Info/about#cagecode) are supported. |    Yes    |   No    |
+| AdditionalInformation | An array of additional free text information on the company.                                                                                                                                                                                           |    No     |   Yes   |
