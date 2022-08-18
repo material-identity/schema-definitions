@@ -1,11 +1,11 @@
 {
-	"A02": {
-		"CompanyName": "Steel Mill SE",
-		"Street": "Stahlstrasse 1",
-		"ZipCode": "4040",
-		"City": "Linz",
-		"Country": "AT",
-		"Email": "sbs.steelfactory@gmail.com",
-		"DUNS": "123456789"
-	}
+  "A02": {
+    "CompanyName": "Steel Mill SE",
+    "Street": "Stahlstrasse 1",
+    "ZipCode": "4040",
+    "City": "Linz",
+    "Country": "AT",
+    "Email": "sbs.steelfactory@gmail.com",
+    "DUNS": "123456789"
+  }
 }

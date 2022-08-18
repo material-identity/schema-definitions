@@ -1,16 +1,16 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "test_schema.json",
-	"title": "Certificate",
-	"type": "object",
-	"properties": {
-		"A01": {
-			"allOf": [
-				{
-					"$ref": "company.json#/definitions/Company"
-				}
-			]
-		}
-	},
-	"required": ["A01"]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "test_schema.json",
+  "title": "Certificate",
+  "type": "object",
+  "properties": {
+    "A01": {
+      "allOf": [
+        {
+          "$ref": "company.json#/definitions/Company"
+        }
+      ]
+    }
+  },
+  "required": ["A01"]
 }

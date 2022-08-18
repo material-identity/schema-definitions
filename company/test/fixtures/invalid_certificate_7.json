@@ -1,14 +1,14 @@
 {
-	"A01": {
-		"Name": "Plastic Processor SE",
-		"AddressLine1": "Plastik Street 1",
-		"AddressLine2": "Werk 1",
-		"ZipCode": "1230",
-		"City": "Wien",
-		"Country": "AT",
-		"Email": "s1seven.certificates@gmail.com",
-		"Identifier": {
-			"CageCode": "N1950#"
-		}
-	}
+  "A01": {
+    "Name": "Plastic Processor SE",
+    "AddressLine1": "Plastik Street 1",
+    "AddressLine2": "Werk 1",
+    "ZipCode": "1230",
+    "City": "Wien",
+    "Country": "AT",
+    "Email": "s1seven.certificates@gmail.com",
+    "Identifier": {
+      "CageCode": "N1950#"
+    }
+  }
 }
