@@ -1,6 +1,6 @@
 {
 	"name": "schema-definitions",
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"description": "A repository containing schema definitions that can be shared across multiple schemas.",
 	"main": "index.js",
 	"scripts": {
