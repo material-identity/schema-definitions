@@ -1,0 +1,141 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://schemas.s1seven.com/company",
+	"definitions": {
+		"CompanyBase": {
+			"properties": {
+				"ZipCode": {
+					"type": "string"
+				},
+				"City": {
+					"type": "string"
+				},
+				"Country": {
+					"description": "The two-letter ISO country code according https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.",
+					"type": "string",
+					"minLength": 2,
+					"maxLength": 2,
+					"pattern": "^[A-Z]{2}$",
+					"examples": ["AT", "DE", "FR", "ES", "PL", "CN"]
+				},
+				"Email": {
+					"type": "string",
+					"format": "email"
+				},
+				"AdditionalInformation": {
+					"description": "An array of additional free text information on the company.",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"uniqueItems": true,
+					"minItems": 1
+				}
+			},
+			"anyOf": [
+				{
+					"properties": {
+						"Name": {
+							"type": "string"
+						}
+					},
+					"required": ["Name"]
+				},
+				{
+					"properties": {
+						"CompanyName": {
+							"type": "string"
+						}
+					},
+					"required": ["CompanyName"]
+				}
+			],
+			"required": ["ZipCode", "City", "Country"],
+			"additionalProperties": true
+		},
+		"CompanyAddress": {
+			"oneOf": [
+				{
+					"properties": {
+						"Street": {
+							"anyOf": [
+								{
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"minItems": 1,
+									"maxItems": 3
+								},
+								{
+									"type": "string"
+								}
+							],
+							"required": ["Street"]
+						}
+					}
+				},
+				{
+					"properties": {
+						"AddressLine1": {
+							"type": "string"
+						},
+						"AddressLine2": {
+							"type": "string"
+						}
+					},
+					"required": ["AddressLine1"]
+				}
+			]
+		},
+		"CompanyIdentifiers": {
+			"type": "object",
+			"anyOf": [
+				{
+					"properties": {
+						"VAT": {
+							"type": "string",
+							"minLength": 8,
+							"maxLength": 15
+						}
+					},
+					"required": ["VAT"]
+				},
+				{
+					"properties": {
+						"DUNS": {
+							"type": "string",
+							"minLength": 9,
+							"maxLength": 9
+						}
+					},
+					"required": ["DUNS"]
+				}
+			],
+			"properties": {
+				"CageCode": {
+					"description": "The Commercial and Government Entity Code (short CAG), is a unique identifier assigned to suppliers to various government or defense agencies, https://en.wikipedia.org/wiki/Commercial_and_Government_Entity_code",
+					"type": "string",
+					"examples": ["N1950#"]
+				}
+			}
+		},
+		"Company": {
+			"title": "Company",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/CompanyBase"
+				},
+				{
+					"$ref": "#/definitions/CompanyAddress"
+				},
+				{
+					"properties": {
+						"Identifiers": { "$ref": "#/definitions/CompanyIdentifiers" }
+					}
+				}
+			]
+		}
+	}
+}
