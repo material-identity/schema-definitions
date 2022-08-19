@@ -22,3 +22,9 @@ For more information, please look at the CoA [documentation](https://github.com/
 | Email                 | The email address to be used to send certificates to the company.                                                                                                                                                                                      |    No     |   Yes   |
 | Identifier            | One or more unique company identifiers. Currently, [VAT](https://ec.europa.eu/taxation_customs/vat-identification-numbers_en), [DUNS](https://www.dnb.com/duns-number.html), and [Cage Codes](https://cage.dla.mil/Info/about#cagecode) are supported. |    Yes    |   No    |
 | AdditionalInformation | An array of additional free text information on the company.                                                                                                                                                                                           |    No     |   Yes   |
+
+## CertificateLanguages definition
+
+| Attribute            | Description                                                           | Mandatory | Visible |
+| -------------------- | --------------------------------------------------------------------- | :-------: | :-----: |
+| CertificateLanguages | An array of the languages you wish your certificate to be rendered in |    Yes    |   No    |
