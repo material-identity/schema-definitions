@@ -31,6 +31,8 @@ For more information, please look at the CoA [documentation](https://github.com/
 
 ## Adding a schema definition
 
+To add a new schema definition, you can use the `create:definition` command. Run `npm run create:definition -- --name <definition name> --hbs <boolean>`. This will create a folder with the name of the schema and add all the starter files mentioned below along with the boilerplate code.
+
 Each schema definition goes in its own folder. Each folder should contain a schema with the same name as the folder, e.g. `company.json` goes in the `company` folder, `languages.json` goes in the `languages` folder. If a handlebars partial is needed, it should share the same name as the main schema file and folder, e.g. `company.hbs` goes in the `company` folder.
 
 There should also be a `test_schema.json` in each folder which references the main schema file in that folder which will be used for testing.
