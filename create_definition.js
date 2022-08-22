@@ -7,6 +7,8 @@ const writeFile = function (key, value) {
 };
 
 const writeSchemaDirAndFiles = function (schemaName, createHbs) {
+  if (!schemaName) throw new Error('You must input a schema definition name');
+
   const jsonSchemaStarter = {
     $schema: 'http://json-schema.org/draft-07/schema#',
     $id: `${schemaName}.json`,
@@ -54,11 +56,7 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
   }).argv;
 
   try {
-    const schemaName = argv.name;
-    const createHbs = argv.hbs;
-    if (!schemaName) throw new Error('You must input a schema definition name');
-
-    writeSchemaDirAndFiles(schemaName, createHbs);
+    writeSchemaDirAndFiles(argv.name, argv.hbs);
     process.exit(0);
   } catch (error) {
     console.error(error.message);
