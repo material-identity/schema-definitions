@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "measurement.json",
+  "definitions": {
+    "Measurement": {
+      "title": "Measurement",
+      "type": "object",
+      "description": "Measured Values in a structured fashion for easy processing and rendering of data",
+      "properties": {
+        "Property": {
+          "description": "The property measured",
+          "type": "string"
+        },
+        "Value": {
+          "description": "A measured or calculated Value (e.g. mean of individual measurements).",
+          "type": "number"
+        },
+        "Minimum": {
+          "description": "The lower limit according product specification. If not provided it is 0.",
+          "type": "number"
+        },
+        "Maximum": {
+          "description": "The upper limit according product specification. If not provided it is ∞.",
+          "type": "number"
+        },
+        "Unit": {
+          "description": "The Unit of Value.",
+          "type": "string"
+        }
+      },
+      "required": ["Value"],
+      "additionalProperties": false
+    }
+  }
+}
