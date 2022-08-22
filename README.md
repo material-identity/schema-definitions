@@ -25,9 +25,23 @@ For more information, please look at the CoA [documentation](https://github.com/
 
 ## CertificateLanguages definition
 
+The languages definition is used in all schemas, including `EN10168` and `CoA`.
+
 | Attribute            | Description                                                           | Mandatory | Visible |
 | -------------------- | --------------------------------------------------------------------- | :-------: | :-----: |
 | CertificateLanguages | An array of the languages you wish your certificate to be rendered in |    Yes    |   No    |
+
+## Measurement definition
+
+The Measurement defintion is used by the EN10168 schema under the `ProductDescription` property at `B10`, `B11`, `B12`, and `B13`.
+
+| Attribute | Description                                                                | Mandatory | Visible |
+| --------- | -------------------------------------------------------------------------- | :-------: | :-----: |
+| Property  | The property measured                                                      |    No     |   No    |
+| Value     | A measured or calculated Value (e.g. mean of individual measurements).     |    Yes    |   Yes   |
+| Minimum   | "The lower limit according product specification. If not provided it is 0. |    No     |   Yes   |
+| Maximum   | The upper limit according product specification. If not provided it is ∞.  |    No     |   Yes   |
+| Unit      | The Unit of Value.                                                         |    No     |   Yes   |
 
 ## Adding a schema definition
 
