@@ -1,0 +1,20 @@
+{{!-- ProductDescription-> B10,B11,B12,B13--}}
+
+<table class="main-table" style="margin-top: 0px">
+  <tbody>
+    <tr class="table-rows">
+      <th class="table-headers" colspan="2">{{@key}} {{this.Property}}</th>
+      <td class="table-cells">{{localizeNumber this.Value ../Certificate.CertificateLanguages.[0]}}
+        {{this.Unit}}
+      </td>
+      <td class="table-cells">
+        {{#if this.Minimum}}
+            min {{localizeNumber this.Minimum ../Certificate.CertificateLanguages.[0]}} {{this.Unit}}
+        {{/if}}
+        {{#if this.Maximum}}
+            max {{localizeNumber this.Maximum ../Certificate.CertificateLanguages.[0]}} {{this.Unit}}
+        {{/if}}
+      </td>
+    </tr>
+  </tbody>
+</table>
