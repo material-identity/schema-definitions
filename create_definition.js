@@ -21,7 +21,14 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
     properties: {},
     required: [],
   };
-  const testSuiteMap = `const validCertTestSuitesMap = [];\nconst invalidCertTestSuitesMap = [];\nmodule.exports = { validCertTestSuitesMap, invalidCertTestSuitesMap };\n`;
+  const testSuiteMap = `const validCertTestSuitesMap = [{ certificateName: 'valid_certificate_1' }];\n
+  const invalidCertTestSuitesMap = [
+    {
+      certificateName: 'invalid_certificate_1',
+      expectedErrors: [],
+    },
+  ];\n\n
+  module.exports = { validCertTestSuitesMap, invalidCertTestSuitesMap };\n`;
   const fileNameMap = {
     [`${schemaName}/${schemaName}.json`]: JSON.stringify(jsonSchemaStarter),
     [`${schemaName}/test_schema.json`]: JSON.stringify(testSchemaStarter),
