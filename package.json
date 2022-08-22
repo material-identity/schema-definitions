@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
-    "lint": "eslint ./*.js"
+    "lint": "eslint ./*.js",
+    "create:definition": "node create_definition.js"
   },
   "repository": {
     "type": "git",
