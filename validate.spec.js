@@ -4,7 +4,7 @@ const addFormats = require('ajv-formats');
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
 
-const folders = ['company', 'languages'];
+const folders = ['company', 'languages', 'measurement'];
 
 folders.forEach((folder) => {
   const { validCertTestSuitesMap, invalidCertTestSuitesMap } = require(resolve(
@@ -26,7 +26,7 @@ folders.forEach((folder) => {
     return ajv;
   };
 
-  describe('Validate', function () {
+  describe(`Validate ${folder} schema`, function () {
     const testSchemaPath = resolve(__dirname, `${folder}/test_schema.json`);
     const schemaPath = resolve(__dirname, `${folder}/${folder}.json`);
     const testSchema = JSON.parse(readFileSync(testSchemaPath, 'utf-8'));
