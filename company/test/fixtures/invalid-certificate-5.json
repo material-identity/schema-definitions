@@ -1,11 +1,13 @@
 {
-  "A01": {
-    "CompanyName": "Steel Mill SE",
-    "Street": "Stahlstrasse 1",
-    "ZipCode": "4040",
-    "City": "Linz",
-    "Country": "AT",
-    "Email": "sbs.steelfactory@gmail.com",
-    "VAT": "AT12345678910111213"
+  "Certificate": {
+    "A01": {
+      "CompanyName": "Steel Mill SE",
+      "Street": "Stahlstrasse 1",
+      "ZipCode": "4040",
+      "City": "Linz",
+      "Country": "AT",
+      "Email": "sbs.steelfactory@gmail.com",
+      "VAT": "AT12345678910111213"
+    }
   }
 }

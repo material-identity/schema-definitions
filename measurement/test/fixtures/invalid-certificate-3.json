@@ -1,6 +1,8 @@
 {
-  "B10": {
-    "Property": "Corner radius",
-    "Unit": "mm"
+  "Certificate": {
+    "B10": {
+      "Property": "Corner radius",
+      "Unit": "mm"
+    }
   }
 }

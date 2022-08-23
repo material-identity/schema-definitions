@@ -1,5 +1,7 @@
 {
-  "B10": {
-    "Value": "string"
+  "Certificate": {
+    "B10": {
+      "Value": "string"
+    }
   }
 }

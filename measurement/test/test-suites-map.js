@@ -20,7 +20,7 @@ const invalidCertTestSuitesMap = [
     certificateName: 'invalid-certificate-1',
     expectedErrors: [
       {
-        instancePath: '/B10/Value',
+        instancePath: '/Certificate/B10/Value',
         schemaPath: 'measurement.json#/definitions/Measurement/properties/Value/type',
         keyword: 'type',
         params: { type: 'number' },
@@ -32,7 +32,7 @@ const invalidCertTestSuitesMap = [
     certificateName: 'invalid-certificate-2',
     expectedErrors: [
       {
-        instancePath: '/B10/Value',
+        instancePath: '/Certificate/B10/Value',
         schemaPath: 'measurement.json#/definitions/Measurement/properties/Value/type',
         keyword: 'type',
         params: { type: 'number' },
@@ -44,7 +44,7 @@ const invalidCertTestSuitesMap = [
     certificateName: 'invalid-certificate-3',
     expectedErrors: [
       {
-        instancePath: '/B10',
+        instancePath: '/Certificate/B10',
         schemaPath: 'measurement.json#/definitions/Measurement/required',
         keyword: 'required',
         params: { missingProperty: 'Value' },

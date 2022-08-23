@@ -4,13 +4,19 @@
   "title": "Certificate",
   "type": "object",
   "properties": {
-    "A01": {
-      "allOf": [
-        {
-          "$ref": "company.json#/definitions/Company"
+    "Certificate": {
+      "type": "object",
+      "properties": {
+        "A01": {
+          "allOf": [
+            {
+              "$ref": "company.json#/definitions/Company"
+            }
+          ]
         }
-      ]
+      },
+      "required": ["A01"]
     }
   },
-  "required": ["A01"]
+  "required": ["Certificate"]
 }

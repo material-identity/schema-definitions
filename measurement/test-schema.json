@@ -3,14 +3,20 @@
   "$id": "test-schema.json",
   "type": "object",
   "properties": {
-    "B10": {
-      "description": "Product dimensions - length of the product",
-      "allOf": [
-        {
-          "$ref": "measurement.json#/definitions/Measurement"
+    "Certificate": {
+      "type": "object",
+      "properties": {
+        "B10": {
+          "description": "Product dimensions - length of the product",
+          "allOf": [
+            {
+              "$ref": "measurement.json#/definitions/Measurement"
+            }
+          ]
         }
-      ]
+      },
+      "required": ["B10"]
     }
   },
-  "required": ["B10"]
+  "required": ["Certificate"]
 }
