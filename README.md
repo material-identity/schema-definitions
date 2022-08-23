@@ -1,8 +1,8 @@
-# schema-definitions
+# Schema definitions
 
 A repository containing schema definitions that can be shared across multiple schemas.
 
-Each definition along with its handlebars partial and tests is stored in its own folder.
+Each definition is stored in its own folder along with its handlebars partial and tests/fixtures.
 
 ## Company definition
 
@@ -33,15 +33,60 @@ The languages definition is used in all schemas, including `EN10168` and `CoA`.
 
 ## Measurement definition
 
-The Measurement defintion is used by the EN10168 schema under the `ProductDescription` property at `B10`, `B11`, `B12`, and `B13`.
+The Measurement definition is used by the EN10168 schema under the `ProductDescription` property at `B10`, `B11`, `B12`, and `B13`.
 
-| Attribute | Description                                                                | Mandatory | Visible |
-| --------- | -------------------------------------------------------------------------- | :-------: | :-----: |
-| Property  | The property measured                                                      |    No     |   No    |
-| Value     | A measured or calculated Value (e.g. mean of individual measurements).     |    Yes    |   Yes   |
-| Minimum   | "The lower limit according product specification. If not provided it is 0. |    No     |   Yes   |
-| Maximum   | The upper limit according product specification. If not provided it is ∞.  |    No     |   Yes   |
-| Unit      | The Unit of Value.                                                         |    No     |   Yes   |
+| Attribute | Description                                                               | Mandatory | Visible |
+| --------- | ------------------------------------------------------------------------- | :-------: | :-----: |
+| Property  | The property measured                                                     |    No     |   No    |
+| Value     | A measured or calculated Value (e.g. mean of individual measurements).    |    Yes    |   Yes   |
+| Minimum   | The lower limit according product specification. If not provided it is 0. |    No     |   Yes   |
+| Maximum   | The upper limit according product specification. If not provided it is ∞. |    No     |   Yes   |
+| Unit      | The Unit of Value.                                                        |    No     |   Yes   |
+
+## Product description definition
+
+The ProductDescription definition is used by the EN10168 schema. It is a required property under `Certificate`. The table below shows how its used in the EN10168 schema. A modified version is used in the TKR schema.
+
+| Attribute                | Description                                                          | Mandatory | Visible |
+| ------------------------ | -------------------------------------------------------------------- | :-------: | :-----: |
+| B01                      | The product                                                          |    Yes    |   Yes   |
+| B02                      | An object containing multiple properties (see EN10168 documentation) |    Yes    |   Yes   |
+| B03                      | Any supplementary requirements                                       |    No     |   Yes   |
+| B04                      | The delivery conditions for the product                              |    No     |   Yes   |
+| B05                      | Reference heat treatment of samples                                  |    No     |   Yes   |
+| B06                      | Marking of the product                                               |    No     |   Yes   |
+| B07                      | Identification of the product, usually batch, charge or lot number   |    Yes    |   Yes   |
+| B08                      | Number of pieces of the product.                                     |    Yes    |   Yes   |
+| B09                      | Product type and its describing dimensional parameters               |    Yes    |   Yes   |
+| B10                      | Product dimensions - length of the produc                            |    Yes    |   Yes   |
+| B11                      | Product dimensions                                                   |    No     |   Yes   |
+| B12                      | Theoretical mass                                                     |    No     |   Yes   |
+| B13                      | Actual mass                                                          |    Yes    |   Yes   |
+| SupplementaryInformation | Supplementary information                                            |    No     |   Yes   |
+
+## Validation definition
+
+The Validation definition is used by the EN10168 schema. It is a required property under `Certificate`.
+
+| Attribute                | Description                            | Mandatory | Visible |
+| ------------------------ | -------------------------------------- | :-------: | :-----: |
+| Z01                      | Statement of compliance                |    Yes    |   Yes   |
+| Z02                      | Date of issue and validation           |    Yes    |   Yes   |
+| Z03                      | Stamp of the inspection representative |    No     |   Yes   |
+| Z04                      | CE marking                             |    No     |   Yes   |
+| SupplementaryInformation | Validation Supplementary Information   |    No     |   Yes   |
+
+## Key Value Object definition
+
+The Key Value Object definition is used by the EN10168 schema under multiple properties.
+
+| Attribute      | Description        | Mandatory | Visible |
+| -------------- | ------------------ | :-------: | :-----: |
+| Key            | The key            |    Yes    |   Yes   |
+| Value          | The value          |    No     |   Yes   |
+| Unit           | The unit           |    No     |   No    |
+| Interpretation | The interpretation |    No     |   Yes   |
+| Type           | The type (an enum) |    No     |   No    |
 
 ## Adding a schema definition
 
