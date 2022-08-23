@@ -1,27 +1,27 @@
 const validCertTestSuitesMap = [
   {
-    certificateName: `valid_certificate_1`,
+    certificateName: `valid-certificate-1`,
   },
   {
-    certificateName: `valid_certificate_2`,
+    certificateName: `valid-certificate-2`,
   },
   {
-    certificateName: `valid_certificate_3`,
+    certificateName: `valid-certificate-3`,
   },
   {
-    certificateName: `valid_certificate_4`,
+    certificateName: `valid-certificate-4`,
   },
   {
-    certificateName: `valid_certificate_5`,
+    certificateName: `valid-certificate-5`,
   },
   {
-    certificateName: `valid_certificate_6`,
+    certificateName: `valid-certificate-6`,
   },
 ];
 
 const invalidCertTestSuitesMap = [
   {
-    certificateName: `invalid_certificate_1`,
+    certificateName: `invalid-certificate-1`,
     expectedErrors: [
       {
         instancePath: '/Certificate/CertificateLanguages',
@@ -33,7 +33,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: `invalid_certificate_2`,
+    certificateName: `invalid-certificate-2`,
     expectedErrors: [
       {
         instancePath: '/Certificate/CertificateLanguages',
@@ -45,7 +45,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: `invalid_certificate_3`,
+    certificateName: `invalid-certificate-3`,
     expectedErrors: [
       {
         instancePath: '/Certificate/CertificateLanguages',
@@ -57,7 +57,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: `invalid_certificate_4`,
+    certificateName: `invalid-certificate-4`,
     expectedErrors: [
       {
         instancePath: '/Certificate/CertificateLanguages/0',

@@ -1,13 +1,13 @@
 const validCertTestSuitesMap = [
-  { certificateName: 'valid_certificate_1' },
-  { certificateName: 'valid_certificate_2' },
-  { certificateName: 'valid_certificate_3' },
-  { certificateName: 'valid_certificate_4' },
+  { certificateName: 'valid-certificate-1' },
+  { certificateName: 'valid-certificate-2' },
+  { certificateName: 'valid-certificate-3' },
+  { certificateName: 'valid-certificate-4' },
 ];
 
 const invalidCertTestSuitesMap = [
   {
-    certificateName: 'invalid_certificate_1',
+    certificateName: 'invalid-certificate-1',
     expectedErrors: [
       {
         instancePath: '/Certificate/Validation',
@@ -19,7 +19,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: 'invalid_certificate_2',
+    certificateName: 'invalid-certificate-2',
     expectedErrors: [
       {
         instancePath: '/Certificate/Validation',
@@ -31,7 +31,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: 'invalid_certificate_3',
+    certificateName: 'invalid-certificate-3',
     expectedErrors: [
       {
         instancePath: '/Certificate/Validation',
@@ -50,7 +50,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: 'invalid_certificate_4',
+    certificateName: 'invalid-certificate-4',
     expectedErrors: [
       {
         instancePath: '/Certificate/Validation/Z04',
@@ -62,7 +62,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: 'invalid_certificate_5',
+    certificateName: 'invalid-certificate-5',
     expectedErrors: [
       {
         instancePath: '/Certificate/Validation/Z04',
@@ -74,7 +74,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: 'invalid_certificate_6',
+    certificateName: 'invalid-certificate-6',
     expectedErrors: [
       {
         instancePath: '/Certificate/Validation/Z04',
@@ -86,7 +86,7 @@ const invalidCertTestSuitesMap = [
     ],
   },
   {
-    certificateName: 'invalid_certificate_7',
+    certificateName: 'invalid-certificate-7',
     expectedErrors: [
       {
         instancePath: '/Certificate/Validation/Z04',

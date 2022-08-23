@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "productDescription.json",
+  "$id": "product-description.json",
   "definitions": {
     "Tube": {
       "title": "Tube",
@@ -606,7 +606,7 @@
           },
           "patternProperties": {
             "^B1[4-9]|^B[2-9][0-9]": {
-              "$ref": "../keyValueObject.json#/definitions/KeyValueObject"
+              "$ref": "../key-value-object.json#/definitions/KeyValueObject"
             }
           },
           "additionalProperties": false

@@ -49,8 +49,8 @@ To add a new schema definition, you can use the `create:definition` command. Run
 
 Each schema definition goes in its own folder. Each folder should contain a schema with the same name as the folder, e.g. `company.json` goes in the `company` folder, `languages.json` goes in the `languages` folder. If a handlebars partial is needed, it should share the same name as the main schema file and folder, e.g. `company.hbs` goes in the `company` folder.
 
-There should also be a `test_schema.json` in each folder which references the main schema file in that folder which will be used for testing.
+There should also be a `test-schema.json` in each folder which references the main schema file in that folder which will be used for testing.
 
-Each folder should have a `test` folder with a `test_suites_map.js` file and a `fixtures` folder within. The `test_suites_map.js` file should contain a map of the valid and invalid certificates contained within the `fixtures` folder for testing, as well as the errors expected for the invalid certificates.
+Each folder should have a `test` folder with a `test-suites-map.js` file and a `fixtures` folder within. The `test-suites-map.js` file should contain a map of the valid and invalid certificates contained within the `fixtures` folder for testing, as well as the errors expected for the invalid certificates.
 
 When a new folder is created and tests are added, the folder name must be added to the `folders` array in `validate.spec.js`.

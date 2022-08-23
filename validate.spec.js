@@ -5,12 +5,12 @@ const { readFileSync } = require('fs');
 const { resolve } = require('path');
 const path = require('path');
 
-const folders = ['company', 'languages', 'measurement', 'validation', 'productDescription'];
+const folders = ['company', 'languages', 'measurement', 'validation', 'product-description'];
 
 folders.forEach((folder) => {
   const { validCertTestSuitesMap, invalidCertTestSuitesMap } = require(resolve(
     __dirname,
-    `${folder}/test/test_suites_map.js`,
+    `${folder}/test/test-suites-map.js`,
   ));
 
   const createAjvInstance = () => {
@@ -31,7 +31,7 @@ folders.forEach((folder) => {
   };
 
   describe(`Validate ${folder} schema`, function () {
-    const testSchemaPath = resolve(__dirname, `${folder}/test_schema.json`);
+    const testSchemaPath = resolve(__dirname, `${folder}/test-schema.json`);
     const testSchema = JSON.parse(readFileSync(testSchemaPath, 'utf-8'));
 
     it('the schema should validate', async () => {
