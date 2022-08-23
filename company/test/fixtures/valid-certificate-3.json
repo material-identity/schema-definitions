@@ -7,7 +7,7 @@
       "City": "Linz",
       "Country": "AT",
       "Email": "sbs.steelfactory@gmail.com",
-      "Identifier": {
+      "Identifiers": {
         "VAT": "AT123456789"
       }
     }

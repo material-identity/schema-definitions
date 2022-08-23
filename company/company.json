@@ -134,21 +134,10 @@
           "$ref": "#/definitions/CompanyAddress"
         },
         {
-          "oneOf": [
-            {
-              "properties": {
-                "Identifiers": { "$ref": "#/definitions/CompanyIdentifiers" }
-              },
-              "required": ["Identifiers"]
-            },
-            {
-              "properties": {
-                "Identifier": { "$ref": "#/definitions/CompanyIdentifiers" }
-              },
-              "description": "This is here for compatability with the CoA schema, it will be removed in a future release",
-              "required": ["Identifier"]
-            }
-          ]
+          "properties": {
+            "Identifiers": { "$ref": "#/definitions/CompanyIdentifiers" }
+          },
+          "required": ["Identifiers"]
         }
       ]
     }

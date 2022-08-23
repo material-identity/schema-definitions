@@ -7,7 +7,7 @@
       "City": "Berlin",
       "Country": "DE",
       "Email": "s1seven.certificates@gmail.com",
-      "Identifier": {
+      "Identifiers": {
         "DUNS": "123456789"
       }
     }
