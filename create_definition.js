@@ -39,6 +39,8 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
     [`${schemaName}/${schemaName}.json`]: JSON.stringify(jsonSchemaStarter),
     [`${schemaName}/test_schema.json`]: JSON.stringify(testSchemaStarter),
     [`${schemaName}/test/test_suites_map.js`]: testSuiteMap,
+    [`${schemaName}/test/fixtures/valid_certificate_1.json`]: '{}',
+    [`${schemaName}/test/fixtures/invalid_certificate_1.json`]: '{}',
   };
   if (createHbs) fileNameMap[`${schemaName}/${schemaName}.hbs`] = '';
 
