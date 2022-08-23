@@ -3,8 +3,9 @@ const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
+const path = require('path');
 
-const folders = ['company', 'languages', 'measurement'];
+const folders = ['company', 'languages', 'measurement', 'validation', 'productDescription'];
 
 folders.forEach((folder) => {
   const { validCertTestSuitesMap, invalidCertTestSuitesMap } = require(resolve(
@@ -14,7 +15,10 @@ folders.forEach((folder) => {
 
   const createAjvInstance = () => {
     const ajv = new Ajv({
-      loadSchema: (uri) => loadExternalFile(resolve(__dirname, `/${uri}`), 'json'),
+      loadSchema: (uri) => {
+        const filename = path.parse(uri).name;
+        return loadExternalFile(path.join(__dirname, `${filename}/${uri}`), 'json');
+      },
       strictSchema: true,
       strictNumbers: true,
       strictRequired: true,
@@ -28,12 +32,10 @@ folders.forEach((folder) => {
 
   describe(`Validate ${folder} schema`, function () {
     const testSchemaPath = resolve(__dirname, `${folder}/test_schema.json`);
-    const schemaPath = resolve(__dirname, `${folder}/${folder}.json`);
     const testSchema = JSON.parse(readFileSync(testSchemaPath, 'utf-8'));
-    const schema = JSON.parse(readFileSync(schemaPath, 'utf-8'));
 
-    it('the schema should validate', () => {
-      const validateSchema = createAjvInstance().addSchema(schema).compile(testSchema);
+    it('the schema should validate', async () => {
+      const validateSchema = await createAjvInstance().compileAsync(testSchema);
       expect(() => validateSchema()).not.toThrow();
     });
 
@@ -41,7 +43,7 @@ folders.forEach((folder) => {
       it(`${certificateName} should be a valid certificate`, async () => {
         const certificatePath = resolve(__dirname, `${folder}/test/fixtures/${certificateName}.json`);
         const certificate = JSON.parse(readFileSync(certificatePath, 'utf8'));
-        const validator = await createAjvInstance().addSchema(schema).compile(testSchema);
+        const validator = await createAjvInstance().compileAsync(testSchema);
         //
         const isValid = await validator(certificate);
         expect(isValid).toBe(true);
@@ -53,7 +55,7 @@ folders.forEach((folder) => {
       it(`${certificateName} should be an invalid certificate`, async () => {
         const certificatePath = resolve(__dirname, `${folder}/test/fixtures/${certificateName}.json`);
         const certificate = JSON.parse(readFileSync(certificatePath, 'utf8'));
-        const validator = await createAjvInstance().addSchema(schema).compile(testSchema);
+        const validator = await createAjvInstance().compileAsync(testSchema);
         //
         const isValid = await validator(certificate);
         expect(isValid).toBe(false);
