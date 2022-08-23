@@ -18,8 +18,14 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
     $schema: 'http://json-schema.org/draft-07/schema#',
     $id: 'test-schema.json',
     type: 'object',
-    properties: {},
-    required: [],
+    properties: {
+      Certificate: {
+        type: 'object',
+        properties: {},
+        required: [],
+      },
+    },
+    required: ['Certificate'],
   };
   const testSuiteMap = `const validCertTestSuitesMap = [
     // { certificateName: 'valid-certificate-1' }
@@ -34,13 +40,16 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
   
   module.exports = { validCertTestSuitesMap, invalidCertTestSuitesMap };
   \n`;
+  const certificateFixtureBase = {
+    Certificate: {},
+  };
 
   const fileNameMap = {
     [`${schemaName}/${schemaName}.json`]: JSON.stringify(jsonSchemaStarter),
     [`${schemaName}/test-schema.json`]: JSON.stringify(testSchemaStarter),
     [`${schemaName}/test/test-suites-map.js`]: testSuiteMap,
-    [`${schemaName}/test/fixtures/valid-certificate-1.json`]: '{}',
-    [`${schemaName}/test/fixtures/invalid-certificate-1.json`]: '{}',
+    [`${schemaName}/test/fixtures/valid-certificate-1.json`]: JSON.stringify(certificateFixtureBase),
+    [`${schemaName}/test/fixtures/invalid-certificate-1.json`]: JSON.stringify(certificateFixtureBase),
   };
   if (createHbs) fileNameMap[`${schemaName}/${schemaName}.hbs`] = '';
 
