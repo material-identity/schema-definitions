@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "test-schema.json",
+  "type": "object",
+  "properties": {
+    "Certificate": {
+      "type": "object",
+      "properties": {
+        "Z05": {
+          "allOf": [
+            {
+              "$ref": "key-value-object.json#/definitions/KeyValueObject"
+            }
+          ]
+        }
+      },
+      "required": ["Z05"]
+    }
+  },
+  "required": ["Certificate"]
+}

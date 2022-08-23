@@ -5,7 +5,7 @@ const { readFileSync } = require('fs');
 const { resolve } = require('path');
 const path = require('path');
 
-const folders = ['company', 'languages', 'measurement', 'validation', 'product-description'];
+const folders = ['company', 'languages', 'measurement', 'validation', 'product-description', 'key-value-object'];
 
 folders.forEach((folder) => {
   const { validCertTestSuitesMap, invalidCertTestSuitesMap } = require(resolve(

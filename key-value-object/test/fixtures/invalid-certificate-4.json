@@ -1,0 +1,10 @@
+{
+  "Certificate": {
+    "Z05": {
+      "Key": "Quality Department Tel.",
+      "Value": "+43 732 1000 8888",
+      "Type": "string",
+      "ExtraProperty": "string"
+    }
+  }
+}
