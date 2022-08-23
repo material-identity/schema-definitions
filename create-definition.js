@@ -28,12 +28,22 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
     required: ['Certificate'],
   };
   const testSuiteMap = `const validCertTestSuitesMap = [
-    // { certificateName: 'valid-certificate-1' }
+    // { certificateName: 'valid-certificate-1' },
+    // { certificateName: 'valid-certificate-2' },
+    // { certificateName: 'valid-certificate-3' },
   ];
   
   const invalidCertTestSuitesMap = [
     // {
     //   certificateName: 'invalid-certificate-1',
+    //   expectedErrors: [],
+    // },
+    // {
+    //   certificateName: 'invalid-certificate-2',
+    //   expectedErrors: [],
+    // },
+    // {
+    //   certificateName: 'invalid-certificate-3',
     //   expectedErrors: [],
     // },
   ];
