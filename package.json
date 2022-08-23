@@ -7,7 +7,7 @@
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
     "lint": "eslint ./*.js",
-    "create:definition": "node create_definition.js"
+    "create:definition": "node create-definition.js"
   },
   "repository": {
     "type": "git",

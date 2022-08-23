@@ -16,18 +16,18 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
   };
   const testSchemaStarter = {
     $schema: 'http://json-schema.org/draft-07/schema#',
-    $id: 'test_schema.json',
+    $id: 'test-schema.json',
     type: 'object',
     properties: {},
     required: [],
   };
   const testSuiteMap = `const validCertTestSuitesMap = [
-    // { certificateName: 'valid_certificate_1' }
+    // { certificateName: 'valid-certificate-1' }
   ];
   
   const invalidCertTestSuitesMap = [
     // {
-    //   certificateName: 'invalid_certificate_1',
+    //   certificateName: 'invalid-certificate-1',
     //   expectedErrors: [],
     // },
   ];
@@ -37,10 +37,10 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
 
   const fileNameMap = {
     [`${schemaName}/${schemaName}.json`]: JSON.stringify(jsonSchemaStarter),
-    [`${schemaName}/test_schema.json`]: JSON.stringify(testSchemaStarter),
-    [`${schemaName}/test/test_suites_map.js`]: testSuiteMap,
-    [`${schemaName}/test/fixtures/valid_certificate_1.json`]: '{}',
-    [`${schemaName}/test/fixtures/invalid_certificate_1.json`]: '{}',
+    [`${schemaName}/test-schema.json`]: JSON.stringify(testSchemaStarter),
+    [`${schemaName}/test/test-suites-map.js`]: testSuiteMap,
+    [`${schemaName}/test/fixtures/valid-certificate-1.json`]: '{}',
+    [`${schemaName}/test/fixtures/invalid-certificate-1.json`]: '{}',
   };
   if (createHbs) fileNameMap[`${schemaName}/${schemaName}.hbs`] = '';
 
