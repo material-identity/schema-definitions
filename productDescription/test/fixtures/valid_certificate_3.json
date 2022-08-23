@@ -1,0 +1,52 @@
+{
+  "Certificate": {
+    "ProductDescription": {
+      "B01": "Seamleass Steel Tubes Hot Roild",
+      "B02": {
+        "SteelDesignation": ["S355J2H", "P355NH/TC1", "E355+N"],
+        "ProductNorm": ["EN 10219-1:2006"],
+        "MassNorm": ["EN 10220"],
+        "MaterialNorm": ["EN 10297-1:2003-06"]
+      },
+      "B03": "Ausführung lt. EN 10219 Teil 1+2 /--/",
+      "B04": "normalized",
+      "B06": "SST 200x150x6",
+      "B07": "7282841",
+      "B08": 16,
+      "B09": {
+        "Form": "RectangularTube",
+        "Width": 200,
+        "Height": 150,
+        "WallThickness": 6.5,
+        "Unit": "mm"
+      },
+      "B10": {
+        "Property": "Length",
+        "Value": 12000,
+        "Unit": "mm"
+      },
+      "B11": {
+        "Property": "Corner radius",
+        "Value": 1.5,
+        "Unit": "mm"
+      },
+      "B12": {
+        "Property": "Theoretical mass",
+        "Value": 5738.3,
+        "Unit": "kg"
+      },
+      "B13": {
+        "Property": "Actual mass",
+        "Value": 5739.3,
+        "Unit": "kg"
+      },
+      "SupplementaryInformation": {
+        "B99": {
+          "Key": "B99",
+          "Value": "1607219/0001_20181023_1529",
+          "Type": "string"
+        }
+      }
+    }
+  }
+}
