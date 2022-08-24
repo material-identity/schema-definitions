@@ -1,32 +1,26 @@
 {{! COMPANIES HEADERS }}
 
 <ol>
-	{{#if CompanyName}}
-		<li>{{CompanyName}}</li>
-	{{/if}}
-	{{#if Name}}
-		<li>{{Name}}</li>
-	{{/if}}
-	{{#if Street}}
-		{{#typeOf Street "string"}}
-			<li>{{Street}}</li>
-		{{/typeOf}}
-		{{#typeOf Street "object"}}
-			{{#each Street}}
-				<li>{{this}}</li>
-			{{/each}}
-		{{/typeOf}}
-	{{/if}}
-	{{#if AddressLine1}}
-		<li>{{AddressLine1}}</li>
-	{{/if}}
-	{{#if AddressLine2}}
-		<li>{{AddressLine2}}</li>
-	{{/if}}
-	<li>{{ZipCode}},
-		{{City}},
-		{{Country}}</li>
-	{{#if Email}}
-		<li>{{Email}}</li>
-	{{/if}}
+  {{#if CompanyName}}
+    <li>{{CompanyName}}</li>
+  {{/if}}
+  {{#if Name}}
+    <li>{{Name}}</li>
+  {{/if}}
+  {{#if Street}}
+    {{#typeOf Street 'string'}}
+      <li>{{Street}}</li>
+    {{/typeOf}}
+    {{#typeOf Street 'object'}}
+      {{#each Street}}
+        <li>{{this}}</li>
+      {{/each}}
+    {{/typeOf}}
+  {{/if}}
+  <li>{{ZipCode}},
+    {{City}},
+    {{Country}}</li>
+  {{#if Email}}
+    <li>{{Email}}</li>
+  {{/if}}
 </ol>
