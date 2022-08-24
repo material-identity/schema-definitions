@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "commercial-transaction.json",
+  "definitions": {
+    "CommercialTransactionBase": {
+      "title": "CommercialTransactionBase",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "A01": {
+          "allOf": [
+            {
+              "$ref": "../company.json#/definitions/Company"
+            }
+          ],
+          "description": "The manufacturer's works which delivers the certificate along the product"
+        },
+        "A02": {
+          "description": "The type of inspection document, e.g. 'EN 10204 3.1 Certificate'",
+          "type": "string"
+        },
+        "A03": {
+          "description": "The document number of the certifcate",
+          "type": "string"
+        },
+        "A04": {
+          "description": "The mark of the manufacturer as base64 png file. The maximum size is <TBD>",
+          "type": "string",
+          "contentEncoding": "base64",
+          "contentMediaType": "image/png"
+        },
+        "A05": {
+          "description": "The originator of the document, not necessarily equal to A01",
+          "type": "string",
+          "default": "Factory Production Control"
+        },
+        "A07": {
+          "description": "Purchase number",
+          "type": "string"
+        },
+        "A08": {
+          "description": "Manufacturer's work number",
+          "type": "string"
+        },
+        "A09": {
+          "description": "The article number used by the purchaser",
+          "type": "string"
+        },
+        "SupplementaryInformation": {
+          "title": "CommercialTransactionSupplementaryInformation",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^A1[0-9]|^A[2-8][0-9]|^A[2-9][0-6]"
+          },
+          "patternProperties": {
+            "^A1[0-9]|^A[2-8][0-9]|^A[2-9][0-6]": {
+              "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+            }
+          },
+          "additionalProperties": false
+        },
+        "A97": {
+          "description": "A custom field for the position number in the order",
+          "type": "string"
+        },
+        "A98": {
+          "description": "A custom field for the delivery note number",
+          "type": "string"
+        },
+        "A99": {
+          "description": "A custom field for the aviso document number",
+          "type": "string"
+        }
+      },
+      "required": ["A01", "A02", "A03", "A04", "A05", "A07"]
+    },
+    "CommercialTransactionReceivers": {
+      "title": "CommercialTransactionReceivers",
+      "description": "",
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "A06": {
+              "allOf": [
+                {
+                  "$ref": "../company.json#/definitions/Company"
+                }
+              ],
+              "description": "The purchaser of the product and receiver of the certificate"
+            }
+          },
+          "required": ["A06"]
+        },
+        {
+          "properties": {
+            "A06.1": {
+              "allOf": [
+                {
+                  "$ref": "../company.json#/definitions/Company"
+                }
+              ],
+              "description": "The purchaser of the product"
+            },
+            "A06.2": {
+              "allOf": [
+                {
+                  "$ref": "../company.json#/definitions/Company"
+                }
+              ],
+              "description": "The consignee of the product"
+            },
+            "A06.3": {
+              "allOf": [
+                {
+                  "$ref": "../company.json#/definitions/Company"
+                }
+              ],
+              "description": "The receiver/consignee of the certificate"
+            }
+          },
+          "required": ["A06.1"]
+        }
+      ]
+    },
+    "CommercialTransaction": {
+      "title": "CommercialTransaction",
+      "description": "List parties and details involved in the transaction",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CommercialTransactionBase"
+        },
+        {
+          "$ref": "#/definitions/CommercialTransactionReceivers"
+        }
+      ]
+    }
+  }
+}
