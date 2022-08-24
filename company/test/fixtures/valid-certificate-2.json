@@ -2,7 +2,7 @@
   "Certificate": {
     "A01": {
       "Name": "Green Plastics AG",
-      "AddressLine1": "Kunststoffgasse 1",
+      "Street": "Kunststoffgasse 1",
       "ZipCode": "10003",
       "City": "Berlin",
       "Country": "DE",

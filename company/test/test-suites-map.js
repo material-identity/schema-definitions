@@ -118,6 +118,13 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/A01',
+        schemaPath: '#/definitions/CompanyAddress/required',
+        keyword: 'required',
+        params: { missingProperty: 'Street' },
+        message: "must have required property 'Street'",
+      },
+      {
+        instancePath: '/Certificate/A01',
         schemaPath: '#/allOf/2/required',
         keyword: 'required',
         params: { missingProperty: 'Identifiers' },
