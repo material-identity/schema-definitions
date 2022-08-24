@@ -23,7 +23,7 @@ For more information, please look at the CoA [documentation](https://github.com/
 | Identifier            | One or more unique company identifiers. Currently, [VAT](https://ec.europa.eu/taxation_customs/vat-identification-numbers_en), [DUNS](https://www.dnb.com/duns-number.html), and [Cage Codes](https://cage.dla.mil/Info/about#cagecode) are supported. |    Yes    |   No    |
 | AdditionalInformation | An array of additional free text information on the company.                                                                                                                                                                                           |    No     |   Yes   |
 
-## CertificateLanguages definition
+## Certificate Languages definition
 
 The languages definition is used in all schemas, including `EN10168` and `CoA`.
 
@@ -87,6 +87,41 @@ The Key Value Object definition is used by the EN10168 schema under multiple pro
 | Unit           | The unit           |    No     |   No    |
 | Interpretation | The interpretation |    No     |   Yes   |
 | Type           | The type (an enum) |    No     |   No    |
+
+## Commercial Transaction definition
+
+The Commercial Transaction definition is a required property used by the EN10168 schema.
+
+| Attribute                | Description                                                                | Mandatory | Visible |
+| ------------------------ | -------------------------------------------------------------------------- | :-------: | :-----: |
+| A01                      | A Company object                                                           |    Yes    |   Yes   |
+| A02                      | The type of inspection document, e.g. 'EN 10204 3.1 Certificate'           |    Yes    |   No    |
+| A03                      | The document number of the certifcate                                      |    Yes    |   No    |
+| A04                      | The mark of the manufacturer as base64 png file. The maximum size is <TBD> |    Yes    |   Yes   |
+| A05                      | The originator of the document, not necessarily equal to A01               |    Yes    |   No    |
+| A07                      | Purchase number                                                            |    Yes    |   No    |
+| A08                      | Manufacturer's work number                                                 |    No     |   No    |
+| A09                      | The article number used by the purchaser                                   |    No     |   No    |
+| A97                      | A custom field for the position number in the order                        |    No     |   No    |
+| A98                      | "A custom field for the delivery note number                               |    No     |   No    |
+| A99                      | A custom field for the aviso document number                               |    No     |   No    |
+| SupplementaryInformation | Commercial Transaction Supplementary Information                           |    No     |   Yes   |
+| A06                      | The purchaser of the product and receiver of the certificate               |    Yes    |   Yes   |
+| A06.1                    | The purchaser of the product                                               |    Yes    |   Yes   |
+| A06.2                    | The consignee of the product                                               |    No     |   Yes   |
+| A06.3                    | The receiver/consignee of the certificate                                  |    No     |   Yes   |
+
+## Attachment definition
+
+The Attachment definition is an optional property used by the CoA schema.
+
+| Attribute | Description                                    | Mandatory | Visible |
+| --------- | ---------------------------------------------- | :-------: | :-----: |
+| Hash      | The hash of unencoded data file.               |    Yes    |   No    |
+| FileName  | The name of the file.                          |    Yes    |   No    |
+| MIME-Type | The MIME/Type of the data file.                |    Yes    |   No    |
+| Encoding  | The format in which the hash value is encoded. |    Yes    |   No    |
+| Data      | The data encoded as defined in `Encoding`      |    Yes    |   No    |
 
 ## Adding a schema definition
 
