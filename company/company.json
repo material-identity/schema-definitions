@@ -55,41 +55,25 @@
       "additionalProperties": true
     },
     "CompanyAddress": {
-      "oneOf": [
-        {
-          "type": "object",
-          "properties": {
-            "Street": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "minItems": 1,
-                  "maxItems": 3
-                },
-                {
-                  "type": "string"
-                }
-              ]
-            }
-          },
-          "required": ["Street"]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "AddressLine1": {
-              "type": "string"
+      "type": "object",
+      "properties": {
+        "Street": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 3
             },
-            "AddressLine2": {
+            {
               "type": "string"
             }
-          },
-          "required": ["AddressLine1"]
+          ]
         }
-      ]
+      },
+      "required": ["Street"]
     },
     "CompanyIdentifiers": {
       "type": "object",
