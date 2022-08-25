@@ -491,48 +491,13 @@
         }
       ]
     },
-    "ProductDescription": {
+    "ProductDescriptionBase": {
       "title": "ProductDescription",
       "type": "object",
       "properties": {
         "B01": {
           "description": "The product",
           "type": "string"
-        },
-        "B02": {
-          "description": "",
-          "type": "object",
-          "properties": {
-            "ProductNorm": {
-              "description": "The product norm designation",
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "MaterialNorm": {
-              "description": "The material norm(s)",
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "MassNorm": {
-              "description": "The mass norm(s)",
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "SteelDesignation": {
-              "description": "The steel designation(s)",
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "additionalProperties": false
         },
         "B03": {
           "description": "Any supplementary requirements",
@@ -611,9 +576,64 @@
           },
           "additionalProperties": false
         }
-      },
-      "required": ["B01", "B02", "B07", "B08", "B09", "B10", "B13"],
-      "additionalProperties": false
+      }
+    },
+    "ProductDescription": {
+      "title": "ProductDescription",
+      "type": "object",
+      "$ref": "#/definitions/ProductDescriptionBase",
+      "oneOf": [
+        {
+          "properties": {
+            "B02": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "ProductNorm": {
+                  "description": "The product norm designation",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "MaterialNorm": {
+                  "description": "The material norm(s)",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "MassNorm": {
+                  "description": "The mass norm(s)",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "SteelDesignation": {
+                  "description": "The steel designation(s)",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": ["B01", "B02", "B07", "B08", "B09", "B10", "B13"],
+          "additionalProperties": true
+        },
+        {
+          "properties": {
+            "B02": {
+              "type": "string"
+            }
+          },
+          "required": ["B01", "B02", "B08"],
+          "additionalProperties": true
+        }
+      ]
     }
   }
 }
