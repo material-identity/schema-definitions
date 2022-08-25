@@ -492,7 +492,6 @@
       ]
     },
     "ProductDescriptionBase": {
-      "title": "ProductDescription",
       "type": "object",
       "properties": {
         "B01": {
@@ -522,59 +521,6 @@
         "B08": {
           "description": "Number of pieces of the product.",
           "type": "number"
-        },
-        "B09": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/ProductShape"
-            }
-          ],
-          "description": "Product type and its describing dimensional parameters"
-        },
-        "B10": {
-          "description": "Product dimensions - length of the product",
-          "allOf": [
-            {
-              "$ref": "../measurement.json#/definitions/Measurement"
-            }
-          ]
-        },
-        "B11": {
-          "description": "Product dimensions ",
-          "allOf": [
-            {
-              "$ref": "../measurement.json#/definitions/Measurement"
-            }
-          ]
-        },
-        "B12": {
-          "description": "Theoretical mass",
-          "allOf": [
-            {
-              "$ref": "../measurement.json#/definitions/Measurement"
-            }
-          ]
-        },
-        "B13": {
-          "description": "Actual mass",
-          "allOf": [
-            {
-              "$ref": "../measurement.json#/definitions/Measurement"
-            }
-          ]
-        },
-        "SupplementaryInformation": {
-          "title": "ProductDescriptionSupplementaryInformation",
-          "type": "object",
-          "propertyNames": {
-            "pattern": "^B1[4-9]|^B[2-9][0-9]"
-          },
-          "patternProperties": {
-            "^B1[4-9]|^B[2-9][0-9]": {
-              "$ref": "../key-value-object.json#/definitions/KeyValueObject"
-            }
-          },
-          "additionalProperties": false
         }
       }
     },
@@ -619,10 +565,62 @@
                 }
               },
               "additionalProperties": false
+            },
+            "B09": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/ProductShape"
+                }
+              ],
+              "description": "Product type and its describing dimensional parameters"
+            },
+            "B10": {
+              "description": "Product dimensions - length of the product",
+              "allOf": [
+                {
+                  "$ref": "../measurement.json#/definitions/Measurement"
+                }
+              ]
+            },
+            "B11": {
+              "description": "Product dimensions ",
+              "allOf": [
+                {
+                  "$ref": "../measurement.json#/definitions/Measurement"
+                }
+              ]
+            },
+            "B12": {
+              "description": "Theoretical mass",
+              "allOf": [
+                {
+                  "$ref": "../measurement.json#/definitions/Measurement"
+                }
+              ]
+            },
+            "B13": {
+              "description": "Actual mass",
+              "allOf": [
+                {
+                  "$ref": "../measurement.json#/definitions/Measurement"
+                }
+              ]
+            },
+            "SupplementaryInformation": {
+              "title": "ProductDescriptionSupplementaryInformation",
+              "type": "object",
+              "propertyNames": {
+                "pattern": "^B1[4-9]|^B[2-9][0-9]"
+              },
+              "patternProperties": {
+                "^B1[4-9]|^B[2-9][0-9]": {
+                  "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+                }
+              },
+              "additionalProperties": false
             }
           },
-          "required": ["B01", "B02", "B07", "B08", "B09", "B10", "B13"],
-          "additionalProperties": true
+          "required": ["B02", "B01", "B07", "B08", "B09", "B10", "B13"]
         },
         {
           "properties": {
@@ -630,8 +628,7 @@
               "type": "string"
             }
           },
-          "required": ["B01", "B02", "B08"],
-          "additionalProperties": true
+          "required": ["B02", "B01", "B08"]
         }
       ]
     }

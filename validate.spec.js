@@ -30,7 +30,7 @@ folders.forEach((folder) => {
       },
       strictSchema: true,
       strictNumbers: true,
-      strictRequired: false,
+      strictRequired: true,
       strictTypes: true,
       allErrors: true,
     });

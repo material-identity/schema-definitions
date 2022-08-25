@@ -58,6 +58,7 @@
       "type": "object",
       "properties": {
         "Street": {
+          "description": "Address of the company",
           "anyOf": [
             {
               "type": "array",
