@@ -1,0 +1,373 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "chemical-composition.json",
+  "definitions": {
+    "ChemicalElement": {
+      "title": "ChemicalElement",
+      "type": "object",
+      "description": "The chemical composition of the product.",
+      "properties": {
+        "Symbol": {
+          "description": "The symbol of the element",
+          "type": "string"
+        },
+        "Actual": {
+          "description": "The measured part of the element in percentage.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "Minimum": {
+          "description": "The minimum if defined by the product specification, otherwise the element must not provided.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "Maximum": {
+          "description": "The maximum as defined by the product specification, otherwise the element must not provided.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": ["Symbol", "Actual"],
+      "additionalProperties": false
+    },
+    "ChemicalComposition": {
+      "title": "ChemicalComposition",
+      "type": "object",
+      "properties": {
+        "C70": {
+          "description": "The metallurgic process, which is restricted to 2 types: Y = Basic oxygen process, E = Electric furnace",
+          "enum": ["Y", "E"]
+        },
+        "C71": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C72": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C73": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C74": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C75": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C76": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C77": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C78": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C79": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C80": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C81": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C82": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C83": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C84": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C85": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C86": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C87": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C88": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C89": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C90": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C91": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C92": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C93": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C94": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C95": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C96": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C97": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C98": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C99": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C100": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C101": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C102": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C103": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C104": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C105": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C106": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C107": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C108": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "C109": {
+          "description": "Share of element",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ChemicalElement"
+            }
+          ]
+        },
+        "SupplementaryInformation": {
+          "title": "ChemicalCompositionSupplementaryInformation",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^C[1][1][0-9]|^C120"
+          },
+          "patternProperties": {
+            "": {
+              "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
