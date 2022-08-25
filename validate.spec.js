@@ -7,6 +7,7 @@ const path = require('path');
 
 const folders = [
   'company',
+  'chemical-composition',
   'languages',
   'measurement',
   'validation',
@@ -29,7 +30,7 @@ folders.forEach((folder) => {
       },
       strictSchema: true,
       strictNumbers: true,
-      strictRequired: true,
+      strictRequired: false,
       strictTypes: true,
       allErrors: true,
     });
