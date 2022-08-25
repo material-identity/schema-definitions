@@ -620,7 +620,7 @@
               "additionalProperties": false
             }
           },
-          "required": ["B02", "B01", "B07", "B08", "B09", "B10", "B13"]
+          "required": ["B01", "B02", "B07", "B08", "B09", "B10", "B13"]
         },
         {
           "properties": {
@@ -628,7 +628,7 @@
               "type": "string"
             }
           },
-          "required": ["B02", "B01", "B08"]
+          "required": ["B01", "B02", "B08"]
         }
       ]
     }
