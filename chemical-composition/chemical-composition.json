@@ -2,6 +2,13 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "chemical-composition.json",
   "definitions": {
+    "KeyValueObject": {
+      "allOf": [
+        {
+          "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+        }
+      ]
+    },
     "ChemicalElement": {
       "title": "ChemicalElement",
       "type": "object",
@@ -361,7 +368,7 @@
           },
           "patternProperties": {
             "": {
-              "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+              "$ref": "#/definitions/KeyValueObject"
             }
           },
           "additionalProperties": false

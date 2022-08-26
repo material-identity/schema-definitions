@@ -2,6 +2,20 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "product-description.json",
   "definitions": {
+    "KeyValueObject": {
+      "allOf": [
+        {
+          "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+        }
+      ]
+    },
+    "Measurement": {
+      "allOf": [
+        {
+          "$ref": "../measurement.json#/definitions/Measurement"
+        }
+      ]
+    },
     "Tube": {
       "title": "Tube",
       "description": "",
@@ -578,7 +592,7 @@
               "description": "Product dimensions - length of the product",
               "allOf": [
                 {
-                  "$ref": "../measurement.json#/definitions/Measurement"
+                  "$ref": "#/definitions/Measurement"
                 }
               ]
             },
@@ -586,7 +600,7 @@
               "description": "Product dimensions ",
               "allOf": [
                 {
-                  "$ref": "../measurement.json#/definitions/Measurement"
+                  "$ref": "#/definitions/Measurement"
                 }
               ]
             },
@@ -594,7 +608,7 @@
               "description": "Theoretical mass",
               "allOf": [
                 {
-                  "$ref": "../measurement.json#/definitions/Measurement"
+                  "$ref": "#/definitions/Measurement"
                 }
               ]
             },
@@ -602,7 +616,7 @@
               "description": "Actual mass",
               "allOf": [
                 {
-                  "$ref": "../measurement.json#/definitions/Measurement"
+                  "$ref": "#/definitions/Measurement"
                 }
               ]
             },
@@ -614,7 +628,7 @@
               },
               "patternProperties": {
                 "^B1[4-9]|^B[2-9][0-9]": {
-                  "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+                  "$ref": "#/definitions/KeyValueObject"
                 }
               },
               "additionalProperties": false
