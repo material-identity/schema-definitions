@@ -11,7 +11,7 @@
       </tr>
       <tr class='table-rows'>
         <th class='table-headers'>Z02 {{i18n 'Z02' 'certificateFields' CertificateLanguages}} </th>
-        <td colspan='1'> {{localizeDate Z02 CertificateLanguages.0}} </td>
+        <td colspan='1'> {{localizeDate Z02 CertificateLanguages.[0]}} </td>
       </tr>
       <tr class='table-rows'>
         <th class='table-headers'>Z03 {{i18n 'Z03' 'certificateFields' CertificateLanguages}} </th>
@@ -49,7 +49,7 @@
         {{#each SupplementaryInformation}}
           <tr class='table-rows'>
             <th class='table-headers' colspan='2'>{{@key}} {{this.Key}}</th>
-            <td class='table-cells'>{{localizeValue this.Value this.Type CertificateLanguages.0}}
+            <td class='table-cells'>{{localizeValue this.Value this.Type CertificateLanguages.[0]}}
               {{this.Unit}}
             </td>
             <td class='table-cells'>{{this.Interpretation}}</td>

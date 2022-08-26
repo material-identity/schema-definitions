@@ -4,18 +4,18 @@
   <tbody>
     <tr class='table-rows'>
       <th class='table-headers' colspan='2'>{{@key}} {{this.Property}}</th>
-      <td class='table-cells'>{{localizeNumber this.Value CertificateLanguages.0}}
+      <td class='table-cells'>{{localizeNumber this.Value CertificateLanguages.[0]}}
         {{this.Unit}}
       </td>
       <td class='table-cells'>
         {{#if this.Minimum}}
           min
-          {{localizeNumber this.Minimum CertificateLanguages.0}}
+          {{localizeNumber this.Minimum CertificateLanguages.[0]}}
           {{this.Unit}}
         {{/if}}
         {{#if this.Maximum}}
           max
-          {{localizeNumber this.Maximum CertificateLanguages.0}}
+          {{localizeNumber this.Maximum CertificateLanguages.[0]}}
           {{this.Unit}}
         {{/if}}
       </td>
