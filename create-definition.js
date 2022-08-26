@@ -8,6 +8,7 @@ const writeFile = function (key, value) {
 
 const writeSchemaDirAndFiles = function (schemaName, createHbs) {
   if (!schemaName) throw new Error('You must input a schema definition name');
+  if (fs.existsSync(schemaName)) throw new Error(`Directory ${schemaName} already exists`);
 
   const jsonSchemaStarter = {
     $schema: 'http://json-schema.org/draft-07/schema#',
@@ -55,21 +56,17 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
   };
 
   const fileNameMap = {
-    [`${schemaName}/${schemaName}.json`]: JSON.stringify(jsonSchemaStarter),
-    [`${schemaName}/test-schema.json`]: JSON.stringify(testSchemaStarter),
+    [`${schemaName}/${schemaName}.json`]: JSON.stringify(jsonSchemaStarter, null, 2),
+    [`${schemaName}/test-schema.json`]: JSON.stringify(testSchemaStarter, null, 2),
     [`${schemaName}/test/test-suites-map.js`]: testSuiteMap,
-    [`${schemaName}/test/fixtures/valid-certificate-1.json`]: JSON.stringify(certificateFixtureBase),
-    [`${schemaName}/test/fixtures/invalid-certificate-1.json`]: JSON.stringify(certificateFixtureBase),
+    [`${schemaName}/test/fixtures/valid-certificate-1.json`]: JSON.stringify(certificateFixtureBase, null, 2),
+    [`${schemaName}/test/fixtures/invalid-certificate-1.json`]: JSON.stringify(certificateFixtureBase, null, 2),
   };
   if (createHbs) fileNameMap[`${schemaName}/${schemaName}.hbs`] = '';
 
-  if (!fs.existsSync(schemaName)) {
-    fs.mkdirSync(resolve(`${schemaName}/test/fixtures`), { recursive: true });
-    Object.keys(fileNameMap).forEach((key) => writeFile(key, fileNameMap[key]));
-    console.log(`Directory ${schemaName} and starter files created`);
-  } else {
-    throw new Error(`Directory ${schemaName} already exists`);
-  }
+  fs.mkdirSync(resolve(`${schemaName}/test/fixtures`), { recursive: true });
+  Object.keys(fileNameMap).forEach((key) => writeFile(key, fileNameMap[key]));
+  console.log(`Directory ${schemaName} and starter files created`);
 };
 
 (async function () {
