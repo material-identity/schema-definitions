@@ -7,7 +7,7 @@ const path = require('path');
 
 const folders = [
   'company',
-  'chemical-composition',
+  'chemical-element',
   'languages',
   'measurement',
   'validation',
