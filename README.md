@@ -121,6 +121,17 @@ The Attachment definition is an optional property used by the CoA and EN10168 sc
 | Encoding  | The format in which the hash value is encoded. |    Yes    |   No    |
 | Data      | The data encoded as defined in `Encoding`      |    Yes    |   No    |
 
+## Chemical Element definition
+
+The Chemical Element definition is used by the EN10168 schema as a property in ChemicalComposition.
+
+| Attribute | Description                                          | Mandatory | Visible |
+| --------- | ---------------------------------------------------- | :-------: | :-----: |
+| Symbol    | The symbol of the element                            |    Yes    |   Yes   |
+| Actual    | The measured part of the element as absolute number. |    Yes    |   Yes   |
+| Minimum   | The minimum if defined by the product specification  |    No     |   Yes   |
+| Maximum   | The maxium as defined by the product specification   |    No     |   Yes   |
+
 ## Adding a schema definition
 
 To add a new schema definition, you can use the `create:definition` command. Run `npm run create:definition -- --name <definition name> --hbs <boolean>`. This will create a folder with the name of the schema and add all the starter files mentioned below along with the boilerplate code.

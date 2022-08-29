@@ -1,0 +1,10 @@
+{
+  "Certificate": {
+    "ChemicalElement": {
+      "Actual": 0.009,
+      "Symbol": "Ni",
+      "Maximum": 1,
+      "Minimum": 0
+    }
+  }
+}
