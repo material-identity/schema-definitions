@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
+    "update-refs": "node utils/update-refs",
     "lint": "eslint ./*.js",
     "create:definition": "node create-definition.js"
   },
@@ -28,6 +29,10 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^28.1.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "yargs": "^17.5.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
