@@ -3,7 +3,8 @@ const { resolve, join, parse } = require('path');
 const { refMap } = require('./constants');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
-const pkgJson = require(resolve(__dirname, '../package.json'));
+const { version: pkgVersion } = require(resolve(__dirname, '../package.json'));
+
 const { get } = require('lodash');
 
 function generateUpdatedSchemaObjects(newPath, environment) {
@@ -78,7 +79,7 @@ function generateUpdatedSchemaObjects(newPath, environment) {
           'If setting a remote path, you can override the version number here. Default is taken from package.json',
         demandOption: false,
         example: '0.0.1',
-        default: pkgJson.version,
+        default: pkgVersion,
         alias: 'v',
       },
     }).argv;
