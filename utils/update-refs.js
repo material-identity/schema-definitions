@@ -4,7 +4,7 @@ const { refMap } = require('./constants');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 const { version: pkgVersion } = require(resolve(__dirname, '../package.json'));
-
+const { execSync } = require('child_process');
 const { get } = require('lodash');
 
 function generateUpdatedSchemaObjects(newPath, environment) {
@@ -33,6 +33,15 @@ function generateUpdatedSchemaObjects(newPath, environment) {
   });
 
   return updatedSchemaMap;
+}
+
+function stageAndCommitChanges(version, environment) {
+  const schemasPaths = Object.keys(refMap)
+    .map((directory) => `${directory}/${directory}.json`)
+    .join(' ');
+
+  execSync(`git add ${schemasPaths}`);
+  execSync(`git commit -m 'chore: update ${environment} $refs to ${version}'`);
 }
 
 (async function () {
@@ -82,6 +91,12 @@ function generateUpdatedSchemaObjects(newPath, environment) {
         default: pkgVersion,
         alias: 'v',
       },
+      stageAndCommit: {
+        description: 'If true, it will add the affected files to staging and commit them.',
+        demandOption: false,
+        default: false,
+        alias: 's',
+      },
     }).argv;
 
   const versionNumber = argv.versionNumber.startsWith('v') ? argv.versionNumber : `v${argv.versionNumber}`;
@@ -94,6 +109,11 @@ function generateUpdatedSchemaObjects(newPath, environment) {
       writeFileSync(path, JSON.stringify(schemaMap[path], null, 2));
     });
     console.log(`$refs have been updated, new path is "${newPath}"`);
+
+    if (argv.stageAndCommit) {
+      stageAndCommitChanges(versionNumber, argv.environment);
+      console.log('Changes have been stashed and commited.');
+    }
   } catch (error) {
     console.error(error);
   }
