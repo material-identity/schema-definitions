@@ -6,14 +6,15 @@ const { resolve } = require('path');
 const path = require('path');
 
 const folders = [
-  'company',
+  'attachment',
   'chemical-element',
+  'commercial-transaction',
+  'company',
+  'key-value-object',
   'languages',
   'measurement',
-  'validation',
   'product-description',
-  'key-value-object',
-  'attachment',
+  'validation',
 ];
 
 folders.forEach((folder) => {
