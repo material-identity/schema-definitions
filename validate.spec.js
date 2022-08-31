@@ -26,7 +26,7 @@ folders.forEach((folder) => {
     const ajv = new Ajv({
       loadSchema: (uri) => {
         const filename = path.parse(uri).name;
-        return loadExternalFile(path.join(__dirname, `${filename}/${uri}`), 'json');
+        return loadExternalFile(path.join(__dirname, filename, uri), 'json');
       },
       strictSchema: true,
       strictNumbers: true,
