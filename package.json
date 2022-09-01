@@ -12,7 +12,7 @@
     "release": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it",
     "release:dry-run": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it --dry-run",
     "lint": "eslint ./*.js",
-    "create:definition": "node create-definition.js",
+    "create:definition": "node utils/create-definition.js",
     "postinstall": "husky install"
   },
   "release-it": {

@@ -3,12 +3,12 @@ const yargs = require('yargs');
 const { resolve } = require('path');
 
 const writeFile = function (key, value) {
-  fs.writeFileSync(resolve(key), value);
+  fs.writeFileSync(resolve(__dirname, '../', key), value);
 };
 
 const writeSchemaDirAndFiles = function (schemaName, createHbs) {
   if (!schemaName) throw new Error('You must input a schema definition name');
-  if (fs.existsSync(schemaName)) throw new Error(`Directory ${schemaName} already exists`);
+  if (fs.existsSync(resolve(__dirname, '../', schemaName))) throw new Error(`Directory ${schemaName} already exists`);
 
   const jsonSchemaStarter = {
     $schema: 'http://json-schema.org/draft-07/schema#',
@@ -64,7 +64,7 @@ const writeSchemaDirAndFiles = function (schemaName, createHbs) {
   };
   if (createHbs) fileNameMap[`${schemaName}/${schemaName}.hbs`] = '';
 
-  fs.mkdirSync(resolve(`${schemaName}/test/fixtures`), { recursive: true });
+  fs.mkdirSync(resolve(__dirname, `../${schemaName}/test/fixtures`), { recursive: true });
   Object.keys(fileNameMap).forEach((key) => writeFile(key, fileNameMap[key]));
   console.log(`Directory ${schemaName} and starter files created`);
 };
