@@ -4,13 +4,33 @@
   "description": "A repository containing schema definitions that can be shared across multiple schemas.",
   "main": "index.js",
   "scripts": {
+    "lint:staged": "lint-staged",
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
     "update:refs": "node utils/update-refs",
     "update:version": "node utils/update-version",
+    "release": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it",
+    "release:dry-run": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it --dry-run",
     "lint": "eslint ./*.js",
     "create:definition": "node create-definition.js",
     "postinstall": "husky install"
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "requireBranch": "main"
+    },
+    "npm": {
+      "publish": false
+    },
+    "hooks": {
+      "before:init": [
+        "npm run lint",
+        "npm run test"
+      ],
+      "after:bump": "npm run update:version v${version} && npm run update:refs -- -e remote",
+      "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+    }
   },
   "repository": {
     "type": "git",
@@ -36,6 +56,7 @@
     "lint-staged": "^13.0.3",
     "lodash": "^4.17.21",
     "prettier": "^2.7.1",
+    "release-it": "^15.4.1",
     "yargs": "^17.5.1"
   }
 }

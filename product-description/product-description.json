@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "product-description.json",
+  "$id": "https://schemas.s1seven.com/shared/v0.0.0/product-description/product-description.json",
   "definitions": {
     "KeyValueObject": {
       "allOf": [
