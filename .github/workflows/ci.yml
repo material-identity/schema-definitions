@@ -13,6 +13,7 @@ on:
       - reopened
       - synchronize
       - ready_for_review
+      - closed
     paths-ignore:
       - 'README.md'
       - '**/package-lock.json'
@@ -54,5 +55,22 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Run validation and rendering tests
+      - name: Run validation tests
         run: npm run test
+
+      - name: Set $refs to remote on merge
+        if: github.event.pull_request.merged == true
+        run: |
+          npm run update-refs -- -e remote
+          npx lint-staged
+
+      # commit definitions with updated $refs
+
+      - name: Add, commit and push updated definitions
+        id: commit-definitions
+        if: github.event.pull_request.merged == true
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore: update $refs to remote urls'
+          file_pattern: '**/*.json'
+          commit_options: '--no-verify'
