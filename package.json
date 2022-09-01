@@ -6,10 +6,11 @@
   "scripts": {
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
-    "update-refs": "node utils/update-refs",
+    "update:refs": "node utils/update-refs",
     "lint": "eslint ./*.js",
     "create:definition": "node create-definition.js",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "update:partials-map": "node utils/update-partials-map-versions.js"
   },
   "repository": {
     "type": "git",
