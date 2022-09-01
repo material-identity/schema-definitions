@@ -21,10 +21,9 @@ const schemaFilePaths = [
   { filePath: 'validation/validation.json', properties: [{ path: '$id', value: 'validation/validation.json' }] },
 ];
 
-function stageAndCommitChanges(version) {
+function stageAndCommitChanges() {
   const schemasPaths = schemaFilePaths.map(({ filePath }) => filePath).join(' ');
   execSync(`git add ${schemasPaths}`);
-  execSync(`git commit -m 'chore: sync versions to ${version}'`);
 }
 
 (async function (argv) {
@@ -32,5 +31,5 @@ function stageAndCommitChanges(version) {
   const updater = new SchemaRepositoryVersion(defaultServerUrl, schemaFilePaths, version);
   await updater.updateSchemasVersion();
 
-  stageAndCommitChanges(version);
+  stageAndCommitChanges();
 })(process.argv);
