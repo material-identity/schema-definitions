@@ -143,3 +143,7 @@ There should also be a `test-schema.json` in each folder which references the ma
 Each folder should have a `test` folder with a `test-suites-map.js` file and a `fixtures` folder within. The `test-suites-map.js` file should contain a map of the valid and invalid certificates contained within the `fixtures` folder for testing, as well as the errors expected for the invalid certificates.
 
 When a new folder is created and tests are added, the folder name must be added to the `folders` array in `validate.spec.js`.
+
+# Creating a new release
+
+Once a PR has been approved and merged to main, the `Set $refs to remote on merge and update $ids` github action will run the `update:refs` script and update the `$ref`s to the remote url, and also the `update:version` script which will update the `$id`s. A new release should be made using the `npm run release` script. Once the release is done, the `schemas-deploy` tool should automatically receive the webhook from the release and deploy the updated schemas.
