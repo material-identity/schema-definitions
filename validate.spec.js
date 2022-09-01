@@ -2,8 +2,7 @@ const { loadExternalFile } = require('@s1seven/schema-tools-utils');
 const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
 const { readFileSync } = require('fs');
-const { resolve } = require('path');
-const path = require('path');
+const { resolve, join, parse } = require('path');
 
 const folders = [
   'attachment',
@@ -26,8 +25,10 @@ folders.forEach((folder) => {
   const createAjvInstance = () => {
     const ajv = new Ajv({
       loadSchema: (uri) => {
-        const filename = path.parse(uri).name;
-        return loadExternalFile(path.join(__dirname, filename, uri), 'json');
+        const { name: folderName } = parse(uri);
+        const isRemoteUri = uri.startsWith('http');
+        const path = isRemoteUri ? uri : join(__dirname, folderName, uri);
+        return loadExternalFile(path, 'json');
       },
       strictSchema: true,
       strictNumbers: true,
