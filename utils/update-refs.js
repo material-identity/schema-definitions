@@ -35,13 +35,13 @@ function generateUpdatedSchemaObjects(newPath, environment) {
   return updatedSchemaMap;
 }
 
-function stageAndCommitChanges(version, environment) {
+function stageAndCommitChanges(version, environment, husky) {
   const schemasPaths = Object.keys(refMap)
     .map((directory) => `${directory}/${directory}.json`)
     .join(' ');
 
   execSync(`git add ${schemasPaths}`);
-  execSync(`git commit -m 'chore: update ${environment} $refs to ${version}'`);
+  if (!husky) execSync(`git commit -m 'chore: update ${environment} $refs to ${version}'`);
 }
 
 (async function () {
@@ -97,6 +97,13 @@ function stageAndCommitChanges(version, environment) {
         default: false,
         alias: 's',
       },
+      husky: {
+        description:
+          'Should only be true if calling from husky, stops code from trying to add a second commit while the first one is still ongoing.',
+        demandOption: false,
+        default: false,
+        alias: 'h',
+      },
     }).argv;
 
   const versionNumber = argv.versionNumber.startsWith('v') ? argv.versionNumber : `v${argv.versionNumber}`;
@@ -111,7 +118,7 @@ function stageAndCommitChanges(version, environment) {
     console.log(`$refs have been updated, new path is "${newPath}"`);
 
     if (argv.stageAndCommit) {
-      stageAndCommitChanges(versionNumber, argv.environment);
+      stageAndCommitChanges(versionNumber, argv.environment, argv.husky);
       console.log('Changes have been stashed and commited.');
     }
   } catch (error) {
