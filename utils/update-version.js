@@ -5,8 +5,11 @@ const { version: pkgVersion } = require('../package.json');
 const { defaultServerUrl } = require('./constants');
 
 const schemaFilePaths = [
-  { filePath: 'attachment/attachment.json', properties: [{ path: '$id', value: 'attachement/attachement.json' }] },
-  { filePath: 'chemical-element/chemical-element.json', properties: [{ path: '$id', value: 'chemical-element.json' }] },
+  { filePath: 'attachment/attachment.json', properties: [{ path: '$id', value: 'attachment/attachment.json' }] },
+  {
+    filePath: 'chemical-element/chemical-element.json',
+    properties: [{ path: '$id', value: 'chemical-element/chemical-element.json' }],
+  },
   {
     filePath: 'commercial-transaction/commercial-transaction.json',
     properties: [{ path: '$id', value: 'commercial-transaction/commercial-transaction.json' }],
@@ -17,6 +20,10 @@ const schemaFilePaths = [
   {
     filePath: 'commercial-transaction/commercial-transaction.json',
     properties: [{ path: '$id', value: 'commercial-transaction/commercial-transaction.json' }],
+  },
+  {
+    filePath: 'product-description/product-description.json',
+    properties: [{ path: '$id', value: 'product-description/product-description.json' }],
   },
   { filePath: 'validation/validation.json', properties: [{ path: '$id', value: 'validation/validation.json' }] },
 ];
