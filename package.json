@@ -7,10 +7,10 @@
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
     "update:refs": "node utils/update-refs",
+    "update:version": "node utils/update-version",
     "lint": "eslint ./*.js",
     "create:definition": "node create-definition.js",
-    "postinstall": "husky install",
-    "update:partials-map": "node utils/update-partials-map-versions.js"
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
