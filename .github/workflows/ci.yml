@@ -61,7 +61,7 @@ jobs:
       - name: Set $refs to remote on merge
         if: github.event.pull_request.merged == true
         run: |
-          npm run update:refs -- -e remote
+          npm run update:refs -- --environment remote --stage true
           npx lint-staged
 
       # commit definitions with updated $refs

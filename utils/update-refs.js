@@ -20,10 +20,9 @@ function generateUpdatedSchemaObjects(newPath, environment) {
       const propertyLookupPath = `['definitions'][${property}]['allOf'][0]`;
       const referenceObj = get(schemaObject, propertyLookupPath);
       const currentRef = referenceObj['$ref'];
-      const currentPath = currentRef.split('#/')[0];
-      const fileName = parse(currentPath).base;
-      const folderName = parse(currentPath).name;
-      const pathToReplace = currentRef.split(fileName)[0];
+      const currentPath = currentRef.split('#/')[0]; // e.g. ../key-value-object.json
+      const { base: fileName, name: folderName } = parse(currentPath);
+      const pathToReplace = currentRef.split(fileName)[0]; // e.g. ../
       const replacementPath = environment === 'local' ? join(newPath, '/') : join(newPath, folderName, '/');
 
       referenceObj['$ref'] = currentRef.replace(pathToReplace, replacementPath);
@@ -35,13 +34,18 @@ function generateUpdatedSchemaObjects(newPath, environment) {
   return updatedSchemaMap;
 }
 
-function stageAndCommitChanges(version, environment, husky) {
+function stageChanges() {
   const schemasPaths = Object.keys(refMap)
     .map((directory) => `${directory}/${directory}.json`)
     .join(' ');
 
   execSync(`git add ${schemasPaths}`);
-  if (!husky) execSync(`git commit -m 'chore: update ${environment} $refs to ${version}'`);
+  console.log('The updated definitions have been stashed');
+}
+
+function commitChanges(environment, version) {
+  execSync(`git commit -m 'chore: update ${environment} $refs to ${version}'`);
+  console.log('Stashed files have been commited.');
 }
 
 (async function () {
@@ -91,24 +95,24 @@ function stageAndCommitChanges(version, environment, husky) {
         default: pkgVersion,
         alias: 'v',
       },
-      stageAndCommit: {
-        description: 'If true, it will add the affected files to staging and commit them.',
+      stage: {
+        description: 'If true, it will add the affected files to staging.',
         demandOption: false,
         default: false,
         alias: 's',
       },
-      husky: {
-        description:
-          'Should only be true if calling from husky, stops code from trying to add a second commit while the first one is still ongoing.',
+      commit: {
+        description: 'If true, it will commit staged files.',
         demandOption: false,
         default: false,
-        alias: 'h',
+        alias: 'c',
       },
     }).argv;
 
-  const versionNumber = argv.versionNumber.startsWith('v') ? argv.versionNumber : `v${argv.versionNumber}`;
-  const remotePath = join(argv.host, argv.folder, versionNumber, '/');
-  const newPath = argv.environment === 'local' ? argv.localPath : remotePath;
+  const { versionNumber, host, folder, environment, localPath, stage, commit } = argv;
+  const newVersionNumber = versionNumber.startsWith('v') ? versionNumber : `v${versionNumber}`;
+  const remotePath = join(host, folder, newVersionNumber, '/');
+  const newPath = environment === 'local' ? localPath : remotePath;
 
   try {
     const schemaMap = generateUpdatedSchemaObjects(newPath, argv.environment);
@@ -117,10 +121,8 @@ function stageAndCommitChanges(version, environment, husky) {
     });
     console.log(`$refs have been updated, new path is "${newPath}"`);
 
-    if (argv.stageAndCommit) {
-      stageAndCommitChanges(versionNumber, argv.environment, argv.husky);
-      console.log('Changes have been stashed and commited.');
-    }
+    if (stage) stageChanges();
+    if (commit) commitChanges(environment, newVersionNumber);
   } catch (error) {
     console.error(error);
   }
