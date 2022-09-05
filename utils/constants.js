@@ -5,7 +5,7 @@ const refMap = {
   validation: ['KeyValueObject'],
 };
 
-const defaultServerUrl = 'https://schemas.s1seven.com/shared';
+const defaultServerUrl = 'https://schemas.s1seven.com/schema-definitions';
 
 module.exports = {
   defaultServerUrl,

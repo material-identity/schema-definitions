@@ -50,7 +50,7 @@ function commitChanges(environment, version) {
 
 (async function () {
   const argv = yargs(hideBin(process.argv))
-    .usage('Usage: $0 -e [environment] -h https://schemas.s1seven.com -f shared -v 0.0.1')
+    .usage('Usage: $0 -e [environment] -h https://schemas.s1seven.com -f schema-definitions -v 0.0.1')
     .options({
       environment: {
         description: 'Set refs to remote or local paths, default values can be overridden',
@@ -81,10 +81,10 @@ function commitChanges(environment, version) {
         alias: 'h',
       },
       folder: {
-        description: 'If setting a remote path, you can override the folder here. Default is "shared"',
+        description: 'If setting a remote path, you can override the folder here. Default is "schema-definitions"',
         demandOption: false,
-        example: 'shared',
-        default: 'shared',
+        example: 'schema-definitions',
+        default: 'schema-definitions',
         alias: 'f',
       },
       versionNumber: {
@@ -123,7 +123,9 @@ function commitChanges(environment, version) {
 
     if (stage) stageChanges();
     if (commit) commitChanges(environment, newVersionNumber);
+    process.exit(0);
   } catch (error) {
     console.error(error);
+    process.exit(1);
   }
 })();
