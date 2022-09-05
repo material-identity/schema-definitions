@@ -7,7 +7,12 @@ const refMap = {
 
 const defaultServerUrl = 'https://schemas.s1seven.com/schema-definitions';
 
+function addVToVersionNumber(versionNumber) {
+  return versionNumber.startsWith('v') ? versionNumber : `v${versionNumber}`;
+}
+
 module.exports = {
+  addVToVersionNumber,
   defaultServerUrl,
   refMap,
 };

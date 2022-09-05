@@ -1,8 +1,10 @@
 const { SchemaRepositoryVersion } = require('@s1seven/schema-tools-versioning');
 const { execSync } = require('child_process');
+const yargs = require('yargs');
+const { hideBin } = require('yargs/helpers');
 
 const { version: pkgVersion } = require('../package.json');
-const { defaultServerUrl } = require('./constants');
+const { addVToVersionNumber, defaultServerUrl } = require('./constants');
 
 const schemaFilePaths = [
   { filePath: 'attachment/attachment.json', properties: [{ path: '$id', value: 'attachment/attachment.json' }] },
@@ -28,15 +30,53 @@ const schemaFilePaths = [
   { filePath: 'validation/validation.json', properties: [{ path: '$id', value: 'validation/validation.json' }] },
 ];
 
-function stageAndCommitChanges() {
+function stageChanges() {
   const schemasPaths = schemaFilePaths.map(({ filePath }) => filePath).join(' ');
   execSync(`git add ${schemasPaths}`);
 }
 
-(async function (argv) {
-  const version = argv[2] || `v${pkgVersion}`;
-  const updater = new SchemaRepositoryVersion(defaultServerUrl, schemaFilePaths, version);
-  await updater.updateSchemasVersion();
+function commitChanges(version) {
+  execSync(`git commit -m 'chore: update version to ${version}'`);
+  console.log('Stashed files have been commited.');
+}
 
-  stageAndCommitChanges();
-})(process.argv);
+(async function () {
+  const argv = yargs(hideBin(process.argv))
+    .usage('Usage: $0 --version 0.0.1 --stage [boolean] --commit [boolean]')
+    .options({
+      versionNumber: {
+        description:
+          'If setting a remote path, you can override the version number here. Default is taken from package.json',
+        demandOption: false,
+        example: '0.0.1',
+        default: pkgVersion,
+        alias: 'v',
+      },
+      stage: {
+        description: 'If true, it will add the affected files to staging.',
+        demandOption: false,
+        default: false,
+        alias: 's',
+      },
+      commit: {
+        description: 'If true, it will commit staged files.',
+        demandOption: false,
+        default: false,
+        alias: 'c',
+      },
+    }).argv;
+
+  const { versionNumber, stage, commit } = argv;
+  const newVersionNumber = addVToVersionNumber(versionNumber);
+
+  try {
+    const updater = new SchemaRepositoryVersion(defaultServerUrl, schemaFilePaths, newVersionNumber);
+    await updater.updateSchemasVersion();
+    if (stage) stageChanges();
+    if (commit) commitChanges(newVersionNumber);
+    process.exit(0);
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+})();

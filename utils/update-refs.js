@@ -1,6 +1,6 @@
 const { readFileSync, writeFileSync } = require('fs');
 const { resolve, join, parse } = require('path');
-const { refMap } = require('./constants');
+const { addVToVersionNumber, refMap } = require('./constants');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 const { version: pkgVersion } = require(resolve(__dirname, '../package.json'));
@@ -50,7 +50,9 @@ function commitChanges(environment, version) {
 
 (async function () {
   const argv = yargs(hideBin(process.argv))
-    .usage('Usage: $0 -e [environment] -h https://schemas.s1seven.com -f schema-definitions -v 0.0.1')
+    .usage(
+      'Usage: $0 -e [environment] -h https://schemas.s1seven.com -f schema-definitions -v 0.0.1 --stage [boolean] --commit [boolean]',
+    )
     .options({
       environment: {
         description: 'Set refs to remote or local paths, default values can be overridden',
@@ -110,7 +112,7 @@ function commitChanges(environment, version) {
     }).argv;
 
   const { versionNumber, host, folder, environment, localPath, stage, commit } = argv;
-  const newVersionNumber = versionNumber.startsWith('v') ? versionNumber : `v${versionNumber}`;
+  const newVersionNumber = addVToVersionNumber(versionNumber);
   const remotePath = join(host, folder, newVersionNumber, '/');
   const newPath = environment === 'local' ? localPath : remotePath;
 
