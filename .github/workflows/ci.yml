@@ -62,7 +62,7 @@ jobs:
         if: github.event.pull_request.merged == true
         run: |
           npm run update:refs -- --environment remote --stage true
-          npm run update:version
+          npm run update:version --stage true
           npx lint-staged
 
       # commit definitions with updated $refs
