@@ -72,6 +72,6 @@ jobs:
         if: github.event.pull_request.merged == true
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'chore: update $refs to remote urls'
+          commit_message: 'chore: update $refs to remote urls [skip ci]'
           file_pattern: '**/*.json'
           commit_options: '--no-verify'
