@@ -28,7 +28,7 @@
         "npm run lint",
         "npm run test"
       ],
-      "after:bump": "npm run update:version v${version} && npm run update:refs -- -e remote",
+      "after:bump": "npm run update:version v${version} -s true -c true && npm run update:refs -- -e remote -s true -c true",
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     }
   },
