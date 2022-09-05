@@ -1,6 +1,6 @@
 {{! VALIDATION }}
 
-<section style='float: left'>
+<section style='float: left' class="validation-root">
   <h2 class='main-title pdf-pagebreak-before'>
     {{i18n 'Validation' 'certificateGroups' CertificateLanguages}}</h2>
   <table class='main-table' style='float: left; width: 80%'>
@@ -40,7 +40,7 @@
   {{/if}}
 </section>
 
-<section>
+<section class="validation-root">
   {{#if SupplementaryInformation}}
     <h3 class='third-level-title'>
       {{i18n 'SupplementaryInformation' 'otherFields' CertificateLanguages}}</h3>
