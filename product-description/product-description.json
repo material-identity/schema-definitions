@@ -499,74 +499,78 @@
     "ProductDescription": {
       "title": "ProductDescription",
       "type": "object",
-      "$ref": "#/definitions/ProductDescriptionBase",
-      "oneOf": [
+      "allOf": [
+        { "$ref": "#/definitions/ProductDescriptionBase" },
         {
-          "properties": {
-            "B02": {
-              "description": "",
-              "type": "object",
+          "oneOf": [
+            {
               "properties": {
-                "ProductNorm": {
-                  "description": "The product norm designation",
-                  "type": "array",
-                  "items": { "type": "string" }
+                "B02": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "ProductNorm": {
+                      "description": "The product norm designation",
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "MaterialNorm": {
+                      "description": "The material norm(s)",
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "MassNorm": {
+                      "description": "The mass norm(s)",
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    "SteelDesignation": {
+                      "description": "The steel designation(s)",
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  },
+                  "additionalProperties": false
                 },
-                "MaterialNorm": {
-                  "description": "The material norm(s)",
-                  "type": "array",
-                  "items": { "type": "string" }
+                "B09": {
+                  "allOf": [{ "$ref": "#/definitions/ProductShape" }],
+                  "description": "Product type and its describing dimensional parameters"
                 },
-                "MassNorm": {
-                  "description": "The mass norm(s)",
-                  "type": "array",
-                  "items": { "type": "string" }
+                "B10": {
+                  "description": "Product dimensions - length of the product",
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
                 },
-                "SteelDesignation": {
-                  "description": "The steel designation(s)",
-                  "type": "array",
-                  "items": { "type": "string" }
+                "B11": {
+                  "description": "Product dimensions ",
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
+                },
+                "B12": {
+                  "description": "Theoretical mass",
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
+                },
+                "B13": {
+                  "description": "Actual mass",
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
+                },
+                "SupplementaryInformation": {
+                  "title": "ProductDescriptionSupplementaryInformation",
+                  "type": "object",
+                  "propertyNames": { "pattern": "^B1[4-9]|^B[2-9][0-9]" },
+                  "patternProperties": {
+                    "^B1[4-9]|^B[2-9][0-9]": {
+                      "$ref": "#/definitions/KeyValueObject"
+                    }
+                  },
+                  "additionalProperties": false
                 }
               },
-              "additionalProperties": false
+              "required": ["B01", "B02", "B09"]
             },
-            "B09": {
-              "allOf": [{ "$ref": "#/definitions/ProductShape" }],
-              "description": "Product type and its describing dimensional parameters"
-            },
-            "B10": {
-              "description": "Product dimensions - length of the product",
-              "allOf": [{ "$ref": "#/definitions/Measurement" }]
-            },
-            "B11": {
-              "description": "Product dimensions ",
-              "allOf": [{ "$ref": "#/definitions/Measurement" }]
-            },
-            "B12": {
-              "description": "Theoretical mass",
-              "allOf": [{ "$ref": "#/definitions/Measurement" }]
-            },
-            "B13": {
-              "description": "Actual mass",
-              "allOf": [{ "$ref": "#/definitions/Measurement" }]
-            },
-            "SupplementaryInformation": {
-              "title": "ProductDescriptionSupplementaryInformation",
-              "type": "object",
-              "propertyNames": { "pattern": "^B1[4-9]|^B[2-9][0-9]" },
-              "patternProperties": {
-                "^B1[4-9]|^B[2-9][0-9]": {
-                  "$ref": "#/definitions/KeyValueObject"
-                }
-              },
-              "additionalProperties": false
+            {
+              "properties": { "B02": { "type": "string" } },
+              "required": ["B01", "B02"]
             }
-          },
-          "required": ["B01", "B02", "B09"]
-        },
-        {
-          "properties": { "B02": { "type": "string" } },
-          "required": ["B01", "B02"]
+          ]
         }
       ]
     }
