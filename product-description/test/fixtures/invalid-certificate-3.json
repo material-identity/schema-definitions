@@ -11,14 +11,8 @@
       "B03": "Ausführung lt. EN 10219 Teil 1+2 /--/",
       "B04": "normalized",
       "B06": "SST 200x150x6",
+      "B07": "7282841",
       "B08": 16,
-      "B09": {
-        "Form": "RectangularTube",
-        "Width": 200,
-        "Height": 150,
-        "WallThickness": 6.5,
-        "Unit": "mm"
-      },
       "B10": {
         "Property": "Length",
         "Value": 12000,

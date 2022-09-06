@@ -1,19 +1,20 @@
 const { loadExternalFile } = require('@s1seven/schema-tools-utils');
-const Ajv = require('ajv');
+const Ajv2019 = require('ajv/dist/2019');
+const draft7MetaSchema = require('ajv/dist/refs/json-schema-draft-07.json');
 const addFormats = require('ajv-formats');
 const { readFileSync } = require('fs');
 const { resolve, join, parse } = require('path');
 
 const folders = [
-  'attachment',
-  'chemical-element',
-  'commercial-transaction',
-  'company',
-  'key-value-object',
-  'languages',
-  'measurement',
+  // 'attachment',
+  // 'chemical-element',
+  // 'commercial-transaction',
+  // 'company',
+  // 'key-value-object',
+  // 'languages',
+  // 'measurement',
   'product-description',
-  'validation',
+  // 'validation',
 ];
 
 folders.forEach((folder) => {
@@ -23,7 +24,7 @@ folders.forEach((folder) => {
   ));
 
   const createAjvInstance = () => {
-    const ajv = new Ajv({
+    const ajv = new Ajv2019({
       loadSchema: (uri) => {
         const { name: folderName } = parse(uri);
         const isRemoteUri = uri.startsWith('http');
@@ -37,6 +38,7 @@ folders.forEach((folder) => {
       allErrors: true,
     });
     ajv.addKeyword('meta:license');
+    ajv.addMetaSchema(draft7MetaSchema);
     addFormats(ajv);
     return ajv;
   };
