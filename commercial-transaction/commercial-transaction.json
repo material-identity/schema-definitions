@@ -38,7 +38,6 @@
           "type": "string",
           "default": "Factory Production Control"
         },
-        "A07": { "description": "Purchase number", "type": "string" },
         "A08": {
           "description": "Manufacturer's work number",
           "type": "string"
@@ -46,32 +45,9 @@
         "A09": {
           "description": "The article number used by the purchaser",
           "type": "string"
-        },
-        "SupplementaryInformation": {
-          "title": "CommercialTransactionSupplementaryInformation",
-          "type": "object",
-          "propertyNames": { "pattern": "^A1[0-9]|^A[2-8][0-9]|^A[2-9][0-6]" },
-          "patternProperties": {
-            "^A1[0-9]|^A[2-8][0-9]|^A[2-9][0-6]": {
-              "$ref": "#/definitions/KeyValueObject"
-            }
-          },
-          "additionalProperties": false
-        },
-        "A97": {
-          "description": "A custom field for the position number in the order",
-          "type": "string"
-        },
-        "A98": {
-          "description": "A custom field for the delivery note number",
-          "type": "string"
-        },
-        "A99": {
-          "description": "A custom field for the aviso document number",
-          "type": "string"
         }
       },
-      "required": ["A01", "A02", "A03", "A04", "A05", "A07"]
+      "required": ["A01", "A02", "A03", "A04", "A05"]
     },
     "CommercialTransactionReceivers": {
       "title": "CommercialTransactionReceivers",

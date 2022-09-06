@@ -562,11 +562,11 @@
               "additionalProperties": false
             }
           },
-          "required": ["B01", "B02", "B07", "B08", "B09", "B10", "B13"]
+          "required": ["B01", "B02", "B09"]
         },
         {
           "properties": { "B02": { "type": "string" } },
-          "required": ["B01", "B02", "B08"]
+          "required": ["B01", "B02"]
         }
       ]
     }
