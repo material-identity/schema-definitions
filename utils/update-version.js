@@ -9,31 +9,62 @@ const { version: pkgVersion } = require('../package.json');
 const { addVToVersionNumber, defaultServerUrl } = require('./constants');
 
 const schemaFilePaths = [
-  { filePath: 'attachment/attachment.json', properties: [{ path: '$id', value: 'attachment/attachment.json' }] },
+  {
+    filePath: 'attachment/attachment.json',
+    properties: [{ path: '$id', value: 'attachment/attachment.json' }],
+  },
   {
     filePath: 'chemical-element/chemical-element.json',
-    properties: [{ path: '$id', value: 'chemical-element/chemical-element.json' }],
+    properties: [
+      { path: '$id', value: 'chemical-element/chemical-element.json' },
+    ],
   },
   {
     filePath: 'commercial-transaction/commercial-transaction.json',
-    properties: [{ path: '$id', value: 'commercial-transaction/commercial-transaction.json' }],
+    properties: [
+      {
+        path: '$id',
+        value: 'commercial-transaction/commercial-transaction.json',
+      },
+    ],
   },
-  { filePath: 'company/company.json', properties: [{ path: '$id', value: 'company/company.json' }] },
-  { filePath: 'languages/languages.json', properties: [{ path: '$id', value: 'languages/languages.json' }] },
-  { filePath: 'measurement/measurement.json', properties: [{ path: '$id', value: 'measurement/measurement.json' }] },
+  {
+    filePath: 'company/company.json',
+    properties: [{ path: '$id', value: 'company/company.json' }],
+  },
+  {
+    filePath: 'languages/languages.json',
+    properties: [{ path: '$id', value: 'languages/languages.json' }],
+  },
+  {
+    filePath: 'measurement/measurement.json',
+    properties: [{ path: '$id', value: 'measurement/measurement.json' }],
+  },
   {
     filePath: 'commercial-transaction/commercial-transaction.json',
-    properties: [{ path: '$id', value: 'commercial-transaction/commercial-transaction.json' }],
+    properties: [
+      {
+        path: '$id',
+        value: 'commercial-transaction/commercial-transaction.json',
+      },
+    ],
   },
   {
     filePath: 'product-description/product-description.json',
-    properties: [{ path: '$id', value: 'product-description/product-description.json' }],
+    properties: [
+      { path: '$id', value: 'product-description/product-description.json' },
+    ],
   },
-  { filePath: 'validation/validation.json', properties: [{ path: '$id', value: 'validation/validation.json' }] },
+  {
+    filePath: 'validation/validation.json',
+    properties: [{ path: '$id', value: 'validation/validation.json' }],
+  },
 ];
 
 function stageChanges() {
-  const schemasPaths = schemaFilePaths.map(({ filePath }) => filePath).join(' ');
+  const schemasPaths = schemaFilePaths
+    .map(({ filePath }) => filePath)
+    .join(' ');
   execSync(`git add ${schemasPaths}`);
 }
 
@@ -73,11 +104,18 @@ function commitChanges(version) {
   const prettierConfig = await prettier.resolveConfig(process.cwd());
 
   try {
-    const updater = new SchemaRepositoryVersion(defaultServerUrl, schemaFilePaths, newVersionNumber);
+    const updater = new SchemaRepositoryVersion(
+      defaultServerUrl,
+      schemaFilePaths,
+      newVersionNumber,
+    );
     await updater.updateSchemasVersion();
     schemaFilePaths.map(({ filePath }) => {
       const input = readFileSync(filePath, 'utf-8');
-      const output = prettier.format(input, { parser: 'json', ...(prettierConfig || {}) });
+      const output = prettier.format(input, {
+        parser: 'json',
+        ...(prettierConfig || {}),
+      });
       writeFileSync(filePath, output);
     });
     if (stage) stageChanges();

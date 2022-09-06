@@ -9,7 +9,9 @@
       "allOf": [
         {
           "properties": {
-            "CertificateLanguages": { "$ref": "languages.json#/definitions/CertificateLanguages" }
+            "CertificateLanguages": {
+              "$ref": "languages.json#/definitions/CertificateLanguages"
+            }
           },
           "required": ["CertificateLanguages"]
         }

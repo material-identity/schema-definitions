@@ -1,4 +1,7 @@
-const validCertTestSuitesMap = [{ certificateName: 'valid-certificate-1' }, { certificateName: 'valid-certificate-2' }];
+const validCertTestSuitesMap = [
+  { certificateName: 'valid-certificate-1' },
+  { certificateName: 'valid-certificate-2' },
+];
 
 const invalidCertTestSuitesMap = [
   {
@@ -18,10 +21,12 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/Attachments',
-        schemaPath: '#/properties/Certificate/properties/Attachments/uniqueItems',
+        schemaPath:
+          '#/properties/Certificate/properties/Attachments/uniqueItems',
         keyword: 'uniqueItems',
         params: { i: 1, j: 0 },
-        message: 'must NOT have duplicate items (items ## 0 and 1 are identical)',
+        message:
+          'must NOT have duplicate items (items ## 0 and 1 are identical)',
       },
     ],
   },

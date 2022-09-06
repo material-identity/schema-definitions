@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "company.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.0/company/company.json",
   "definitions": {
     "CompanyBase": {
       "type": "object",
@@ -120,7 +120,9 @@
         },
         {
           "properties": {
-            "Identifiers": { "$ref": "#/definitions/CompanyIdentifiers" }
+            "Identifiers": {
+              "$ref": "#/definitions/CompanyIdentifiers"
+            }
           },
           "required": ["Identifiers"]
         }

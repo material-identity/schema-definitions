@@ -15,9 +15,12 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/Z05/Type',
-        schemaPath: 'key-value-object.json#/definitions/KeyValueObject/properties/Type/enum',
+        schemaPath:
+          'key-value-object.json#/definitions/KeyValueObject/properties/Type/enum',
         keyword: 'enum',
-        params: { allowedValues: ['string', 'number', 'date', 'date-time', 'boolean'] },
+        params: {
+          allowedValues: ['string', 'number', 'date', 'date-time', 'boolean'],
+        },
         message: 'must be equal to one of the allowed values',
       },
     ],
@@ -27,7 +30,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/Z05',
-        schemaPath: 'key-value-object.json#/definitions/KeyValueObject/required',
+        schemaPath:
+          'key-value-object.json#/definitions/KeyValueObject/required',
         keyword: 'required',
         params: { missingProperty: 'Key' },
         message: "must have required property 'Key'",
@@ -39,7 +43,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/Z05/Key',
-        schemaPath: 'key-value-object.json#/definitions/KeyValueObject/properties/Key/type',
+        schemaPath:
+          'key-value-object.json#/definitions/KeyValueObject/properties/Key/type',
         keyword: 'type',
         params: { type: 'string' },
         message: 'must be string',
@@ -51,7 +56,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/Z05',
-        schemaPath: 'key-value-object.json#/definitions/KeyValueObject/additionalProperties',
+        schemaPath:
+          'key-value-object.json#/definitions/KeyValueObject/additionalProperties',
         keyword: 'additionalProperties',
         params: { additionalProperty: 'ExtraProperty' },
         message: 'must NOT have additional properties',

@@ -21,7 +21,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/B10/Value',
-        schemaPath: 'measurement.json#/definitions/Measurement/properties/Value/type',
+        schemaPath:
+          'measurement.json#/definitions/Measurement/properties/Value/type',
         keyword: 'type',
         params: { type: 'number' },
         message: 'must be number',
@@ -33,7 +34,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/B10/Value',
-        schemaPath: 'measurement.json#/definitions/Measurement/properties/Value/type',
+        schemaPath:
+          'measurement.json#/definitions/Measurement/properties/Value/type',
         keyword: 'type',
         params: { type: 'number' },
         message: 'must be number',

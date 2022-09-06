@@ -37,10 +37,12 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/CertificateLanguages',
-        schemaPath: 'languages.json#/definitions/CertificateLanguages/uniqueItems',
+        schemaPath:
+          'languages.json#/definitions/CertificateLanguages/uniqueItems',
         keyword: 'uniqueItems',
         params: { i: 1, j: 0 },
-        message: 'must NOT have duplicate items (items ## 0 and 1 are identical)',
+        message:
+          'must NOT have duplicate items (items ## 0 and 1 are identical)',
       },
     ],
   },
@@ -61,9 +63,12 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/CertificateLanguages/0',
-        schemaPath: 'languages.json#/definitions/CertificateLanguages/items/enum',
+        schemaPath:
+          'languages.json#/definitions/CertificateLanguages/items/enum',
         keyword: 'enum',
-        params: { allowedValues: ['EN', 'DE', 'FR', 'ES', 'PL', 'CN', 'TR', 'IT'] },
+        params: {
+          allowedValues: ['EN', 'DE', 'FR', 'ES', 'PL', 'CN', 'TR', 'IT'],
+        },
         message: 'must be equal to one of the allowed values',
       },
     ],

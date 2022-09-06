@@ -13,7 +13,10 @@ function generateUpdatedSchemaObjects(newPath, environment) {
   const updatedSchemaMap = {};
 
   Object.keys(refMap).forEach((directory) => {
-    const pathToSchema = resolve(__dirname, `../${directory}/${directory}.json`);
+    const pathToSchema = resolve(
+      __dirname,
+      `../${directory}/${directory}.json`,
+    );
     const jsonSchema = readFileSync(pathToSchema);
     const schemaObject = JSON.parse(jsonSchema);
 
@@ -24,7 +27,10 @@ function generateUpdatedSchemaObjects(newPath, environment) {
       const currentPath = currentRef.split('#/')[0]; // e.g. ../key-value-object.json
       const { base: fileName, name: folderName } = parse(currentPath);
       const pathToReplace = currentRef.split(fileName)[0]; // e.g. ../
-      const replacementPath = environment === 'local' ? join(newPath, '/') : join(newPath, folderName, '/');
+      const replacementPath =
+        environment === 'local'
+          ? join(newPath, '/')
+          : join(newPath, folderName, '/');
 
       referenceObj['$ref'] = currentRef.replace(pathToReplace, replacementPath);
     });
@@ -56,7 +62,8 @@ function commitChanges(environment, version) {
     )
     .options({
       environment: {
-        description: 'Set refs to remote or local paths, default values can be overridden',
+        description:
+          'Set refs to remote or local paths, default values can be overridden',
         demandOption: true,
         example: 'remote',
         alias: 'e',
@@ -69,7 +76,8 @@ function commitChanges(environment, version) {
         },
       },
       localPath: {
-        description: 'If using a local environment, set the path here. Default is "../"',
+        description:
+          'If using a local environment, set the path here. Default is "../"',
         demandOption: false,
         example: '../',
         default: '../',
@@ -84,7 +92,8 @@ function commitChanges(environment, version) {
         alias: 'h',
       },
       folder: {
-        description: 'If setting a remote path, you can override the folder here. Default is "schema-definitions"',
+        description:
+          'If setting a remote path, you can override the folder here. Default is "schema-definitions"',
         demandOption: false,
         example: 'schema-definitions',
         default: 'schema-definitions',
@@ -112,7 +121,8 @@ function commitChanges(environment, version) {
       },
     }).argv;
 
-  const { versionNumber, host, folder, environment, localPath, stage, commit } = argv;
+  const { versionNumber, host, folder, environment, localPath, stage, commit } =
+    argv;
   const newVersionNumber = addVToVersionNumber(versionNumber);
   const remotePath = join(host, folder, newVersionNumber, '/');
   const newPath = environment === 'local' ? localPath : remotePath;

@@ -15,7 +15,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Maximum',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/maximum',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/maximum',
         keyword: 'maximum',
         params: { comparison: '<=', limit: 100 },
         message: 'must be <= 100',
@@ -27,7 +28,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Minimum',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Minimum/minimum',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Minimum/minimum',
         keyword: 'minimum',
         params: { comparison: '>=', limit: 0 },
         message: 'must be >= 0',
@@ -39,7 +41,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Symbol',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Symbol/type',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Symbol/type',
         keyword: 'type',
         params: { type: 'string' },
         message: 'must be string',
@@ -51,7 +54,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Actual',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Actual/maximum',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Actual/maximum',
         keyword: 'maximum',
         params: { comparison: '<=', limit: 100 },
         message: 'must be <= 100',
@@ -63,7 +67,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Actual',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Actual/minimum',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Actual/minimum',
         keyword: 'minimum',
         params: { comparison: '>=', limit: 0 },
         message: 'must be >= 0',
@@ -75,7 +80,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Actual',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Actual/type',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Actual/type',
         keyword: 'type',
         params: { type: 'number' },
         message: 'must be number',
@@ -87,7 +93,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Maximum',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/type',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/type',
         keyword: 'type',
         params: { type: 'number' },
         message: 'must be number',
@@ -99,7 +106,8 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/ChemicalElement/Minimum',
-        schemaPath: 'chemical-element.json#/definitions/ChemicalElement/properties/Minimum/type',
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Minimum/type',
         keyword: 'type',
         params: { type: 'number' },
         message: 'must be number',

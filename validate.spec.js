@@ -52,7 +52,10 @@ folders.forEach((folder) => {
 
     validCertTestSuitesMap.forEach(({ certificateName }) => {
       it(`${certificateName} should be a valid certificate`, async () => {
-        const certificatePath = resolve(__dirname, `${folder}/test/fixtures/${certificateName}.json`);
+        const certificatePath = resolve(
+          __dirname,
+          `${folder}/test/fixtures/${certificateName}.json`,
+        );
         const certificate = JSON.parse(readFileSync(certificatePath, 'utf8'));
         const validator = await createAjvInstance().compileAsync(testSchema);
         //
@@ -64,7 +67,10 @@ folders.forEach((folder) => {
 
     invalidCertTestSuitesMap.forEach(({ certificateName, expectedErrors }) => {
       it(`${certificateName} should be an invalid certificate`, async () => {
-        const certificatePath = resolve(__dirname, `${folder}/test/fixtures/${certificateName}.json`);
+        const certificatePath = resolve(
+          __dirname,
+          `${folder}/test/fixtures/${certificateName}.json`,
+        );
         const certificate = JSON.parse(readFileSync(certificatePath, 'utf8'));
         const validator = await createAjvInstance().compileAsync(testSchema);
         //
