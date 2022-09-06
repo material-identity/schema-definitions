@@ -19,10 +19,7 @@
           "enum": ["base64", "hex"],
           "default": "base64"
         },
-        "Value": {
-          "description": "The hash value.",
-          "type": "string"
-        }
+        "Value": { "description": "The hash value.", "type": "string" }
       },
       "required": ["Algorithm", "Encoding", "Value"]
     },
