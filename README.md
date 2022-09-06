@@ -147,3 +147,7 @@ When a new folder is created and tests are added, the folder name must be added 
 # Creating a new release
 
 Once a PR has been approved and merged to main, the `Set $refs to remote on merge and update $ids` github action will run the `update:refs` script and update the `$ref`s to the remote url, and also the `update:version` script which will update the `$id`s. A new release should be made using the `npm run release` script. Once the release is done, the `schemas-deploy` tool should automatically receive the webhook from the release and deploy the updated schemas.
+
+# $refs and $ids and working locally
+
+When merging to main, `update:refs` and `update:version` are run automatically by the `ci` workflow and the `$ref`s and `$id`s are updated to remote URLs. When working locally, run `npm run update:refs -- -e local` to set all `$ref`s and `$id`s to local values.
