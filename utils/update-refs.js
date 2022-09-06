@@ -41,12 +41,12 @@ function stageChanges() {
     .join(' ');
 
   execSync(`git add ${schemasPaths}`);
-  console.log('The updated definitions have been stashed');
+  console.log('The updated definitions have been staged');
 }
 
 function commitChanges(environment, version) {
   execSync(`git commit -m 'chore: update ${environment} $refs to ${version}'`);
-  console.log('Stashed files have been commited.');
+  console.log('Staged files have been commited.');
 }
 
 (async function () {

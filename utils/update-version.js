@@ -39,7 +39,7 @@ function stageChanges() {
 
 function commitChanges(version) {
   execSync(`git commit -m 'chore: update version to ${version}'`);
-  console.log('Stashed files have been commited.');
+  console.log('Staged files have been commited.');
 }
 
 (async function () {
