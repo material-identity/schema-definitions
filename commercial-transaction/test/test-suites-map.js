@@ -4,6 +4,7 @@ const validCertTestSuitesMap = [
   { certificateName: 'valid-certificate-3' },
   { certificateName: 'valid-certificate-4' },
   { certificateName: 'valid-certificate-5' },
+  { certificateName: 'valid-certificate-6' },
 ];
 
 const invalidCertTestSuitesMap = [
@@ -69,18 +70,6 @@ const invalidCertTestSuitesMap = [
   },
   {
     certificateName: 'invalid-certificate-6',
-    expectedErrors: [
-      {
-        instancePath: '/Certificate/CommercialTransaction',
-        schemaPath: '#/required',
-        keyword: 'required',
-        params: { missingProperty: 'A07' },
-        message: "must have required property 'A07'",
-      },
-    ],
-  },
-  {
-    certificateName: 'invalid-certificate-7',
     expectedErrors: [
       {
         instancePath: '/Certificate/CommercialTransaction',

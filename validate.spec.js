@@ -6,15 +6,15 @@ const { readFileSync } = require('fs');
 const { resolve, join, parse } = require('path');
 
 const folders = [
-  // 'attachment',
-  // 'chemical-element',
-  // 'commercial-transaction',
-  // 'company',
-  // 'key-value-object',
-  // 'languages',
-  // 'measurement',
+  'attachment',
+  'chemical-element',
+  'commercial-transaction',
+  'company',
+  'key-value-object',
+  'languages',
+  'measurement',
   'product-description',
-  // 'validation',
+  'validation',
 ];
 
 folders.forEach((folder) => {
