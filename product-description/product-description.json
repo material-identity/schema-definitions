@@ -1,47 +1,18 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "product-description.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.0/product-description/product-description.json",
   "definitions": {
-    "KeyValueObject": {
-      "allOf": [
-        {
-          "$ref": "../key-value-object.json#/definitions/KeyValueObject"
-        }
-      ]
-    },
-    "Measurement": {
-      "allOf": [
-        {
-          "$ref": "../measurement.json#/definitions/Measurement"
-        }
-      ]
-    },
+    "KeyValueObject": { "allOf": [{ "$ref": "../key-value-object.json#/definitions/KeyValueObject" }] },
+    "Measurement": { "allOf": [{ "$ref": "../measurement.json#/definitions/Measurement" }] },
     "Tube": {
       "title": "Tube",
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Constant describing tube",
-          "type": "string",
-          "const": "Tube",
-          "default": "Tube"
-        },
-        "OuterDiameter": {
-          "description": "Outer diameter of tube",
-          "type": "number",
-          "minimum": 0
-        },
-        "WallThickness": {
-          "description": "Wall thickness of tube",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Constant describing tube", "type": "string", "const": "Tube", "default": "Tube" },
+        "OuterDiameter": { "description": "Outer diameter of tube", "type": "number", "minimum": 0 },
+        "WallThickness": { "description": "Wall thickness of tube", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "OuterDiameter", "WallThickness", "Unit"],
       "additionalProperties": false
@@ -57,21 +28,9 @@
           "const": "QuadraticTube",
           "default": "QuadraticTube"
         },
-        "SideLength": {
-          "description": "Side length of quadratic tube",
-          "type": "number",
-          "minimum": 0
-        },
-        "WallThickness": {
-          "description": "Wall thickness of quadratic tube",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "SideLength": { "description": "Side length of quadratic tube", "type": "number", "minimum": 0 },
+        "WallThickness": { "description": "Wall thickness of quadratic tube", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "SideLength", "WallThickness", "Unit"],
       "additionalProperties": false
@@ -87,26 +46,10 @@
           "const": "RectangularTube",
           "default": "RectangularTube"
         },
-        "Width": {
-          "description": "Width of rectangular tube",
-          "type": "number",
-          "minimum": 0
-        },
-        "Height": {
-          "description": "Height of rectangular tube",
-          "type": "number",
-          "minimum": 0
-        },
-        "WallThickness": {
-          "description": "Wall thickness of rectangular tube",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Width": { "description": "Width of rectangular tube", "type": "number", "minimum": 0 },
+        "Height": { "description": "Height of rectangular tube", "type": "number", "minimum": 0 },
+        "WallThickness": { "description": "Wall thickness of rectangular tube", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Height", "WallThickness", "Unit"],
       "additionalProperties": false
@@ -116,27 +59,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "Pipe",
-          "default": "Pipe"
-        },
-        "SideLength": {
-          "description": "Side length of pipe",
-          "type": "number",
-          "minimum": 0
-        },
-        "WallThickness": {
-          "description": "Wall thickness of pipe",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "Pipe", "default": "Pipe" },
+        "SideLength": { "description": "Side length of pipe", "type": "number", "minimum": 0 },
+        "WallThickness": { "description": "Wall thickness of pipe", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "SideLength", "WallThickness", "Unit"],
       "additionalProperties": false
@@ -152,26 +78,10 @@
           "const": "RectangularPipe",
           "default": "RectangularPipe"
         },
-        "Width": {
-          "description": "Width of rectangular pipe",
-          "type": "number",
-          "minimum": 0
-        },
-        "Height": {
-          "description": "Height of rectangular pipe",
-          "type": "number",
-          "minimum": 0
-        },
-        "WallThickness": {
-          "description": "Wall thickness of rectangular pipe",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Width": { "description": "Width of rectangular pipe", "type": "number", "minimum": 0 },
+        "Height": { "description": "Height of rectangular pipe", "type": "number", "minimum": 0 },
+        "WallThickness": { "description": "Wall thickness of rectangular pipe", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Height", "WallThickness", "Unit"],
       "additionalProperties": true
@@ -181,27 +91,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Constant defining coil",
-          "type": "string",
-          "const": "Coil",
-          "default": "Coil"
-        },
-        "Width": {
-          "description": "Width of coil",
-          "type": "number",
-          "minimum": 0
-        },
-        "WallThickness": {
-          "description": "Wall thickness of coil",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Constant defining coil", "type": "string", "const": "Coil", "default": "Coil" },
+        "Width": { "description": "Width of coil", "type": "number", "minimum": 0 },
+        "WallThickness": { "description": "Wall thickness of coil", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "WallThickness", "Unit"],
       "additionalProperties": true
@@ -217,16 +110,8 @@
           "const": "RoundBar",
           "default": "RoundBar"
         },
-        "Diameter": {
-          "description": "Diameter of round bar",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Diameter": { "description": "Diameter of round bar", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Diameter", "Unit"],
       "additionalProperties": false
@@ -242,16 +127,8 @@
           "const": "HexagonalBar",
           "default": "HexagonalBar"
         },
-        "Diameter": {
-          "description": "Diamater of hexagonal bar",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Diameter": { "description": "Diamater of hexagonal bar", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Diameter", "Unit"],
       "additionalProperties": false
@@ -261,27 +138,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "FlatBar",
-          "default": "FlatBar"
-        },
-        "Width": {
-          "description": "Width of flat bar",
-          "type": "number",
-          "minimum": 0
-        },
-        "Thickness": {
-          "description": "Thickness of flat bar",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "FlatBar", "default": "FlatBar" },
+        "Width": { "description": "Width of flat bar", "type": "number", "minimum": 0 },
+        "Thickness": { "description": "Thickness of flat bar", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Thickness", "Unit"],
       "additionalProperties": false
@@ -291,27 +151,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "Sheet",
-          "default": "Sheet"
-        },
-        "Width": {
-          "description": "Width of sheet",
-          "type": "number",
-          "minimum": 0
-        },
-        "Thickness": {
-          "description": "Thickness of sheet",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "Sheet", "default": "Sheet" },
+        "Width": { "description": "Width of sheet", "type": "number", "minimum": 0 },
+        "Thickness": { "description": "Thickness of sheet", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Thickness", "Unit"],
       "additionalProperties": false
@@ -321,27 +164,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "Slab",
-          "default": "Slab"
-        },
-        "Width": {
-          "description": "Width of slab",
-          "type": "number",
-          "minimum": 0
-        },
-        "Thickness": {
-          "description": "Thickness of slab",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "Slab", "default": "Slab" },
+        "Width": { "description": "Width of slab", "type": "number", "minimum": 0 },
+        "Thickness": { "description": "Thickness of slab", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Thickness", "Unit"],
       "additionalProperties": false
@@ -351,27 +177,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "Plate",
-          "default": "Plate"
-        },
-        "Width": {
-          "description": "Width of plate",
-          "type": "number",
-          "minimum": 0
-        },
-        "Thickness": {
-          "description": "Thickness of plate",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "Plate", "default": "Plate" },
+        "Width": { "description": "Width of plate", "type": "number", "minimum": 0 },
+        "Thickness": { "description": "Thickness of plate", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Thickness", "Unit"],
       "additionalProperties": false
@@ -381,27 +190,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "Strip",
-          "default": "Strip"
-        },
-        "Width": {
-          "description": "Width of strip",
-          "type": "number",
-          "minimum": 0
-        },
-        "Thickness": {
-          "description": "Thickness of strip",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "Strip", "default": "Strip" },
+        "Width": { "description": "Width of strip", "type": "number", "minimum": 0 },
+        "Thickness": { "description": "Thickness of strip", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Thickness", "Unit"],
       "additionalProperties": false
@@ -411,27 +203,10 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "Scroll",
-          "default": "Scroll"
-        },
-        "Width": {
-          "description": "Width of scroll",
-          "type": "number",
-          "minimum": 0
-        },
-        "Thickness": {
-          "description": "Thickness of scroll",
-          "type": "number",
-          "minimum": 0
-        },
-        "Unit": {
-          "description": "The unit of the dimensions.",
-          "type": "string",
-          "default": "mm"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "Scroll", "default": "Scroll" },
+        "Width": { "description": "Width of scroll", "type": "number", "minimum": 0 },
+        "Thickness": { "description": "Thickness of scroll", "type": "number", "minimum": 0 },
+        "Unit": { "description": "The unit of the dimensions.", "type": "string", "default": "mm" }
       },
       "required": ["Form", "Width", "Thickness", "Unit"],
       "additionalProperties": false
@@ -441,16 +216,8 @@
       "description": "",
       "type": "object",
       "properties": {
-        "Form": {
-          "description": "Form of product",
-          "type": "string",
-          "const": "Other",
-          "default": "Other"
-        },
-        "Description": {
-          "description": "Free text describing the form",
-          "type": "string"
-        }
+        "Form": { "description": "Form of product", "type": "string", "const": "Other", "default": "Other" },
+        "Description": { "description": "Free text describing the form", "type": "string" }
       },
       "required": ["Form", "Description"],
       "additionalProperties": false
@@ -458,84 +225,36 @@
     "ProductShape": {
       "title": "ProductShape",
       "oneOf": [
-        {
-          "$ref": "#/definitions/Tube"
-        },
-        {
-          "$ref": "#/definitions/RectangularTube"
-        },
-        {
-          "$ref": "#/definitions/QuadraticTube"
-        },
-        {
-          "$ref": "#/definitions/Pipe"
-        },
-        {
-          "$ref": "#/definitions/RectangularPipe"
-        },
-        {
-          "$ref": "#/definitions/Coil"
-        },
-        {
-          "$ref": "#/definitions/RoundBar"
-        },
-        {
-          "$ref": "#/definitions/HexagonalBar"
-        },
-        {
-          "$ref": "#/definitions/FlatBar"
-        },
-        {
-          "$ref": "#/definitions/Sheet"
-        },
-        {
-          "$ref": "#/definitions/Slab"
-        },
-        {
-          "$ref": "#/definitions/Plate"
-        },
-        {
-          "$ref": "#/definitions/Scroll"
-        },
-        {
-          "$ref": "#/definitions/Strip"
-        },
-        {
-          "$ref": "#/definitions/Other"
-        }
+        { "$ref": "#/definitions/Tube" },
+        { "$ref": "#/definitions/RectangularTube" },
+        { "$ref": "#/definitions/QuadraticTube" },
+        { "$ref": "#/definitions/Pipe" },
+        { "$ref": "#/definitions/RectangularPipe" },
+        { "$ref": "#/definitions/Coil" },
+        { "$ref": "#/definitions/RoundBar" },
+        { "$ref": "#/definitions/HexagonalBar" },
+        { "$ref": "#/definitions/FlatBar" },
+        { "$ref": "#/definitions/Sheet" },
+        { "$ref": "#/definitions/Slab" },
+        { "$ref": "#/definitions/Plate" },
+        { "$ref": "#/definitions/Scroll" },
+        { "$ref": "#/definitions/Strip" },
+        { "$ref": "#/definitions/Other" }
       ]
     },
     "ProductDescriptionBase": {
       "type": "object",
       "properties": {
-        "B01": {
-          "description": "The product",
-          "type": "string"
-        },
-        "B03": {
-          "description": "Any supplementary requirements",
-          "type": "string"
-        },
-        "B04": {
-          "description": "The delivery conditions for the product",
-          "type": "string"
-        },
-        "B05": {
-          "description": "Reference heat treatment of samples",
-          "type": "string"
-        },
-        "B06": {
-          "description": "Marking of the product",
-          "type": "string"
-        },
+        "B01": { "description": "The product", "type": "string" },
+        "B03": { "description": "Any supplementary requirements", "type": "string" },
+        "B04": { "description": "The delivery conditions for the product", "type": "string" },
+        "B05": { "description": "Reference heat treatment of samples", "type": "string" },
+        "B06": { "description": "Marking of the product", "type": "string" },
         "B07": {
           "description": "Identification of the product, usually batch, charge or lot number",
           "type": "string"
         },
-        "B08": {
-          "description": "Number of pieces of the product.",
-          "type": "number"
-        }
+        "B08": { "description": "Number of pieces of the product.", "type": "number" }
       }
     },
     "ProductDescription": {
@@ -552,98 +271,44 @@
                 "ProductNorm": {
                   "description": "The product norm designation",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "MaterialNorm": {
                   "description": "The material norm(s)",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
-                "MassNorm": {
-                  "description": "The mass norm(s)",
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
+                "MassNorm": { "description": "The mass norm(s)", "type": "array", "items": { "type": "string" } },
                 "SteelDesignation": {
                   "description": "The steel designation(s)",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 }
               },
               "additionalProperties": false
             },
             "B09": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/ProductShape"
-                }
-              ],
+              "allOf": [{ "$ref": "#/definitions/ProductShape" }],
               "description": "Product type and its describing dimensional parameters"
             },
             "B10": {
               "description": "Product dimensions - length of the product",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/Measurement"
-                }
-              ]
+              "allOf": [{ "$ref": "#/definitions/Measurement" }]
             },
-            "B11": {
-              "description": "Product dimensions ",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/Measurement"
-                }
-              ]
-            },
-            "B12": {
-              "description": "Theoretical mass",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/Measurement"
-                }
-              ]
-            },
-            "B13": {
-              "description": "Actual mass",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/Measurement"
-                }
-              ]
-            },
+            "B11": { "description": "Product dimensions ", "allOf": [{ "$ref": "#/definitions/Measurement" }] },
+            "B12": { "description": "Theoretical mass", "allOf": [{ "$ref": "#/definitions/Measurement" }] },
+            "B13": { "description": "Actual mass", "allOf": [{ "$ref": "#/definitions/Measurement" }] },
             "SupplementaryInformation": {
               "title": "ProductDescriptionSupplementaryInformation",
               "type": "object",
-              "propertyNames": {
-                "pattern": "^B1[4-9]|^B[2-9][0-9]"
-              },
-              "patternProperties": {
-                "^B1[4-9]|^B[2-9][0-9]": {
-                  "$ref": "#/definitions/KeyValueObject"
-                }
-              },
+              "propertyNames": { "pattern": "^B1[4-9]|^B[2-9][0-9]" },
+              "patternProperties": { "^B1[4-9]|^B[2-9][0-9]": { "$ref": "#/definitions/KeyValueObject" } },
               "additionalProperties": false
             }
           },
           "required": ["B01", "B02", "B07", "B08", "B09", "B10", "B13"]
         },
-        {
-          "properties": {
-            "B02": {
-              "type": "string"
-            }
-          },
-          "required": ["B01", "B02", "B08"]
-        }
+        { "properties": { "B02": { "type": "string" } }, "required": ["B01", "B02", "B08"] }
       ]
     }
   }

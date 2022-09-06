@@ -1,11 +1,12 @@
+const { execSync } = require('child_process');
 const { readFileSync, writeFileSync } = require('fs');
+const { get } = require('lodash');
 const { resolve, join, parse } = require('path');
-const { addVToVersionNumber, refMap } = require('./constants');
+const prettier = require('prettier');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
+const { addVToVersionNumber, refMap } = require('./constants');
 const { version: pkgVersion } = require(resolve(__dirname, '../package.json'));
-const { execSync } = require('child_process');
-const { get } = require('lodash');
 
 function generateUpdatedSchemaObjects(newPath, environment) {
   // creates an object map with the path to the schema as the key and the updated schema object as the value
@@ -115,11 +116,16 @@ function commitChanges(environment, version) {
   const newVersionNumber = addVToVersionNumber(versionNumber);
   const remotePath = join(host, folder, newVersionNumber, '/');
   const newPath = environment === 'local' ? localPath : remotePath;
+  const prettierConfig = await prettier.resolveConfig(process.cwd());
 
   try {
     const schemaMap = generateUpdatedSchemaObjects(newPath, argv.environment);
     Object.keys(schemaMap).forEach((path) => {
-      writeFileSync(path, JSON.stringify(schemaMap[path], null, 2));
+      const schema = prettier.format(JSON.stringify(schemaMap[path]), {
+        parser: 'json',
+        ...(prettierConfig || {}),
+      });
+      writeFileSync(path, schema);
     });
     console.log(`$refs have been updated, new path is "${newPath}"`);
 

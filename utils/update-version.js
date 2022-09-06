@@ -1,5 +1,7 @@
 const { SchemaRepositoryVersion } = require('@s1seven/schema-tools-versioning');
 const { execSync } = require('child_process');
+const { readFileSync, writeFileSync } = require('fs');
+const prettier = require('prettier');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 
@@ -68,10 +70,16 @@ function commitChanges(version) {
 
   const { versionNumber, stage, commit } = argv;
   const newVersionNumber = addVToVersionNumber(versionNumber);
+  const prettierConfig = await prettier.resolveConfig(process.cwd());
 
   try {
     const updater = new SchemaRepositoryVersion(defaultServerUrl, schemaFilePaths, newVersionNumber);
     await updater.updateSchemasVersion();
+    schemaFilePaths.map(({ filePath }) => {
+      const input = readFileSync(filePath, 'utf-8');
+      const output = prettier.format(input, { parser: 'json', ...(prettierConfig || {}) });
+      writeFileSync(filePath, output);
+    });
     if (stage) stageChanges();
     if (commit) commitChanges(newVersionNumber);
     process.exit(0);
