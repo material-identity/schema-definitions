@@ -5,18 +5,40 @@ const { resolve, join, parse } = require('path');
 const prettier = require('prettier');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
-const { addVToVersionNumber, refMap } = require('./constants');
+const { addVToVersionNumber, folders, refMap } = require('./constants');
 const { version: pkgVersion } = require(resolve(__dirname, '../package.json'));
+
+function setLocalIds(schemaMap) {
+  const updatedSchemaMap = {};
+
+  folders.forEach((directory) => {
+    const fileName = `${directory}.json`;
+    const filePath = `${directory}/${fileName}`;
+    let schemaObject;
+
+    if (!schemaMap[filePath]) {
+      const pathToSchema = resolve(__dirname, '../', filePath);
+      const jsonSchema = readFileSync(pathToSchema);
+      schemaObject = JSON.parse(jsonSchema);
+    } else {
+      schemaObject = schemaMap[filePath];
+    }
+
+    schemaObject['$id'] = fileName;
+    updatedSchemaMap[filePath] = schemaObject;
+  });
+
+  return updatedSchemaMap;
+}
 
 function generateUpdatedSchemaObjects(newPath, environment) {
   // creates an object map with the path to the schema as the key and the updated schema object as the value
   const updatedSchemaMap = {};
 
   Object.keys(refMap).forEach((directory) => {
-    const pathToSchema = resolve(
-      __dirname,
-      `../${directory}/${directory}.json`,
-    );
+    const filePath = `${directory}/${directory}.json`;
+    const pathToSchema = resolve(__dirname, '../', filePath);
+
     const jsonSchema = readFileSync(pathToSchema);
     const schemaObject = JSON.parse(jsonSchema);
 
@@ -35,7 +57,7 @@ function generateUpdatedSchemaObjects(newPath, environment) {
       referenceObj['$ref'] = currentRef.replace(pathToReplace, replacementPath);
     });
 
-    updatedSchemaMap[pathToSchema] = schemaObject;
+    updatedSchemaMap[filePath] = schemaObject;
   });
 
   return updatedSchemaMap;
@@ -129,13 +151,18 @@ function commitChanges(environment, version) {
   const prettierConfig = await prettier.resolveConfig(process.cwd());
 
   try {
-    const schemaMap = generateUpdatedSchemaObjects(newPath, argv.environment);
+    let schemaMap = generateUpdatedSchemaObjects(newPath, argv.environment);
+    if (environment === 'local') schemaMap = setLocalIds(schemaMap);
+
     Object.keys(schemaMap).forEach((path) => {
+      const pathToSchema = resolve(__dirname, '../', path);
+
       const schema = prettier.format(JSON.stringify(schemaMap[path]), {
         parser: 'json',
         ...(prettierConfig || {}),
       });
-      writeFileSync(path, schema);
+
+      writeFileSync(pathToSchema, schema);
     });
     console.log(`$refs have been updated, new path is "${newPath}"`);
 

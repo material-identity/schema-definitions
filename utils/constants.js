@@ -1,3 +1,15 @@
+const folders = [
+  'attachment',
+  'chemical-element',
+  'commercial-transaction',
+  'company',
+  'key-value-object',
+  'languages',
+  'measurement',
+  'product-description',
+  'validation',
+];
+
 // key is the directory name, value is an array containing the properties whose refs need to be updated
 const refMap = {
   'commercial-transaction': ['KeyValueObject', 'Company'],
@@ -14,5 +26,6 @@ function addVToVersionNumber(versionNumber) {
 module.exports = {
   addVToVersionNumber,
   defaultServerUrl,
+  folders,
   refMap,
 };
