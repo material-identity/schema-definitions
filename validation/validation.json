@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "validation.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.1/validation/validation.json",
   "definitions": {
     "KeyValueObject": {
       "allOf": [
