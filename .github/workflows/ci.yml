@@ -62,12 +62,8 @@ jobs:
       - name: Run validation tests
         run: npm run test
 
-      - name: Get branch names
-        id: branch-name
-        uses: tj-actions/branch-names@v6
-
       - name: Set $refs to remote on merge and update $ids
-        if: steps.branch-name.outputs.is_default == 'true' && github.event_name != 'release'
+        if: github.event_name == 'closed' && github.event.pull_request.merged == 'true'
         run: |
           npm run update:refs -- --environment remote --stage true
           npm run update:version --stage true
@@ -77,7 +73,7 @@ jobs:
 
       - name: Add, commit and push updated definitions
         id: commit-definitions
-        if: steps.branch-name.outputs.is_default == 'true' && github.event_name != 'release'
+        if: github.event_name == 'closed' && github.event.pull_request.merged == 'true'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'chore: update $refs to remote urls [skip ci]'
