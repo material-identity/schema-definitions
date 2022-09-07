@@ -1,6 +1,12 @@
 name: Schema Definitions CI
 
 on:
+  push:
+    paths-ignore:
+      - 'README.md'
+      - '**/package-lock.json'
+    branches:
+      - main
   pull_request:
     types:
       - opened
@@ -11,6 +17,8 @@ on:
     paths-ignore:
       - 'README.md'
       - '**/package-lock.json'
+    branches:
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
