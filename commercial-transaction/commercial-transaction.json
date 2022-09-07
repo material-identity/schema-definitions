@@ -1,18 +1,18 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.0/commercial-transaction/commercial-transaction.json",
+  "$id": "commercial-transaction.json",
   "definitions": {
     "Company": {
       "allOf": [
         {
-          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.0/company/company.json#/definitions/Company"
+          "$ref": "../company.json#/definitions/Company"
         }
       ]
     },
     "KeyValueObject": {
       "allOf": [
         {
-          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.0/key-value-object/key-value-object.json#/definitions/KeyValueObject"
+          "$ref": "../key-value-object.json#/definitions/KeyValueObject"
         }
       ]
     },

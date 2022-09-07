@@ -74,7 +74,7 @@ function stageChanges() {
 
 function commitChanges(environment, version) {
   execSync(
-    `git commit -n -m 'chore: update ${environment} $refs to ${version}'`,
+    `git commit -n -m 'chore: update ${environment} $refs to ${version} [skip ci]'`,
   );
   console.log('Staged files have been commited.');
 }
@@ -159,7 +159,7 @@ function commitChanges(environment, version) {
     Object.keys(schemaMap).forEach((path) => {
       const pathToSchema = resolve(__dirname, '../', path);
 
-      const schema = prettier.format(JSON.stringify(schemaMap[path]), {
+      const schema = prettier.format(JSON.stringify(schemaMap[path], null, 2), {
         parser: 'json',
         ...(prettierConfig || {}),
       });

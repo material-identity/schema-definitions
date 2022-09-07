@@ -69,7 +69,7 @@ function stageChanges() {
 }
 
 function commitChanges(version) {
-  execSync(`git commit -n -m 'chore: update version to ${version}'`);
+  execSync(`git commit -n -m 'chore: update version to ${version} [skip ci]'`);
   console.log('Staged files have been commited.');
 }
 
