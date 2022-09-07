@@ -63,7 +63,10 @@ jobs:
         run: npm run test
 
       - name: Echo github obj
-        run: echo ${{ toJson(github) }}
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
 
       - name: Set $refs to remote on merge and update $ids
         if: github.event.pull_request.merged == true
@@ -73,7 +76,10 @@ jobs:
           npx lint-staged
 
       - name: Echo github obj
-        run: echo ${{ toJson(github) }}
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
 
       # commit definitions with updated $refs
 
