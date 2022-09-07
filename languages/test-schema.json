@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "test-schema.json",
+  "title": "Certificate",
+  "type": "object",
+  "properties": {
+    "Certificate": {
+      "type": "object",
+      "allOf": [
+        {
+          "properties": {
+            "CertificateLanguages": {
+              "$ref": "languages.json#/definitions/CertificateLanguages"
+            }
+          },
+          "required": ["CertificateLanguages"]
+        }
+      ]
+    }
+  },
+  "required": ["Certificate"]
+}

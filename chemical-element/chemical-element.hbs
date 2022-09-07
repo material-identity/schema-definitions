@@ -1,0 +1,48 @@
+<table class="main-table chemical-element-root" style="justify-content: left; text-align: left; margin-top: 0px">
+<tbody>
+    <tr class="table-rows">
+        <th style="width: 80px"></th>
+        {{#each this}}
+            <th class="element" style="width: 60px; float: left">{{this.key}}</th>
+        {{/each}}
+    </tr>
+    <tr class="table-rows">
+        <th style="width: 80px">Symbol</th>
+        {{#each this}}
+            <th class="element" style="width: 60px; float: left">{{this.value.Symbol}}</th>
+        {{/each}}
+    </tr>
+    <tr class="table-rows">
+        <th style="width: 80px">Actual [%]</th>
+        {{#each this}}
+        <th class="element" style="width: 60px; float: left">
+            {{localizeNumber this.value.Actual ../CertificateLanguages.[0]}}
+        </th>
+        {{/each}}
+    </tr>
+    {{#some this "value.Minimum"}}
+        <tr class="table-rows">
+            <th style="width: 80px">Minimum</th>
+            {{#each this}}
+            <th class="element" style="width: 60px; float: left">
+                {{#if this.value.Minimum}}
+                    {{localizeNumber this.value.Minimum ../CertificateLanguages.[0]}}
+                {{/if}}
+            </th>
+            {{/each}}
+        </tr>
+    {{/some}}
+    {{#some this "value.Maximum"}}
+        <tr class="table-rows">
+            <th style="width: 80px">Maximum</th>
+            {{#each this}}
+            <th class="element" style="width: 60px; float: left">
+                {{#if this.value.Maximum}}
+                    {{localizeNumber this.value.Maximum CertificateLanguages.[0]}}
+                {{/if}}
+            </th>
+            {{/each}}
+        </tr>
+    {{/some}}
+</tbody>
+</table>

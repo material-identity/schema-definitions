@@ -1,0 +1,15 @@
+{
+  "Certificate": {
+    "A01": {
+      "Name": "Green Plastics AG",
+      "Street": "Kunststoffgasse 1",
+      "ZipCode": "10003",
+      "City": "Berlin",
+      "Country": "DE",
+      "Email": "s1seven.certificates@gmail.com",
+      "Identifiers": {
+        "DUNS": "123456789"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "Certificate": {
+    "Z05": {
+      "Key": "Tensile flattening test",
+      "Value": "100",
+      "Unit": "%",
+      "Interpretation": "Positive",
+      "Type": "number"
+    }
+  }
+}

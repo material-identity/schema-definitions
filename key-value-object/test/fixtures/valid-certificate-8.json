@@ -1,0 +1,11 @@
+{
+  "Certificate": {
+    "Z05": {
+      "Key": "Dimensional Inspection EN 10219-2",
+      "Value": "1",
+      "Unit": "Lot",
+      "Interpretation": "Positive",
+      "Type": "number"
+    }
+  }
+}

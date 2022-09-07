@@ -1,0 +1,9 @@
+{
+  "Certificate": {
+    "B10": {
+      "Property": "Corner radius",
+      "Value": 1.5,
+      "Unit": "mm"
+    }
+  }
+}

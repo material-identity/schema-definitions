@@ -1,0 +1,91 @@
+  {{!-- COMPANIES HEADERS --}}
+
+  <section class="header commercial-transaction-headers">
+    <table class="main-table">
+      <tbody>
+        <tr class="table-rows">
+          <th class="table-headers">A04 {{ i18n "A04" "certificateFields" CertificateLanguages}}</th>
+          <th class="table-headers">A01 {{ i18n "A01" "certificateFields" CertificateLanguages}} </th>
+          {{#hasKey CommercialTransaction "A06"}}
+          <th class="table-headers">A06 {{ i18n "A06" "certificateFields" CertificateLanguages}}</th>
+          {{/hasKey}}
+          {{#hasKey CommercialTransaction "A06.1"}}
+          <th class="table-headers">A06.1 {{ i18n "A06.1" "certificateFields" CertificateLanguages}}</th>
+          {{/hasKey}}
+          {{#hasKey CommercialTransaction "A06.2"}}
+          <th class="table-headers">A06.2 {{ i18n "A06.2" "certificateFields" CertificateLanguages}}</th>
+          {{/hasKey}}
+          {{#hasKey CommercialTransaction "A06.3"}}
+          <th class="table-headers">A06.3 {{ i18n "A06.3" "certificateFields" CertificateLanguages}}</th>
+          {{/hasKey}}
+        </tr>
+        <tr class="table-rows">
+          <td class="table-cells">
+            <img class="image" src="{{CommercialTransaction.A04}}" />
+          </td>
+          <td>
+            {{> company CommercialTransaction.A01 }}
+          </td>
+          {{#if CommercialTransaction.A06}}
+          <td class="table-cells">
+            {{> company CommercialTransaction.A06 }}
+          </td>
+          {{/if}}
+          {{#hasKey CommercialTransaction "A06.1"}}
+          <td class="table-cells">
+            {{> company (lookup CommercialTransaction "A06.1") }}
+          </td>
+          {{/hasKey}}
+          {{#hasKey CommercialTransaction "A06.2"}}
+          <td class="table-cells">
+            {{> company (lookup CommercialTransaction "A06.2") }}
+          </td>
+          {{/hasKey}}
+          {{#hasKey CommercialTransaction "A06.3"}}
+          <td class="table-cells">
+            {{> company (lookup CommercialTransaction "A06.3") }}
+          </td>
+          {{/hasKey}}
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+{{!-- COMMERCIAL TRANSACTION --}}
+
+  <section>
+    <h2 class="main-title">{{ i18n "CommercialTransaction" "certificateGroups" CertificateLanguages }}</h2>
+    <table class="main-table">
+      <tbody>
+        {{#each CommercialTransaction}}
+        {{#notIn @key "A01,A04,A06,A06.1,A06.2,A06.3,SupplementaryInformation"}}
+        {{#if this}}
+        <tr class="table-rows">
+          <th class="table-headers">{{@key}} {{ i18n @key "certificateFields" ../CertificateLanguages }}
+          </th>
+          <td>{{this}}</td>
+        </tr>
+        {{/if}}
+        {{/notIn}}
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#notEmpty CommercialTransaction.SupplementaryInformation}}
+    <h3 class="third-level-title">{{ i18n "SupplementaryInformation" "otherFields" CertificateLanguages}}
+    </h3>
+    <table class="main-table">
+      <tbody>
+        {{#each CommercialTransaction.SupplementaryInformation}}
+        <tr class="table-rows">
+          <th class="table-headers" colspan="2">{{@key}} {{this.Key}}</th>
+          <td class="table-cells">{{localizeValue this.Value this.Type ../CertificateLanguages.[0]}}
+            {{this.Unit}}
+          </td>
+          <td class="table-cells">{{this.Interpretation}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{/notEmpty}}
+  </section>

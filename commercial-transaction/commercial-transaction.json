@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "commercial-transaction.json",
+  "definitions": {
+    "Company": {
+      "allOf": [{ "$ref": "../company.json#/definitions/Company" }]
+    },
+    "KeyValueObject": {
+      "allOf": [
+        { "$ref": "../key-value-object.json#/definitions/KeyValueObject" }
+      ]
+    },
+    "CommercialTransactionBase": {
+      "title": "CommercialTransactionBase",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "A01": {
+          "allOf": [{ "$ref": "#/definitions/Company" }],
+          "description": "The manufacturer's works which delivers the certificate along the product"
+        },
+        "A02": {
+          "description": "The type of inspection document, e.g. 'EN 10204 3.1 Certificate'",
+          "type": "string"
+        },
+        "A03": {
+          "description": "The document number of the certifcate",
+          "type": "string"
+        },
+        "A04": {
+          "description": "The mark of the manufacturer as base64 png file. The maximum size is <TBD>",
+          "type": "string",
+          "contentEncoding": "base64",
+          "contentMediaType": "image/png"
+        },
+        "A05": {
+          "description": "The originator of the document, not necessarily equal to A01",
+          "type": "string",
+          "default": "Factory Production Control"
+        },
+        "A08": {
+          "description": "Manufacturer's work number",
+          "type": "string"
+        },
+        "A09": {
+          "description": "The article number used by the purchaser",
+          "type": "string"
+        }
+      },
+      "required": ["A01", "A02", "A03", "A04", "A05"]
+    },
+    "CommercialTransactionReceivers": {
+      "title": "CommercialTransactionReceivers",
+      "description": "",
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "A06": {
+              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "description": "The purchaser of the product and receiver of the certificate"
+            }
+          },
+          "required": ["A06"]
+        },
+        {
+          "properties": {
+            "A06.1": {
+              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "description": "The purchaser of the product"
+            },
+            "A06.2": {
+              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "description": "The consignee of the product"
+            },
+            "A06.3": {
+              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "description": "The receiver/consignee of the certificate"
+            }
+          },
+          "required": ["A06.1"]
+        }
+      ]
+    },
+    "CommercialTransaction": {
+      "title": "CommercialTransaction",
+      "description": "List parties and details involved in the transaction",
+      "allOf": [
+        { "$ref": "#/definitions/CommercialTransactionBase" },
+        { "$ref": "#/definitions/CommercialTransactionReceivers" }
+      ]
+    }
+  }
+}

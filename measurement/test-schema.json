@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "test-schema.json",
+  "type": "object",
+  "properties": {
+    "Certificate": {
+      "type": "object",
+      "properties": {
+        "B10": {
+          "description": "Product dimensions - length of the product",
+          "allOf": [
+            {
+              "$ref": "measurement.json#/definitions/Measurement"
+            }
+          ]
+        }
+      },
+      "required": ["B10"]
+    }
+  },
+  "required": ["Certificate"]
+}

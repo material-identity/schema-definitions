@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "key-value-object.json",
+  "definitions": {
+    "KeyValueObject": {
+      "title": "KeyValueObject",
+      "type": "object",
+      "properties": {
+        "Key": { "type": "string" },
+        "Value": { "type": "string" },
+        "Unit": { "type": "string" },
+        "Interpretation": { "type": "string" },
+        "Type": {
+          "enum": ["string", "number", "date", "date-time", "boolean"],
+          "default": "string"
+        }
+      },
+      "required": ["Key"],
+      "additionalProperties": false
+    }
+  }
+}
