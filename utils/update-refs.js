@@ -73,7 +73,9 @@ function stageChanges() {
 }
 
 function commitChanges(environment, version) {
-  execSync(`git commit -m 'chore: update ${environment} $refs to ${version}'`);
+  execSync(
+    `git commit -n -m 'chore: update ${environment} $refs to ${version}'`,
+  );
   console.log('Staged files have been commited.');
 }
 
