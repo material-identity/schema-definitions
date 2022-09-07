@@ -58,6 +58,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Set $refs and $ids to local values
+        run: npm run update:refs -- --environment local
+
       - name: Run validation tests
         run: npm run test
 
