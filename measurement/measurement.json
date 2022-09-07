@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "measurement.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.1/measurement/measurement.json",
   "definitions": {
     "Measurement": {
       "title": "Measurement",
@@ -23,7 +23,10 @@
           "description": "The upper limit according product specification. If not provided it is ∞.",
           "type": "number"
         },
-        "Unit": { "description": "The Unit of Value.", "type": "string" }
+        "Unit": {
+          "description": "The Unit of Value.",
+          "type": "string"
+        }
       },
       "required": ["Value"],
       "additionalProperties": false

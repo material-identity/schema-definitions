@@ -1,12 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "company.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.1/company/company.json",
   "definitions": {
     "CompanyBase": {
       "type": "object",
       "properties": {
-        "ZipCode": { "type": "string" },
-        "City": { "type": "string" },
+        "ZipCode": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
         "Country": {
           "description": "The two-letter ISO country code according https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.",
           "type": "string",
@@ -15,22 +19,35 @@
           "pattern": "^[A-Z]{2}$",
           "examples": ["AT", "DE", "FR", "ES", "PL", "CN"]
         },
-        "Email": { "type": "string", "format": "email" },
+        "Email": {
+          "type": "string",
+          "format": "email"
+        },
         "AdditionalInformation": {
           "description": "An array of additional free text information on the company.",
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "uniqueItems": true,
           "minItems": 1
         }
       },
       "oneOf": [
         {
-          "properties": { "Name": { "type": "string" } },
+          "properties": {
+            "Name": {
+              "type": "string"
+            }
+          },
           "required": ["Name"]
         },
         {
-          "properties": { "CompanyName": { "type": "string" } },
+          "properties": {
+            "CompanyName": {
+              "type": "string"
+            }
+          },
           "required": ["CompanyName"]
         }
       ],
@@ -45,11 +62,15 @@
           "anyOf": [
             {
               "type": "array",
-              "items": { "type": "string" },
+              "items": {
+                "type": "string"
+              },
               "minItems": 1,
               "maxItems": 3
             },
-            { "type": "string" }
+            {
+              "type": "string"
+            }
           ]
         }
       },
@@ -67,13 +88,21 @@
       "anyOf": [
         {
           "properties": {
-            "VAT": { "type": "string", "minLength": 8, "maxLength": 15 }
+            "VAT": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 15
+            }
           },
           "required": ["VAT"]
         },
         {
           "properties": {
-            "DUNS": { "type": "string", "minLength": 9, "maxLength": 9 }
+            "DUNS": {
+              "type": "string",
+              "minLength": 9,
+              "maxLength": 9
+            }
           },
           "required": ["DUNS"]
         }
@@ -83,11 +112,17 @@
       "title": "Company",
       "type": "object",
       "allOf": [
-        { "$ref": "#/definitions/CompanyBase" },
-        { "$ref": "#/definitions/CompanyAddress" },
+        {
+          "$ref": "#/definitions/CompanyBase"
+        },
+        {
+          "$ref": "#/definitions/CompanyAddress"
+        },
         {
           "properties": {
-            "Identifiers": { "$ref": "#/definitions/CompanyIdentifiers" }
+            "Identifiers": {
+              "$ref": "#/definitions/CompanyIdentifiers"
+            }
           },
           "required": ["Identifiers"]
         }
