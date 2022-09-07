@@ -1,13 +1,19 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "commercial-transaction.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.0/commercial-transaction/commercial-transaction.json",
   "definitions": {
     "Company": {
-      "allOf": [{ "$ref": "../company.json#/definitions/Company" }]
+      "allOf": [
+        {
+          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.0/company/company.json#/definitions/Company"
+        }
+      ]
     },
     "KeyValueObject": {
       "allOf": [
-        { "$ref": "../key-value-object.json#/definitions/KeyValueObject" }
+        {
+          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.0/key-value-object/key-value-object.json#/definitions/KeyValueObject"
+        }
       ]
     },
     "CommercialTransactionBase": {
@@ -16,7 +22,11 @@
       "type": "object",
       "properties": {
         "A01": {
-          "allOf": [{ "$ref": "#/definitions/Company" }],
+          "allOf": [
+            {
+              "$ref": "#/definitions/Company"
+            }
+          ],
           "description": "The manufacturer's works which delivers the certificate along the product"
         },
         "A02": {
@@ -57,7 +67,11 @@
         {
           "properties": {
             "A06": {
-              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Company"
+                }
+              ],
               "description": "The purchaser of the product and receiver of the certificate"
             }
           },
@@ -66,15 +80,27 @@
         {
           "properties": {
             "A06.1": {
-              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Company"
+                }
+              ],
               "description": "The purchaser of the product"
             },
             "A06.2": {
-              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Company"
+                }
+              ],
               "description": "The consignee of the product"
             },
             "A06.3": {
-              "allOf": [{ "$ref": "#/definitions/Company" }],
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Company"
+                }
+              ],
               "description": "The receiver/consignee of the certificate"
             }
           },
@@ -86,8 +112,12 @@
       "title": "CommercialTransaction",
       "description": "List parties and details involved in the transaction",
       "allOf": [
-        { "$ref": "#/definitions/CommercialTransactionBase" },
-        { "$ref": "#/definitions/CommercialTransactionReceivers" }
+        {
+          "$ref": "#/definitions/CommercialTransactionBase"
+        },
+        {
+          "$ref": "#/definitions/CommercialTransactionReceivers"
+        }
       ]
     }
   }
