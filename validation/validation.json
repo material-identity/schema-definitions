@@ -1,17 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "validation.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.0/validation/validation.json",
   "definitions": {
     "KeyValueObject": {
       "allOf": [
-        { "$ref": "../key-value-object.json#/definitions/KeyValueObject" }
+        {
+          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.0/key-value-object/key-value-object.json#/definitions/KeyValueObject"
+        }
       ]
     },
     "BaseValidation": {
       "title": "Validation",
       "type": "object",
       "properties": {
-        "Z01": { "description": "Statement of compliance", "type": "string" },
+        "Z01": {
+          "description": "Statement of compliance",
+          "type": "string"
+        },
         "Z03": {
           "description": "Stamp of the inspection representative",
           "type": "string"
@@ -22,7 +27,9 @@
       "title": "ProductDescription",
       "type": "object",
       "allOf": [
-        { "$ref": "#/definitions/BaseValidation" },
+        {
+          "$ref": "#/definitions/BaseValidation"
+        },
         {
           "anyOf": [
             {
@@ -65,7 +72,9 @@
                 "SupplementaryInformation": {
                   "title": "ValidationSupplementaryInformation",
                   "type": "object",
-                  "propertyNames": { "pattern": "^Z0[5-9]|^Z[1-9][0-9]" },
+                  "propertyNames": {
+                    "pattern": "^Z0[5-9]|^Z[1-9][0-9]"
+                  },
                   "patternProperties": {
                     "^Z0[5-9]|^Z[1-9][0-9]": {
                       "$ref": "#/definitions/KeyValueObject"
@@ -81,8 +90,14 @@
                   "description": "Title of inspection representative",
                   "type": "string"
                 },
-                "Z04": { "description": "Disclaimer", "type": "string" },
-                "Z05": { "description": "Standard", "type": "string" }
+                "Z04": {
+                  "description": "Disclaimer",
+                  "type": "string"
+                },
+                "Z05": {
+                  "description": "Standard",
+                  "type": "string"
+                }
               },
               "required": ["Z01", "Z02", "Z03"]
             }
