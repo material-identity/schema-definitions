@@ -1,20 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.1/product-description/product-description.json",
+  "$id": "product-description.json",
   "definitions": {
     "KeyValueObject": {
       "allOf": [
-        {
-          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.1/key-value-object/key-value-object.json#/definitions/KeyValueObject"
-        }
+        { "$ref": "../key-value-object.json#/definitions/KeyValueObject" }
       ]
     },
     "Measurement": {
-      "allOf": [
-        {
-          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.1/measurement/measurement.json#/definitions/Measurement"
-        }
-      ]
+      "allOf": [{ "$ref": "../measurement.json#/definitions/Measurement" }]
     },
     "Tube": {
       "title": "Tube",
@@ -458,60 +452,27 @@
     "ProductShape": {
       "title": "ProductShape",
       "oneOf": [
-        {
-          "$ref": "#/definitions/Tube"
-        },
-        {
-          "$ref": "#/definitions/RectangularTube"
-        },
-        {
-          "$ref": "#/definitions/QuadraticTube"
-        },
-        {
-          "$ref": "#/definitions/Pipe"
-        },
-        {
-          "$ref": "#/definitions/RectangularPipe"
-        },
-        {
-          "$ref": "#/definitions/Coil"
-        },
-        {
-          "$ref": "#/definitions/RoundBar"
-        },
-        {
-          "$ref": "#/definitions/HexagonalBar"
-        },
-        {
-          "$ref": "#/definitions/FlatBar"
-        },
-        {
-          "$ref": "#/definitions/Sheet"
-        },
-        {
-          "$ref": "#/definitions/Slab"
-        },
-        {
-          "$ref": "#/definitions/Plate"
-        },
-        {
-          "$ref": "#/definitions/Scroll"
-        },
-        {
-          "$ref": "#/definitions/Strip"
-        },
-        {
-          "$ref": "#/definitions/Other"
-        }
+        { "$ref": "#/definitions/Tube" },
+        { "$ref": "#/definitions/RectangularTube" },
+        { "$ref": "#/definitions/QuadraticTube" },
+        { "$ref": "#/definitions/Pipe" },
+        { "$ref": "#/definitions/RectangularPipe" },
+        { "$ref": "#/definitions/Coil" },
+        { "$ref": "#/definitions/RoundBar" },
+        { "$ref": "#/definitions/HexagonalBar" },
+        { "$ref": "#/definitions/FlatBar" },
+        { "$ref": "#/definitions/Sheet" },
+        { "$ref": "#/definitions/Slab" },
+        { "$ref": "#/definitions/Plate" },
+        { "$ref": "#/definitions/Scroll" },
+        { "$ref": "#/definitions/Strip" },
+        { "$ref": "#/definitions/Other" }
       ]
     },
     "ProductDescriptionBase": {
       "type": "object",
       "properties": {
-        "B01": {
-          "description": "The product",
-          "type": "string"
-        },
+        "B01": { "description": "The product", "type": "string" },
         "B03": {
           "description": "Any supplementary requirements",
           "type": "string"
@@ -524,10 +485,7 @@
           "description": "Reference heat treatment of samples",
           "type": "string"
         },
-        "B06": {
-          "description": "Marking of the product",
-          "type": "string"
-        },
+        "B06": { "description": "Marking of the product", "type": "string" },
         "B07": {
           "description": "Identification of the product, usually batch, charge or lot number",
           "type": "string"
@@ -542,9 +500,7 @@
       "title": "ProductDescription",
       "type": "object",
       "allOf": [
-        {
-          "$ref": "#/definitions/ProductDescriptionBase"
-        },
+        { "$ref": "#/definitions/ProductDescriptionBase" },
         {
           "oneOf": [
             {
@@ -556,80 +512,50 @@
                     "ProductNorm": {
                       "description": "The product norm designation",
                       "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
+                      "items": { "type": "string" }
                     },
                     "MaterialNorm": {
                       "description": "The material norm(s)",
                       "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
+                      "items": { "type": "string" }
                     },
                     "MassNorm": {
                       "description": "The mass norm(s)",
                       "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
+                      "items": { "type": "string" }
                     },
                     "SteelDesignation": {
                       "description": "The steel designation(s)",
                       "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
+                      "items": { "type": "string" }
                     }
                   },
                   "additionalProperties": false
                 },
                 "B09": {
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/ProductShape"
-                    }
-                  ],
+                  "allOf": [{ "$ref": "#/definitions/ProductShape" }],
                   "description": "Product type and its describing dimensional parameters"
                 },
                 "B10": {
                   "description": "Product dimensions - length of the product",
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/Measurement"
-                    }
-                  ]
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
                 },
                 "B11": {
                   "description": "Product dimensions ",
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/Measurement"
-                    }
-                  ]
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
                 },
                 "B12": {
                   "description": "Theoretical mass",
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/Measurement"
-                    }
-                  ]
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
                 },
                 "B13": {
                   "description": "Actual mass",
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/Measurement"
-                    }
-                  ]
+                  "allOf": [{ "$ref": "#/definitions/Measurement" }]
                 },
                 "SupplementaryInformation": {
                   "title": "ProductDescriptionSupplementaryInformation",
                   "type": "object",
-                  "propertyNames": {
-                    "pattern": "^B1[4-9]|^B[2-9][0-9]"
-                  },
+                  "propertyNames": { "pattern": "^B1[4-9]|^B[2-9][0-9]" },
                   "patternProperties": {
                     "^B1[4-9]|^B[2-9][0-9]": {
                       "$ref": "#/definitions/KeyValueObject"
@@ -641,11 +567,7 @@
               "required": ["B01", "B02", "B09"]
             },
             {
-              "properties": {
-                "B02": {
-                  "type": "string"
-                }
-              },
+              "properties": { "B02": { "type": "string" } },
               "required": ["B01", "B02"]
             }
           ]
