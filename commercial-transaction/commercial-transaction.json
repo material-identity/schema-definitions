@@ -5,14 +5,14 @@
     "Company": {
       "allOf": [
         {
-          "$ref": "../company.json#/definitions/Company"
+          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.1/company/company.json#/definitions/Company"
         }
       ]
     },
     "KeyValueObject": {
       "allOf": [
         {
-          "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.1/key-value-object/key-value-object.json#/definitions/KeyValueObject"
         }
       ]
     },

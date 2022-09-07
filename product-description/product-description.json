@@ -5,14 +5,14 @@
     "KeyValueObject": {
       "allOf": [
         {
-          "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.1/key-value-object/key-value-object.json#/definitions/KeyValueObject"
         }
       ]
     },
     "Measurement": {
       "allOf": [
         {
-          "$ref": "../measurement.json#/definitions/Measurement"
+          "$ref": "https:/schemas.s1seven.com/schema-definitions/v0.0.1/measurement/measurement.json#/definitions/Measurement"
         }
       ]
     },
