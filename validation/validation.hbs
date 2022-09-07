@@ -1,38 +1,44 @@
 {{! VALIDATION }}
 
-<section style='float: left' class="validation-root">
-  <h2 class='main-title pdf-pagebreak-before'>
-    {{i18n 'Validation' 'certificateGroups' CertificateLanguages}}</h2>
-  <table class='main-table' style='float: left; width: 80%'>
+<section style="float: left" class="validation-root">
+  <h2 class="main-title pdf-pagebreak-before">
+    {{i18n "Validation" "certificateGroups" CertificateLanguages}}</h2>
+  <table class="main-table" style="float: left; width: 80%">
     <tbody>
-      <tr class='table-rows'>
-        <th class='table-headers'>Z01 {{i18n 'Z01' 'certificateFields' CertificateLanguages}} </th>
-        <td colspan='1'>{{Z01}}</td>
+      <tr class="table-rows">
+        <th class="table-headers">Z01
+          {{i18n "Z01" "certificateFields" CertificateLanguages}}
+        </th>
+        <td colspan="1">{{Z01}}</td>
       </tr>
-      <tr class='table-rows'>
-        <th class='table-headers'>Z02 {{i18n 'Z02' 'certificateFields' CertificateLanguages}} </th>
-        <td colspan='1'> {{localizeDate Z02 CertificateLanguages.[0]}} </td>
+      <tr class="table-rows">
+        <th class="table-headers">Z02
+          {{i18n "Z02" "certificateFields" CertificateLanguages}}
+        </th>
+        <td colspan="1"> {{localizeDate Z02 CertificateLanguages.[0]}} </td>
       </tr>
-      <tr class='table-rows'>
-        <th class='table-headers'>Z03 {{i18n 'Z03' 'certificateFields' CertificateLanguages}} </th>
-        <td colspan='1'>{{Z03}}</td>
+      <tr class="table-rows">
+        <th class="table-headers">Z03
+          {{i18n "Z03" "certificateFields" CertificateLanguages}}
+        </th>
+        <td colspan="1">{{Z03}}</td>
       </tr>
     </tbody>
   </table>
 
   {{#if Z04}}
-    <table style='float: right; width: 20%'>
+    <table style="float: right; width: 20%">
       <tbody>
-        <tr align='center'>
-          <td><img class='ce' alt='Company CE' src='{{Z04.CE_Image}}' /></td>
+        <tr align="center">
+          <td><img class="ce" alt="Company CE" src="{{Z04.CE_Image}}" /></td>
         </tr>
-        <tr align='center'>
+        <tr align="center">
           <td>{{Z04.NotifiedBodyNumber}}</td>
         </tr>
-        <tr align='center'>
+        <tr align="center">
           <td>{{Z04.DoCYear}}</td>
         </tr>
-        <tr align='center'>
+        <tr align="center">
           <td>{{Z04.DoCNumber}}</td>
         </tr>
       </tbody>
@@ -42,17 +48,25 @@
 
 <section class="validation-root">
   {{#if SupplementaryInformation}}
-    <h3 class='third-level-title'>
-      {{i18n 'SupplementaryInformation' 'otherFields' CertificateLanguages}}</h3>
-    <table class='main-table'>
+    <h3 class="third-level-title">
+      {{i18n
+        "SupplementaryInformation"
+        "otherFields"
+        CertificateLanguages
+      }}</h3>
+    <table class="main-table">
       <tbody>
         {{#each SupplementaryInformation}}
-          <tr class='table-rows'>
-            <th class='table-headers' colspan='2'>{{@key}} {{this.Key}}</th>
-            <td class='table-cells'>{{localizeValue this.Value this.Type CertificateLanguages.[0]}}
+          <tr class="table-rows">
+            <th class="table-headers" colspan="2">{{@key}} {{this.Key}}</th>
+            <td class="table-cells">{{localizeValue
+                this.Value
+                this.Type
+                CertificateLanguages.[0]
+              }}
               {{this.Unit}}
             </td>
-            <td class='table-cells'>{{this.Interpretation}}</td>
+            <td class="table-cells">{{this.Interpretation}}</td>
           </tr>
         {{/each}}
       </tbody>

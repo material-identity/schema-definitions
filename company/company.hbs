@@ -9,12 +9,13 @@
   {{#if Name}}
     <li>
       <h3>{{Name}}</h3>
-    </li>  {{/if}}
+    </li>
+  {{/if}}
   {{#if Street}}
-    {{#typeOf Street 'string'}}
+    {{#typeOf Street "string"}}
       <li>{{Street}}</li>
     {{/typeOf}}
-    {{#typeOf Street 'object'}}
+    {{#typeOf Street "object"}}
       {{#each Street}}
         <li>{{this}}</li>
       {{/each}}

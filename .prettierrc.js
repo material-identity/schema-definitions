@@ -8,4 +8,12 @@ module.exports = {
   singleQuote: true,
   tabWidth: 2,
   printWidth: 80,
+  overrides: [
+    {
+      files: '*.hbs',
+      options: {
+        singleQuote: false,
+      },
+    },
+  ],
 };
