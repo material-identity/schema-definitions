@@ -25,8 +25,7 @@
     },
     "hooks": {
       "before:init": [
-        "npm run lint",
-        "npm run test"
+        "npm run lint"
       ],
       "after:bump": "npm run update:version v${version} -s true -c true && npm run update:refs -- -e remote -s true -c true",
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
