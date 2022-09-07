@@ -13,7 +13,6 @@ on:
       - reopened
       - synchronize
       - ready_for_review
-      - closed
     paths-ignore:
       - 'README.md'
       - '**/package-lock.json'
@@ -37,7 +36,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -62,8 +61,12 @@ jobs:
       - name: Run validation tests
         run: npm run test
 
+      - name: Get branch names
+        id: branch-name
+        uses: tj-actions/branch-names@v6
+
       - name: Set $refs to remote on merge and update $ids
-        if: github.event_name == 'pull_request' && github.event.action == 'closed' && !github.event.pull_request.draft
+        if: steps.branch-name.outputs.is_default == 'true' && github.event_name != 'release'
         run: |
           npm run update:refs -- --environment remote --stage true
           npm run update:version --stage true
@@ -73,8 +76,7 @@ jobs:
 
       - name: Add, commit and push updated definitions
         id: commit-definitions
-        if: github.event_name == 'pull_request' && github.event.action == 'closed' && !github.event.pull_request.draft
-
+        if: steps.branch-name.outputs.is_default == 'true' && github.event_name != 'release'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'chore: update $refs to remote urls [skip ci]'
