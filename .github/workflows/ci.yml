@@ -62,12 +62,24 @@ jobs:
       - name: Run validation tests
         run: npm run test
 
+      - name: Echo github obj
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
+
       - name: Set $refs to remote on merge and update $ids
         if: github.event.pull_request.merged == true
         run: |
           npm run update:refs -- --environment remote --stage true
           npm run update:version --stage true
           npx lint-staged
+
+      - name: Echo github obj
+        run: |
+          cat << OBJECT
+          ${{ toJson(github) }}
+          OBJECT
 
       # commit definitions with updated $refs
 
