@@ -6,10 +6,18 @@
       "title": "KeyValueObject",
       "type": "object",
       "properties": {
-        "Key": { "type": "string" },
-        "Value": { "type": "string" },
-        "Unit": { "type": "string" },
-        "Interpretation": { "type": "string" },
+        "Key": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        },
+        "Unit": {
+          "type": "string"
+        },
+        "Interpretation": {
+          "type": "string"
+        },
         "Type": {
           "enum": ["string", "number", "date", "date-time", "boolean"],
           "default": "string"
