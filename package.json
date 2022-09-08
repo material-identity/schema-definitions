@@ -7,7 +7,7 @@
     "lint:staged": "lint-staged",
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
-    "update:refs": "node utils/update-refs",
+    "set-local-refs": "node utils/update-refs",
     "update:version": "node utils/update-version",
     "release": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it",
     "release:dry-run": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it --dry-run",

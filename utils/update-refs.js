@@ -1,12 +1,11 @@
 const { execSync } = require('child_process');
 const { readFileSync, writeFileSync } = require('fs');
-const { get } = require('lodash');
-const { resolve, join, parse } = require('path');
+const { resolve } = require('path');
 const prettier = require('prettier');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
-const { addVToVersionNumber, folders, refMap } = require('./constants');
-const { version: pkgVersion } = require(resolve(__dirname, '../package.json'));
+const { folders } = require('./constants');
+const { generateUpdatedSchemaObjects } = require('./helpers');
 
 function setLocalIds(schemaMap) {
   const updatedSchemaMap = {};
@@ -31,105 +30,41 @@ function setLocalIds(schemaMap) {
   return updatedSchemaMap;
 }
 
-function generateUpdatedSchemaObjects(newPath, environment) {
-  // creates an object map with the path to the schema as the key and the updated schema object as the value
-  const updatedSchemaMap = {};
-
-  Object.keys(refMap).forEach((directory) => {
-    const filePath = `${directory}/${directory}.json`;
-    const pathToSchema = resolve(__dirname, '../', filePath);
-
-    const jsonSchema = readFileSync(pathToSchema);
-    const schemaObject = JSON.parse(jsonSchema);
-
-    refMap[directory].forEach((property) => {
-      const propertyLookupPath = `['definitions'][${property}]['allOf'][0]`;
-      const referenceObj = get(schemaObject, propertyLookupPath);
-      const currentRef = referenceObj['$ref'];
-      const currentPath = currentRef.split('#/')[0]; // e.g. ../key-value-object.json
-      const { base: fileName, name: folderName } = parse(currentPath);
-      const pathToReplace = currentRef.split(fileName)[0]; // e.g. ../
-      const replacementPath =
-        environment === 'local'
-          ? join(newPath, '/')
-          : join(newPath, folderName, '/');
-
-      referenceObj['$ref'] = currentRef.replace(pathToReplace, replacementPath);
-    });
-
-    updatedSchemaMap[filePath] = schemaObject;
-  });
-
-  return updatedSchemaMap;
-}
-
-function stageChanges() {
-  const schemasPaths = Object.keys(refMap)
-    .map((directory) => `${directory}/${directory}.json`)
-    .join(' ');
-
+function stageChanges(schemaMap) {
+  const schemasPaths = Object.keys(schemaMap).join(' ');
   execSync(`git add ${schemasPaths}`);
   console.log('The updated definitions have been staged');
 }
 
-function commitChanges(environment, version) {
-  execSync(
-    `git commit -m 'chore: update ${environment} $refs to ${version} [skip ci] -n'`,
-  );
-  console.log('Staged files have been commited.');
+function commitChanges() {
+  try {
+    execSync(
+      `git commit -m 'chore: update $refs to use local paths [skip ci]' --no-verify`,
+    );
+    console.log('Staged files have been commited.');
+  } catch (error) {
+    if (
+      error.stdout &&
+      Buffer.isBuffer(error.stdout) &&
+      /no changes added to commit/.test(error.stdout.toString())
+    ) {
+      console.error(error.stdout.toString());
+    } else {
+      throw error;
+    }
+  }
 }
 
 (async function () {
   const argv = yargs(hideBin(process.argv))
-    .usage(
-      'Usage: $0 -e [environment] -h https://schemas.s1seven.com -f schema-definitions -v 0.0.1 --stage [boolean] --commit [boolean]',
-    )
+    .usage('Usage: $0 --newPath ../ --stage [boolean] --commit [boolean]')
     .options({
-      environment: {
-        description:
-          'Set refs to remote or local paths, default values can be overridden',
-        demandOption: true,
-        example: 'remote',
-        alias: 'e',
-        coerce: (value) => {
-          const allowedEnvs = ['remote', 'local'];
-          if (allowedEnvs.includes(value)) {
-            return value;
-          }
-          throw new TypeError(`Environment should be one of ${allowedEnvs}`);
-        },
-      },
-      localPath: {
-        description:
-          'If using a local environment, set the path here. Default is "../"',
+      newPath: {
+        description: 'Override the default path. Default is "../"',
         demandOption: false,
         example: '../',
         default: '../',
         alias: 'l',
-      },
-      host: {
-        description:
-          'If setting a remote path, you can override the host here. Default is "https://schemas.s1seven.com/"',
-        demandOption: false,
-        example: 'https://schemas.s1seven.com/',
-        default: 'https://schemas.s1seven.com/',
-        alias: 'h',
-      },
-      folder: {
-        description:
-          'If setting a remote path, you can override the folder here. Default is "schema-definitions"',
-        demandOption: false,
-        example: 'schema-definitions',
-        default: 'schema-definitions',
-        alias: 'f',
-      },
-      versionNumber: {
-        description:
-          'If setting a remote path, you can override the version number here. Default is taken from package.json',
-        demandOption: false,
-        example: '0.0.1',
-        default: pkgVersion,
-        alias: 'v',
       },
       stage: {
         description: 'If true, it will add the affected files to staging.',
@@ -145,16 +80,12 @@ function commitChanges(environment, version) {
       },
     }).argv;
 
-  const { versionNumber, host, folder, environment, localPath, stage, commit } =
-    argv;
-  const newVersionNumber = addVToVersionNumber(versionNumber);
-  const remotePath = join(host, folder, newVersionNumber, '/');
-  const newPath = environment === 'local' ? localPath : remotePath;
+  const { newPath, stage, commit } = argv;
   const prettierConfig = await prettier.resolveConfig(process.cwd());
 
   try {
-    let schemaMap = generateUpdatedSchemaObjects(newPath, argv.environment);
-    if (environment === 'local') schemaMap = setLocalIds(schemaMap);
+    let schemaMap = generateUpdatedSchemaObjects(newPath, 'local');
+    schemaMap = setLocalIds(schemaMap); // TODO: can this be improved?
 
     Object.keys(schemaMap).forEach((path) => {
       const pathToSchema = resolve(__dirname, '../', path);
@@ -168,8 +99,8 @@ function commitChanges(environment, version) {
     });
     console.log(`$refs have been updated, new path is "${newPath}"`);
 
-    if (stage) stageChanges();
-    if (commit) commitChanges(environment, newVersionNumber);
+    if (stage) stageChanges(schemaMap);
+    if (commit) commitChanges();
     process.exit(0);
   } catch (error) {
     console.error(error);
