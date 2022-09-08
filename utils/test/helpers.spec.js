@@ -26,6 +26,7 @@ describe('getSchemaObjsWithUpdatedRefs() should generate local refs', function (
         const currentRef = referenceObj['$ref'];
         expect(currentRef).toMatch(new RegExp('^../'));
         expect(currentRef).toMatch(new RegExp(property));
+        expect(currentRef).not.toMatch(new RegExp(defaultServerUrl));
       });
     });
   });
@@ -51,7 +52,7 @@ describe('getSchemaObjsWithUpdatedRefs() should generate remote refs', function 
         const propertyLookupPath = `['definitions'][${property}]['allOf'][0]`;
         const referenceObj = get(schemaObject, propertyLookupPath);
         const currentRef = referenceObj['$ref'];
-        expect(currentRef).toMatch(new RegExp('^https://'));
+        expect(currentRef).toMatch(new RegExp(defaultServerUrl));
         expect(currentRef).toMatch(new RegExp(version));
       });
     });
