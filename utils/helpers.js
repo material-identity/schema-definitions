@@ -28,7 +28,7 @@ function getReplacementPaths(currentRef, environment, newPath, version) {
 }
 
 // environment must be either 'local' or 'remote'
-function generateUpdatedSchemaObjects(newPath, environment, version = null) {
+function getSchemaObjsWithUpdatedRefs(newPath, environment, version = null) {
   const allowedEnvs = ['remote', 'local'];
   if (!allowedEnvs.includes(environment))
     throw new TypeError(`Environment should be one of ${allowedEnvs}`);
@@ -102,6 +102,6 @@ function commitChanges(message) {
 
 module.exports = {
   commitChanges,
-  generateUpdatedSchemaObjects,
+  getSchemaObjsWithUpdatedRefs,
   setLocalIds,
 };

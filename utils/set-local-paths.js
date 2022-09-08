@@ -6,7 +6,7 @@ const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 const {
   commitChanges,
-  generateUpdatedSchemaObjects,
+  getSchemaObjsWithUpdatedRefs,
   setLocalIds,
 } = require('./helpers');
 
@@ -45,7 +45,7 @@ function stageChanges(schemaMap) {
   const prettierConfig = await prettier.resolveConfig(process.cwd());
 
   try {
-    let schemaMap = generateUpdatedSchemaObjects(newPath, 'local');
+    let schemaMap = getSchemaObjsWithUpdatedRefs(newPath, 'local');
     schemaMap = setLocalIds(schemaMap);
 
     // takes schemaMap object, iterates over keys, writes values

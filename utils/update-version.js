@@ -7,7 +7,7 @@ const { hideBin } = require('yargs/helpers');
 
 const { version: pkgVersion } = require('../package.json');
 const { addVToVersionNumber, defaultServerUrl } = require('./constants');
-const { commitChanges, generateUpdatedSchemaObjects } = require('./helpers');
+const { commitChanges, getSchemaObjsWithUpdatedRefs } = require('./helpers');
 
 const schemaFilePaths = [
   {
@@ -126,7 +126,7 @@ function stageChanges() {
     );
     await updater.updateSchemasVersion();
 
-    const schemaMap = generateUpdatedSchemaObjects(
+    const schemaMap = getSchemaObjsWithUpdatedRefs(
       serverUrl,
       'remote',
       newVersionNumber,
