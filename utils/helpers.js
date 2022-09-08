@@ -1,10 +1,34 @@
 const { resolve, join, parse } = require('path');
 const { readFileSync } = require('fs');
 const { get } = require('lodash');
-const { refMap } = require('./constants');
+const { refMap, folders } = require('./constants');
+const { execSync } = require('child_process');
 
-// environment must be either 'lcoal' or 'remote'
-function generateUpdatedSchemaObjects(newPath, environment) {
+function generateUrl(newPath, version, folderName) {
+  const { pathname: baseFolderName } = new URL(newPath);
+  const { href } = new URL(
+    `${baseFolderName}/${version}/${folderName}/`,
+    newPath,
+  );
+
+  return href;
+}
+
+function getReplacementPaths(currentRef, environment, newPath, version) {
+  const currentPath = currentRef.split('#/')[0]; // e.g. ../key-value-object.json
+  const { base: fileName, name: folderName } = parse(currentPath);
+
+  const pathToReplace = currentRef.split(fileName)[0]; // e.g. ../
+  const replacementPath =
+    environment === 'local'
+      ? join(newPath, '/')
+      : generateUrl(newPath, version, folderName);
+
+  return { pathToReplace, replacementPath };
+}
+
+// environment must be either 'local' or 'remote'
+function generateUpdatedSchemaObjects(newPath, environment, version = null) {
   const allowedEnvs = ['remote', 'local'];
   if (!allowedEnvs.includes(environment))
     throw new TypeError(`Environment should be one of ${allowedEnvs}`);
@@ -23,13 +47,13 @@ function generateUpdatedSchemaObjects(newPath, environment) {
       const propertyLookupPath = `['definitions'][${property}]['allOf'][0]`;
       const referenceObj = get(schemaObject, propertyLookupPath);
       const currentRef = referenceObj['$ref'];
-      const currentPath = currentRef.split('#/')[0]; // e.g. ../key-value-object.json
-      const { base: fileName, name: folderName } = parse(currentPath);
-      const pathToReplace = currentRef.split(fileName)[0]; // e.g. ../
-      const replacementPath =
-        environment === 'local'
-          ? join(newPath, '/')
-          : join(newPath, folderName, '/');
+
+      const { pathToReplace, replacementPath } = getReplacementPaths(
+        currentRef,
+        environment,
+        newPath,
+        version,
+      );
 
       referenceObj['$ref'] = currentRef.replace(pathToReplace, replacementPath);
     });
@@ -40,6 +64,48 @@ function generateUpdatedSchemaObjects(newPath, environment) {
   return updatedSchemaMap;
 }
 
+function setLocalIds(schemaMap) {
+  const updatedSchemaMap = {};
+
+  folders.forEach((directory) => {
+    const fileName = `${directory}.json`;
+    const filePath = `${directory}/${fileName}`;
+    let schemaObject;
+
+    if (!schemaMap[filePath]) {
+      const pathToSchema = resolve(__dirname, '../', filePath);
+      const jsonSchema = readFileSync(pathToSchema);
+      schemaObject = JSON.parse(jsonSchema);
+    } else {
+      schemaObject = schemaMap[filePath];
+    }
+
+    schemaObject['$id'] = fileName;
+    updatedSchemaMap[filePath] = schemaObject;
+  });
+
+  return updatedSchemaMap;
+}
+
+function commitChanges(message) {
+  try {
+    execSync(`git commit -m '${message}' --no-verify`);
+    console.log('Staged files have been commited.');
+  } catch (error) {
+    if (
+      error.stdout &&
+      Buffer.isBuffer(error.stdout) &&
+      /no changes added to commit/.test(error.stdout.toString())
+    ) {
+      console.error(error.stdout.toString());
+    } else {
+      throw error;
+    }
+  }
+}
+
 module.exports = {
+  commitChanges,
   generateUpdatedSchemaObjects,
+  setLocalIds,
 };

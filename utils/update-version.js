@@ -1,12 +1,13 @@
 const { SchemaRepositoryVersion } = require('@s1seven/schema-tools-versioning');
 const { execSync } = require('child_process');
-const { readFileSync, writeFileSync } = require('fs');
+const { writeFileSync } = require('fs');
 const prettier = require('prettier');
 const yargs = require('yargs');
 const { hideBin } = require('yargs/helpers');
 
 const { version: pkgVersion } = require('../package.json');
 const { addVToVersionNumber, defaultServerUrl } = require('./constants');
+const { commitChanges, generateUpdatedSchemaObjects } = require('./helpers');
 
 const schemaFilePaths = [
   {
@@ -33,21 +34,21 @@ const schemaFilePaths = [
     properties: [{ path: '$id', value: 'company/company.json' }],
   },
   {
+    filePath: 'key-value-object/key-value-object.json',
+    properties: [
+      {
+        path: '$id',
+        value: 'key-value-object/key-value-object.json',
+      },
+    ],
+  },
+  {
     filePath: 'languages/languages.json',
     properties: [{ path: '$id', value: 'languages/languages.json' }],
   },
   {
     filePath: 'measurement/measurement.json',
     properties: [{ path: '$id', value: 'measurement/measurement.json' }],
-  },
-  {
-    filePath: 'commercial-transaction/commercial-transaction.json',
-    properties: [
-      {
-        path: '$id',
-        value: 'commercial-transaction/commercial-transaction.json',
-      },
-    ],
   },
   {
     filePath: 'product-description/product-description.json',
@@ -68,14 +69,11 @@ function stageChanges() {
   execSync(`git add ${schemasPaths}`);
 }
 
-function commitChanges(version) {
-  execSync(`git commit -m 'chore: update version to ${version} [skip ci] -n'`);
-  console.log('Staged files have been commited.');
-}
-
 (async function () {
   const argv = yargs(hideBin(process.argv))
-    .usage('Usage: $0 --version 0.0.1 --stage [boolean] --commit [boolean]')
+    .usage(
+      'Usage: $0 --host https://schemas.s1seven.com --folder schema-definitions --version 0.0.1 --stage [boolean] --commit [boolean]',
+    )
     .options({
       versionNumber: {
         description:
@@ -84,6 +82,22 @@ function commitChanges(version) {
         example: '0.0.1',
         default: pkgVersion,
         alias: 'v',
+      },
+      host: {
+        description:
+          'If setting a remote path, you can override the host here. Default is "https://schemas.s1seven.com/"',
+        demandOption: false,
+        example: 'https://schemas.s1seven.com/',
+        default: 'https://schemas.s1seven.com/',
+        alias: 'h',
+      },
+      folder: {
+        description:
+          'If setting a remote path, you can override the folder here. Default is "schema-definitions"',
+        demandOption: false,
+        example: 'schema-definitions',
+        default: 'schema-definitions',
+        alias: 'f',
       },
       stage: {
         description: 'If true, it will add the affected files to staging.',
@@ -99,27 +113,37 @@ function commitChanges(version) {
       },
     }).argv;
 
-  const { versionNumber, stage, commit } = argv;
+  const { versionNumber, host, folder, stage, commit } = argv;
   const newVersionNumber = addVToVersionNumber(versionNumber);
   const prettierConfig = await prettier.resolveConfig(process.cwd());
+  const serverUrl = host && folder ? `${host}${folder}` : defaultServerUrl;
 
   try {
     const updater = new SchemaRepositoryVersion(
-      defaultServerUrl,
+      serverUrl,
       schemaFilePaths,
       newVersionNumber,
     );
     await updater.updateSchemasVersion();
-    schemaFilePaths.map(({ filePath }) => {
-      const input = readFileSync(filePath, 'utf-8');
+
+    const schemaMap = generateUpdatedSchemaObjects(
+      serverUrl,
+      'remote',
+      newVersionNumber,
+    );
+
+    Object.keys(schemaMap).forEach((filePath) => {
+      const input = JSON.stringify(schemaMap[filePath]);
       const output = prettier.format(input, {
         parser: 'json',
         ...(prettierConfig || {}),
       });
       writeFileSync(filePath, output);
     });
+
     if (stage) stageChanges();
-    if (commit) commitChanges(newVersionNumber);
+    if (commit)
+      commitChanges(`chore: update version to ${newVersionNumber} [skip ci]`);
     process.exit(0);
   } catch (error) {
     console.error(error);
