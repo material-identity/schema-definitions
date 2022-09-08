@@ -25,16 +25,18 @@ describe('getSchemaObjsWithUpdatedRefs() should generate local refs', function (
         const referenceObj = get(schemaObject, propertyLookupPath);
         const currentRef = referenceObj['$ref'];
         expect(currentRef).toMatch(new RegExp('^../'));
+        expect(currentRef).toMatch(new RegExp(property));
       });
     });
   });
 });
 
 describe('getSchemaObjsWithUpdatedRefs() should generate remote refs', function () {
+  const version = 'v0.0.1';
   const schemaMap = getSchemaObjsWithUpdatedRefs(
     defaultServerUrl,
     'remote',
-    'v0.0.1',
+    version,
   );
 
   it('it should contain 1 key for every key in refMap', async () => {
@@ -50,6 +52,7 @@ describe('getSchemaObjsWithUpdatedRefs() should generate remote refs', function 
         const referenceObj = get(schemaObject, propertyLookupPath);
         const currentRef = referenceObj['$ref'];
         expect(currentRef).toMatch(new RegExp('^https://'));
+        expect(currentRef).toMatch(new RegExp(version));
       });
     });
   });
