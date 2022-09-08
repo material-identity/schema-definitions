@@ -88,7 +88,6 @@ function stageChanges() {
           'If setting a remote path, you can override the host here. Default is "https://schemas.s1seven.com/"',
         demandOption: false,
         example: 'https://schemas.s1seven.com/',
-        default: 'https://schemas.s1seven.com/',
         alias: 'h',
       },
       folder: {
@@ -96,7 +95,6 @@ function stageChanges() {
           'If setting a remote path, you can override the folder here. Default is "schema-definitions"',
         demandOption: false,
         example: 'schema-definitions',
-        default: 'schema-definitions',
         alias: 'f',
       },
       stage: {
