@@ -59,7 +59,7 @@ jobs:
         run: npm run lint
 
       - name: Set $refs and $ids to local values
-        run: npm run set-local-refs
+        run: npm run set-local-paths
 
       - name: Run validation tests
         run: npm run test
