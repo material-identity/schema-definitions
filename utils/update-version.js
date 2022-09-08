@@ -100,7 +100,6 @@ function commitChanges(version) {
     }).argv;
 
   const { versionNumber, stage, commit } = argv;
-  console.log(argv);
   const newVersionNumber = addVToVersionNumber(versionNumber);
   const prettierConfig = await prettier.resolveConfig(process.cwd());
 
