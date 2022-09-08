@@ -92,11 +92,7 @@ function commitChanges(message) {
     execSync(`git commit -m '${message}' --no-verify`);
     console.log('Staged files have been commited.');
   } catch (error) {
-    if (
-      error.stdout &&
-      Buffer.isBuffer(error.stdout) &&
-      /no changes added to commit/.test(error.stdout.toString())
-    ) {
+    if (error.stdout && Buffer.isBuffer(error.stdout)) {
       console.error(error.stdout.toString());
     } else {
       throw error;
