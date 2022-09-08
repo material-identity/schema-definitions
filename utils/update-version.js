@@ -69,7 +69,7 @@ function stageChanges() {
 }
 
 function commitChanges(version) {
-  execSync(`git commit -n -m 'chore: update version to ${version} [skip ci]'`);
+  execSync(`git commit -m 'chore: update version to ${version} [skip ci] -n'`);
   console.log('Staged files have been commited.');
 }
 
@@ -100,6 +100,7 @@ function commitChanges(version) {
     }).argv;
 
   const { versionNumber, stage, commit } = argv;
+  console.log(argv);
   const newVersionNumber = addVToVersionNumber(versionNumber);
   const prettierConfig = await prettier.resolveConfig(process.cwd());
 
