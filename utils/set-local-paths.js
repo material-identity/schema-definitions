@@ -46,7 +46,7 @@ function stageChanges(schemaMap) {
 
   try {
     let schemaMap = generateUpdatedSchemaObjects(newPath, 'local');
-    schemaMap = setLocalIds(schemaMap); // TODO: can this be improved?
+    schemaMap = setLocalIds(schemaMap);
 
     // takes schemaMap object, iterates over keys, writes values
     Object.keys(schemaMap).forEach((path) => {
@@ -59,11 +59,13 @@ function stageChanges(schemaMap) {
 
       writeFileSync(pathToSchema, schema);
     });
-    console.log(`$refs have been updated, new path is "${newPath}"`);
+    console.log(`$refs and $ids have been updated, new path is "${newPath}"`);
 
     if (stage) stageChanges(schemaMap);
     if (commit)
-      commitChanges('chore: update $refs to use local paths [skip ci]');
+      commitChanges(
+        'chore: update $refs and $ids to use local paths [skip ci]',
+      );
     process.exit(0);
   } catch (error) {
     console.error(error);

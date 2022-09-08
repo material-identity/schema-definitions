@@ -81,6 +81,6 @@ jobs:
         if: steps.branch-name.outputs.is_default == 'true' && github.event_name != 'release'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'chore: update $refs to remote urls [skip ci]'
+          commit_message: 'chore: update $refs and $ids to remote urls [skip ci]'
           file_pattern: '**/*.json'
           commit_options: '--no-verify'
