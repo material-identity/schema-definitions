@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "chemical-element.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.1/chemical-element/chemical-element.json",
   "definitions": {
     "ChemicalElement": {
       "title": "ChemicalElement",
@@ -30,7 +30,10 @@
           "maximum": 100
         }
       },
-      "required": ["Symbol", "Actual"],
+      "required": [
+        "Symbol",
+        "Actual"
+      ],
       "additionalProperties": false
     }
   }
