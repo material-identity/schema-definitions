@@ -1,18 +1,18 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.1/product-description/product-description.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.2/product-description/product-description.json",
   "definitions": {
     "KeyValueObject": {
       "allOf": [
         {
-          "$ref": "https://schemas.s1seven.com/schema-definitions/v0.0.1/key-value-object/key-value-object.json#/definitions/KeyValueObject"
+          "$ref": "https://schemas.s1seven.com/schema-definitions/v0.0.2/key-value-object/key-value-object.json#/definitions/KeyValueObject"
         }
       ]
     },
     "Measurement": {
       "allOf": [
         {
-          "$ref": "https://schemas.s1seven.com/schema-definitions/v0.0.1/measurement/measurement.json#/definitions/Measurement"
+          "$ref": "https://schemas.s1seven.com/schema-definitions/v0.0.2/measurement/measurement.json#/definitions/Measurement"
         }
       ]
     },
