@@ -114,7 +114,8 @@ function stageChanges() {
   const { versionNumber, host, folder, stage, commit } = argv;
   const newVersionNumber = addVToVersionNumber(versionNumber);
   const prettierConfig = await prettier.resolveConfig(process.cwd());
-  const serverUrl = host && folder ? `${host}${folder}` : defaultServerUrl;
+  const serverUrl =
+    host && folder ? new URL(folder, host).href : defaultServerUrl;
 
   try {
     const updater = new SchemaRepositoryVersion(
@@ -131,7 +132,7 @@ function stageChanges() {
     );
 
     Object.keys(schemaMap).forEach((filePath) => {
-      const input = JSON.stringify(schemaMap[filePath]);
+      const input = JSON.stringify(schemaMap[filePath], null, 2);
       const output = prettier.format(input, {
         parser: 'json',
         ...(prettierConfig || {}),
