@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.3/languages/languages.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.4/languages/languages.json",
   "definitions": {
     "CertificateLanguages": {
       "title": "CertificateLanguages",
