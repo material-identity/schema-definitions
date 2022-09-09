@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "validation.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.5/validation/validation.json",
   "definitions": {
     "KeyValueObject": {
       "allOf": [
         {
-          "$ref": "../key-value-object.json#/definitions/KeyValueObject"
+          "$ref": "https://schemas.s1seven.com/schema-definitions/v0.0.5/key-value-object/key-value-object.json#/definitions/KeyValueObject"
         }
       ]
     },
