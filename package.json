@@ -27,7 +27,7 @@
       "before:init": [
         "npm run lint"
       ],
-      "after:bump": "npm run update:version -- v${version} -s true -c true",
+      "before:bump": "npm run update:version -- v${version} -s true -c true",
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     }
   },
