@@ -7,7 +7,7 @@
     "lint:staged": "lint-staged",
     "test": "jest --runInBand",
     "format": "prettier --write \"**/*.{js,json}\"",
-    "update:refs": "node utils/update-refs",
+    "set-local-paths": "node utils/set-local-paths",
     "update:version": "node utils/update-version",
     "release": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it",
     "release:dry-run": "read -p 'GITHUB_TOKEN: ' GITHUB_TOKEN && export GITHUB_TOKEN=$GITHUB_TOKEN && release-it --dry-run",
@@ -27,7 +27,7 @@
       "before:init": [
         "npm run lint"
       ],
-      "after:bump": "npm run update:version -- v${version} -s true -c true && npm run update:refs -- -e remote -s true -c true",
+      "after:bump": "npm run update:version -- v${version} -s true -c true",
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     }
   },
