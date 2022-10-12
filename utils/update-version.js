@@ -57,6 +57,10 @@ const schemaFilePaths = [
     ],
   },
   {
+    filePath: 'ref-schema-url/ref-schema-url.json',
+    properties: [{ path: '$id', value: 'ref-schema-url/ref-schema-url.json' }],
+  },
+  {
     filePath: 'validation/validation.json',
     properties: [{ path: '$id', value: 'validation/validation.json' }],
   },
