@@ -14,6 +14,7 @@ const folders = [
   'languages',
   'measurement',
   'product-description',
+  'ref-schema-url',
   'validation',
 ];
 
