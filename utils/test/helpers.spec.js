@@ -76,11 +76,13 @@ describe('setLocalIds() should generate local ids', function () {
 });
 
 describe('commitChanges() should correctly set the commit message', function () {
+  const log = jest.spyOn(console, 'log').mockImplementation(() => {});
   commitChanges('test');
 
   it('the commit message should be correctly set', () => {
     expect(child_process.execSync).toHaveBeenCalledWith(
       `git commit -m 'test' --no-verify`,
     );
+    expect(log).toBeCalledWith('Staged files have been commited.');
   });
 });
