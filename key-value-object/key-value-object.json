@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.6/key-value-object/key-value-object.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.5/key-value-object/key-value-object.json",
   "definitions": {
     "KeyValueObject": {
       "title": "KeyValueObject",
