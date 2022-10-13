@@ -145,7 +145,7 @@ Each folder should have a `test` folder with a `test-suites-map.js` file and a `
 When a new folder is created and tests are added, the folder name must be added to the `folders` array in `validate.spec.js`.
 It must also be added to the `folders` array in `constants.js`. A new object should be added to `schemaFilePaths` in `update-version.js`, using the existing objects as a template.
 
-If, in the unlikely case that the new definition references other definitions, it much be added to `refMap` in `constants.js`, with the schema definition name being the `property` and the `value` being an array containing the names of the referenced definitions such as `'commercial-transaction': ['KeyValueObject', 'Company'],`;
+If, in the unlikely case that the new definition references other definitions, it must be added to `refMap` in `constants.js`, with the schema definition name being the `property` and the `value` being an array containing the names of the referenced definitions such as `'commercial-transaction': ['KeyValueObject', 'Company'],`;
 
 # Creating a new release
 
