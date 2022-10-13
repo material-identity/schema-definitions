@@ -1,6 +1,10 @@
-const regex = new RegExp(
-  '(https?://[a-z0-9/\\.\\-]+[\\.]com)/([a-z0-9\\-]+)/(v\\d+\\.\\d+\\.\\d+(-\\d+)?)/([a-z\\./\\-]+.json)',
-);
+const {
+  definitions: {
+    RefSchemaUrl: { pattern },
+  },
+} = require('../ref-schema-url.json');
+
+const regex = new RegExp(pattern);
 
 describe('tests valid strings against the RefSchemaUrl regexp', () => {
   const validStrings = [
