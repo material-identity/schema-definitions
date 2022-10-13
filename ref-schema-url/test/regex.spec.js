@@ -23,6 +23,9 @@ describe('tests valid strings against the RefSchemaUrl regexp', () => {
     'https://schemas.s1seven.com/test/v0.3.0/schema.json',
     'https://schemas.s1seven.com/test/v0.22.0/schema.json',
     'https://schemas.s1seven.com/test/v0.2.0-11/schema.json',
+    'https://schemas.s1seven.co.uk/en10168-schemas/v0.3.0/schema.json',
+    'https://schemas.s1seven.es/en10168-schemas/v0.3.0/schema.json',
+    'https://schemas.s1seven.gov/en10168-schemas/v0.3.0/schema.json',
   ];
   validStrings.forEach((string) => {
     it(`${string} is valid`, () => {
@@ -42,7 +45,6 @@ describe('tests invalid strings against the RefSchemaUrl regexp', () => {
     'https://schemas.s1seven.com/en10168-schemas/schema.json',
     'https://schemas.s1seven.com/v0.3.0/schema.json',
     'www.schemas.s1seven.com/en10168-schemas/v0.3.0/schema.json',
-    'https://schemas.s1seven.co.uk/en10168-schemas/v0.3.0/schema.json',
     'https://schemas.s1seven.com/en10168-schemas/0.3.0/schema.json',
     'https://schemas.s1seven.com/en10168-schemas/v0.3.x/schema.json',
     'https://schemas.s1seven.com/en10168-schemas/v0.30/schema.json',

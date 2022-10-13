@@ -12,6 +12,7 @@ const validCertTestSuitesMap = [
   { certificateName: 'valid-certificate-11' },
   { certificateName: 'valid-certificate-12' },
   { certificateName: 'valid-certificate-13' },
+  { certificateName: 'valid-certificate-14' },
 ];
 
 const patternErrorObject = {
@@ -20,10 +21,10 @@ const patternErrorObject = {
   keyword: 'pattern',
   params: {
     pattern:
-      '(https?://[a-z0-9/\\.\\-]+[\\.]com)/([a-z0-9\\-]+)/(v\\d+\\.\\d+\\.\\d+(-\\d+)?)/([a-z\\./\\-]+.json)',
+      '(https?://[a-z0-9/\\.\\-]+[\\.a-z+])/([a-z0-9\\-]+)/(v\\d+\\.\\d+\\.\\d+(-\\d+)?)/([a-z\\./\\-]+.json)',
   },
   message:
-    'must match pattern "(https?://[a-z0-9/\\.\\-]+[\\.]com)/([a-z0-9\\-]+)/(v\\d+\\.\\d+\\.\\d+(-\\d+)?)/([a-z\\./\\-]+.json)"',
+    'must match pattern "(https?://[a-z0-9/\\.\\-]+[\\.a-z+])/([a-z0-9\\-]+)/(v\\d+\\.\\d+\\.\\d+(-\\d+)?)/([a-z\\./\\-]+.json)"',
 };
 
 const invalidCertTestSuitesMap = [
@@ -69,10 +70,6 @@ const invalidCertTestSuitesMap = [
   },
   {
     certificateName: 'invalid-certificate-11',
-    expectedErrors: [patternErrorObject],
-  },
-  {
-    certificateName: 'invalid-certificate-12',
     expectedErrors: [patternErrorObject],
   },
 ];
