@@ -6,7 +6,8 @@
       "ZipCode": "10115",
       "City": "Berlin",
       "Country": "DE",
-      "Email": "sbs.steeltrader@gmail.com"
+      "Email": "sbs.steeltrader@gmail.com",
+      "Identifiers": {}
     }
   }
 }

@@ -56,24 +56,31 @@ const invalidCertTestSuitesMap = [
         params: { passingSchemas: null },
         message: 'must match exactly one schema in oneOf',
       },
-      {
-        instancePath: '/Certificate/A01',
-        schemaPath: '#/allOf/2/required',
-        keyword: 'required',
-        params: { missingProperty: 'Identifiers' },
-        message: "must have required property 'Identifiers'",
-      },
     ],
   },
   {
     certificateName: `invalid-certificate-3`,
     expectedErrors: [
       {
-        instancePath: '/Certificate/A01',
-        schemaPath: '#/allOf/2/required',
+        instancePath: '/Certificate/A01/Identifiers',
+        schemaPath: '#/definitions/CompanyIdentifiers/anyOf/0/required',
         keyword: 'required',
-        params: { missingProperty: 'Identifiers' },
-        message: "must have required property 'Identifiers'",
+        params: { missingProperty: 'VAT' },
+        message: "must have required property 'VAT'",
+      },
+      {
+        instancePath: '/Certificate/A01/Identifiers',
+        schemaPath: '#/definitions/CompanyIdentifiers/anyOf/1/required',
+        keyword: 'required',
+        params: { missingProperty: 'DUNS' },
+        message: "must have required property 'DUNS'",
+      },
+      {
+        instancePath: '/Certificate/A01/Identifiers',
+        schemaPath: '#/definitions/CompanyIdentifiers/anyOf',
+        keyword: 'anyOf',
+        params: {},
+        message: 'must match a schema in anyOf',
       },
     ],
   },
@@ -82,53 +89,10 @@ const invalidCertTestSuitesMap = [
     expectedErrors: [
       {
         instancePath: '/Certificate/A01',
-        schemaPath: '#/allOf/2/required',
-        keyword: 'required',
-        params: { missingProperty: 'Identifiers' },
-        message: "must have required property 'Identifiers'",
-      },
-    ],
-  },
-  {
-    certificateName: `invalid-certificate-5`,
-    expectedErrors: [
-      {
-        instancePath: '/Certificate/A01',
-        schemaPath: '#/allOf/2/required',
-        keyword: 'required',
-        params: { missingProperty: 'Identifiers' },
-        message: "must have required property 'Identifiers'",
-      },
-    ],
-  },
-  {
-    certificateName: `invalid-certificate-6`,
-    expectedErrors: [
-      {
-        instancePath: '/Certificate/A01',
-        schemaPath: '#/allOf/2/required',
-        keyword: 'required',
-        params: { missingProperty: 'Identifiers' },
-        message: "must have required property 'Identifiers'",
-      },
-    ],
-  },
-  {
-    certificateName: `invalid-certificate-7`,
-    expectedErrors: [
-      {
-        instancePath: '/Certificate/A01',
         schemaPath: '#/definitions/CompanyAddress/required',
         keyword: 'required',
         params: { missingProperty: 'Street' },
         message: "must have required property 'Street'",
-      },
-      {
-        instancePath: '/Certificate/A01',
-        schemaPath: '#/allOf/2/required',
-        keyword: 'required',
-        params: { missingProperty: 'Identifiers' },
-        message: "must have required property 'Identifiers'",
       },
     ],
   },
