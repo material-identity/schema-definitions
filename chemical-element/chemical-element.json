@@ -13,21 +13,15 @@
         },
         "Actual": {
           "description": "The measured part of the element in percentage.",
-          "type": "number",
-          "minimum": 0,
-          "maximum": 100
+          "type": "string"
         },
         "Minimum": {
           "description": "The minimum if defined by the product specification, otherwise the element must not provided.",
-          "type": "number",
-          "minimum": 0,
-          "maximum": 100
+          "type": "string"
         },
         "Maximum": {
           "description": "The maximum as defined by the product specification, otherwise the element must not provided.",
-          "type": "number",
-          "minimum": 0,
-          "maximum": 100
+          "type": "string"
         }
       },
       "required": ["Symbol", "Actual"],
