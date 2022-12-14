@@ -18,7 +18,7 @@ For more information, please look at the CoA [documentation](https://github.com/
 | City                  | The city                                                                                                                                                                                                                                               |    Yes    |   Yes   |
 | Country               | The two-letter ISO country code according to https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.                                                                                                                                                         |    Yes    |   Yes   |
 | Email                 | The email address to be used to send certificates to the company.                                                                                                                                                                                      |    No     |   Yes   |
-| Identifier            | One or more unique company identifiers. Currently, [VAT](https://ec.europa.eu/taxation_customs/vat-identification-numbers_en), [DUNS](https://www.dnb.com/duns-number.html), and [Cage Codes](https://cage.dla.mil/Info/about#cagecode) are supported. |    Yes    |   No    |
+| Identifier            | One or more unique company identifiers. Currently, [VAT](https://ec.europa.eu/taxation_customs/vat-identification-numbers_en), [DUNS](https://www.dnb.com/duns-number.html), and [Cage Codes](https://cage.dla.mil/Info/about#cagecode) are supported. |    No     |   No    |
 | AdditionalInformation | An array of additional free text information on the company.                                                                                                                                                                                           |    No     |   Yes   |
 
 ## Certificate Languages definition
@@ -131,6 +131,8 @@ The Chemical Element definition is used by the EN10168 schema as a property in C
 | Actual    | The measured part of the element as absolute number. |    Yes    |   Yes   |
 | Minimum   | The minimum if defined by the product specification  |    No     |   Yes   |
 | Maximum   | The maxium as defined by the product specification   |    No     |   Yes   |
+
+WARNING: the minimum value of 0 and maximum value of 100 is no longer enforced by the JSON schema. Please ensure that these values are not exceeded, as they will not be flagged by the schema.
 
 ## Adding a schema definition
 
