@@ -1,7 +1,7 @@
 {
   "Certificate": {
     "ChemicalElement": {
-      "Actual": 0.014,
+      "Actual": "0.014",
       "Symbol": "P"
     }
   }
