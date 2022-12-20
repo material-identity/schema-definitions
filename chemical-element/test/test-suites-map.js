@@ -65,6 +65,71 @@ const invalidCertTestSuitesMap = [
       },
     ],
   },
+  {
+    certificateName: 'invalid-certificate-4',
+    expectedErrors: [
+      {
+        instancePath: '/Certificate/ChemicalElement/Actual',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d+)?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d+)?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Actual/pattern',
+      },
+      {
+        instancePath: '/Certificate/ChemicalElement/Maximum',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d+)?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d+)?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/pattern',
+      },
+    ],
+  },
+  {
+    certificateName: 'invalid-certificate-5',
+    expectedErrors: [
+      {
+        instancePath: '/Certificate/ChemicalElement/Actual',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d+)?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d+)?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Actual/pattern',
+      },
+      {
+        instancePath: '/Certificate/ChemicalElement/Maximum',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d+)?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d+)?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/pattern',
+      },
+    ],
+  },
+  {
+    certificateName: 'invalid-certificate-6',
+    expectedErrors: [
+      {
+        instancePath: '/Certificate/ChemicalElement/Maximum',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d+)?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d+)?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/pattern',
+      },
+    ],
+  },
 ];
 
 module.exports = { validCertTestSuitesMap, invalidCertTestSuitesMap };
