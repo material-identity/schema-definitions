@@ -132,7 +132,7 @@ The Chemical Element definition is used by the EN10168 schema as a property in C
 | Minimum   | The minimum if defined by the product specification  |    No     |   Yes   |
 | Maximum   | The maxium as defined by the product specification   |    No     |   Yes   |
 
-WARNING: the minimum value of 0 and maximum value of 100 is no longer enforced by the JSON schema. Please ensure that these values are not exceeded, as they will not be flagged by the schema.
+The Minimum, Maximum and Actual values can accept numbers with up to 4 decimal places. For example, a value of `0.1012` is valid, but `0.10121` is invalid.
 
 ## Adding a schema definition
 
