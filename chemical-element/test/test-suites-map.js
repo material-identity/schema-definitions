@@ -155,6 +155,41 @@ const invalidCertTestSuitesMap = [
       },
     ],
   },
+  {
+    certificateName: 'invalid-certificate-8',
+    expectedErrors: [
+      {
+        instancePath: '/Certificate/ChemicalElement/Actual',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d{1,4})?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d{1,4})?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Actual/pattern',
+      },
+      {
+        instancePath: '/Certificate/ChemicalElement/Minimum',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d{1,4})?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d{1,4})?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Minimum/pattern',
+      },
+      {
+        instancePath: '/Certificate/ChemicalElement/Maximum',
+        keyword: 'pattern',
+        message: 'must match pattern "^(?:[0-9]{1,2}(\\.\\d{1,4})?|100)$"',
+        params: {
+          pattern: '^(?:[0-9]{1,2}(\\.\\d{1,4})?|100)$',
+        },
+        schemaPath:
+          'chemical-element.json#/definitions/ChemicalElement/properties/Maximum/pattern',
+      },
+    ],
+  },
 ];
 
 module.exports = { validCertTestSuitesMap, invalidCertTestSuitesMap };
