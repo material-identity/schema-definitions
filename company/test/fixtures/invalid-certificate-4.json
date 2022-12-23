@@ -1,13 +1,15 @@
 {
   "Certificate": {
     "A01": {
-      "CompanyName": "Steel Mill SE",
-      "Street": "Stahlstrasse 1",
-      "ZipCode": "4040",
-      "City": "Linz",
+      "Name": "Plastic Processor SE",
+      "AddressLine1": "Plastik Street 1",
+      "ZipCode": "1230",
+      "City": "Wien",
       "Country": "AT",
-      "Email": "sbs.steelfactory@gmail.com",
-      "DUNS": "123456789123"
+      "Email": "s1seven.certificates@gmail.com",
+      "Identifier": {
+        "CageCode": "N1950#"
+      }
     }
   }
 }

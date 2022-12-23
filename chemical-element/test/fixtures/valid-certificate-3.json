@@ -1,7 +1,7 @@
 {
   "Certificate": {
     "ChemicalElement": {
-      "Actual": 1,
+      "Actual": "1",
       "Symbol": "Mn"
     }
   }

@@ -3,7 +3,7 @@
     "ChemicalElement": {
       "Actual": 0.009,
       "Symbol": "Ni",
-      "Maximum": 101,
+      "Maximum": 100,
       "Minimum": 0
     }
   }
