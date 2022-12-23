@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.6/chemical-element/chemical-element.json",
+  "$id": "chemical-element.json",
   "definitions": {
     "ChemicalElement": {
       "title": "ChemicalElement",
@@ -27,10 +27,7 @@
           "pattern": "^(?:[0-9]{1,2}(\\.\\d{1,4})?|100)$"
         }
       },
-      "required": [
-        "Symbol",
-        "Actual"
-      ],
+      "required": ["Symbol", "Actual"],
       "additionalProperties": false
     }
   }
