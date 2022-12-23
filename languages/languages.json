@@ -1,17 +1,28 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "languages.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.6/languages/languages.json",
   "definitions": {
     "CertificateLanguages": {
       "title": "CertificateLanguages",
       "description": "For a JSON document one or two translations used in the rendering of HTML and PDF documents can be specificed.",
       "type": "array",
       "items": {
-        "enum": ["EN", "DE", "FR", "ES", "PL", "CN", "TR", "IT"]
+        "enum": [
+          "EN",
+          "DE",
+          "FR",
+          "ES",
+          "PL",
+          "CN",
+          "TR",
+          "IT"
+        ]
       },
       "minItems": 1,
       "maxItems": 2,
-      "default": ["EN"],
+      "default": [
+        "EN"
+      ],
       "uniqueItems": true
     }
   }
