@@ -17,6 +17,9 @@ const validCertTestSuitesMap = [
   {
     certificateName: `valid-certificate-6`,
   },
+  {
+    certificateName: `valid-certificate-7`,
+  },
 ];
 
 const invalidCertTestSuitesMap = [

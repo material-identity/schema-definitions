@@ -1,0 +1,11 @@
+{
+  "Certificate": {
+    "A01": {
+      "Name": "Plastic Processor SE",
+      "Street": ["Plastik Street 1", "Werk 1"],
+      "ZipCode": "1230",
+      "City": "Wien",
+      "Country": "AT"
+    }
+  }
+}
