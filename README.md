@@ -125,12 +125,12 @@ The Attachment definition is an optional property used by the CoA and EN10168 sc
 
 The Chemical Element definition is used by the EN10168 schema as a property in ChemicalComposition.
 
-| Attribute | Description                                          | Mandatory | Visible |
-| --------- | ---------------------------------------------------- | :-------: | :-----: |
-| Symbol    | The symbol of the element                            |    Yes    |   Yes   |
-| Actual    | The measured part of the element as absolute number. |    Yes    |   Yes   |
-| Minimum   | The minimum if defined by the product specification  |    No     |   Yes   |
-| Maximum   | The maxium as defined by the product specification   |    No     |   Yes   |
+| Attribute | Description                                                                                                                     | Mandatory | Visible |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------- | :-------: | :-----: |
+| Symbol    | The symbol of the element                                                                                                       |    Yes    |   Yes   |
+| Actual    | The measured part of the element as absolute number with a maximum precision of 4 digits after the decimal separator.           |    Yes    |   Yes   |
+| Minimum   | The minimum in percent with a maximum precision of 4 digits after the decimal separator if defined by the product specification |    No     |   Yes   |
+| Maximum   | The maximum in percent with a maximum precision of 4 digits after the decimal separator if defined by the product specification |    No     |   Yes   |
 
 The Minimum, Maximum and Actual values can accept numbers with up to 4 decimal places. For example, a value of `0.1012` is valid, but `0.10121` is invalid.
 
