@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "ref-schema-url.json",
+  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.7/ref-schema-url/ref-schema-url.json",
   "definitions": {
     "RefSchemaUrl": {
       "type": "string",
