@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemas.s1seven.com/schema-definitions/v0.0.7/company/company.json",
+  "$id": "company.json",
   "definitions": {
     "CompanyBase": {
       "type": "object",
@@ -17,14 +17,7 @@
           "minLength": 2,
           "maxLength": 2,
           "pattern": "^[A-Z]{2}$",
-          "examples": [
-            "AT",
-            "DE",
-            "FR",
-            "ES",
-            "PL",
-            "CN"
-          ]
+          "examples": ["AT", "DE", "FR", "ES", "PL", "CN"]
         },
         "Email": {
           "type": "string",
@@ -47,9 +40,7 @@
               "type": "string"
             }
           },
-          "required": [
-            "Name"
-          ]
+          "required": ["Name"]
         },
         {
           "properties": {
@@ -57,16 +48,10 @@
               "type": "string"
             }
           },
-          "required": [
-            "CompanyName"
-          ]
+          "required": ["CompanyName"]
         }
       ],
-      "required": [
-        "ZipCode",
-        "City",
-        "Country"
-      ],
+      "required": ["ZipCode", "City", "Country"],
       "additionalProperties": true
     },
     "CompanyAddress": {
@@ -89,9 +74,7 @@
           ]
         }
       },
-      "required": [
-        "Street"
-      ]
+      "required": ["Street"]
     },
     "CompanyIdentifiers": {
       "type": "object",
@@ -99,9 +82,7 @@
         "CageCode": {
           "description": "The Commercial and Government Entity Code (short CAG), is a unique identifier assigned to suppliers to various government or defense agencies, https://en.wikipedia.org/wiki/Commercial_and_Government_Entity_code",
           "type": "string",
-          "examples": [
-            "N1950#"
-          ]
+          "examples": ["N1950#"]
         }
       },
       "anyOf": [
@@ -113,9 +94,7 @@
               "maxLength": 15
             }
           },
-          "required": [
-            "VAT"
-          ]
+          "required": ["VAT"]
         },
         {
           "properties": {
@@ -125,9 +104,7 @@
               "maxLength": 9
             }
           },
-          "required": [
-            "DUNS"
-          ]
+          "required": ["DUNS"]
         }
       ]
     },

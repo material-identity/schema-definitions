@@ -7,7 +7,7 @@ Each definition is stored in its own folder along with its handlebars partial an
 ## Company definition
 
 The company definition is used by the EN10168 schema under the `CommercialTransaction` property at `A01`, `A06`, `A06.1`, `A06.2`, and `A06.3` It is also used in the CoA schema under the `Parties` property at `Manufacturer`, `Customer` and `Receiver`.
-For more information, please look at the CoA [documentation](https://github.com/thematerials-network/CoA-documentation/blob/main/README.md) or EN10168 [documentation](https://s1seven.github.io/SEP/EN10168/#json-definitions).
+For more information, please look at the CoA [documentation](https://github.com/material-identity/CoA-documentation/blob/main/README.md) or EN10168 [documentation](https://s1seven.github.io/SEP/EN10168/#json-definitions).
 
 | Attribute             | Description                                                                                                                                                                                                                                            | Mandatory | Visible |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------: | :-----: |

@@ -38,15 +38,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thematerials-network/schema-definitions.git"
+    "url": "git+https://github.com/material-identity/schema-definitions.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thematerials-network/schema-definitions/issues"
+    "url": "https://github.com/material-identity/schema-definitions/issues"
   },
-  "homepage": "https://github.com/thematerials-network/schema-definitions#readme",
+  "homepage": "https://github.com/material-identity/schema-definitions#readme",
   "devDependencies": {
     "@s1seven/schema-tools-utils": "^0.1.2",
     "@s1seven/schema-tools-versioning": "^0.2.3",
