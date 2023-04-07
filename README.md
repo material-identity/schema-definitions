@@ -1,5 +1,8 @@
 # Schema definitions
 
+[![Schema Definitions CI](https://github.com/material-identity/schema-definitions/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/material-identity/schema-definitions/actions/workflows/ci.yml)
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B18065%2Fgithub.com%2Fmaterial-identity%2Fschema-definitions.svg?type=shield)](https://app.fossa.com/projects/custom%2B18065%2Fgithub.com%2Fmaterial-identity%2Fschema-definitions?ref=badge_shield)
+
 A repository containing schema definitions that can be shared across multiple schemas.
 
 Each definition is stored in its own folder along with its handlebars partial and tests/fixtures.
@@ -156,3 +159,9 @@ Once a PR has been approved and merged to main, the `Set $refs to remote on merg
 # $refs and $ids and working locally
 
 When merging to main, `update:version` is run automatically by the `ci` workflow and the `$ref`s and `$id`s are updated to remote URLs. When working locally, run `npm run set-local-paths` to set all `$ref`s and `$id`s to local values. This script is run automatically using a pre-commit hook whenever a commit is made.
+
+## License
+
+[AGPL-3.0 License](https://github.com/material-identity/CoA-schemas/blob/main/LICENSE)
+
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B18065%2Fgithub.com%2Fmaterial-identity%2Fschema-definitions.svg?type=large)](https://app.fossa.com/projects/custom%2B18065%2Fgithub.com%2Fmaterial-identity%2Fschema-definitions?ref=badge_large)
